@@ -1,15 +1,83 @@
+/* === GLOBAL STYLES === */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
+  font-family: 'Inter', sans-serif;
   color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* === CONTAINER === */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
   padding: 2rem;
 }
 
-h1 {
-  color: #007acc;
+/* === NAVIGATION BAR === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-a {
-  color: #cc0000;
+.nav-left {
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.nav-right a {
+  margin-left: 1.5rem;
   text-decoration: none;
+  color: #0077cc;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-right a:hover {
+  color: #005999;
+}
+
+/* === HERO SECTION === */
+.hero {
+  text-align: center;
+  margin-top: 10vh;
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #007acc;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* === BUTTON === */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #005999;
 }
