@@ -1,62 +1,67 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <title>Mansoor Mamnoon</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- ✅ This line -->
+  <meta charset="UTF-8">
+  <title>About - Mansoor Mamnoon</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar container">
-        <div class="nav-left">Mansoor Mamnoon</div>
-        <div class="nav-right">
-          <a href="index.html">Home</a>
-          <a href="about.html">Experience</a>
-          <a href="projects.html">Projects</a>
-        </div>
-      </nav>
+  <nav class="navbar container">
+    <div class="nav-left">Mansoor Mamnoon</div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">Experience</a>
+      <a href="projects.html">Projects</a>
+    </div>
+  </nav>
 
-  <section class="about-card">
+  <section class="about container" id="about">
     <h2>About Me</h2>
 
-    <h3>Technical Focus</h3>
-    <p>I’m a rising junior at UC Berkeley majoring in Computer Science with interests in systems engineering, distributed infrastructure, and quantitative computing. I'm currently interning as a software engineer at Amazon, where I’m gaining hands-on experience building production-level software at scale. Due to NDA restrictions, I can’t discuss specifics — but my work focuses on solving real-world problems using data pipelines, backend services, and intelligent automation.</p>
+    <div class="about-card">
+      <div class="about-heading">
+        <span class="emoji">🧠</span>
+        <div>
+          <h3>Technical Focus</h3>
+          <p class="subhead">Backend systems · Infra · Automation</p>
+        </div>
+      </div>
+      <p>I’m a rising junior at UC Berkeley majoring in Computer Science with interests in systems engineering, distributed infrastructure, and quantitative computing. I'm currently interning as a software engineer at Amazon, where I'm gaining hands-on experience building production-level software at scale. Due to NDA restrictions, I can’t discuss specifics — but my work focuses on solving real-world problems using data pipelines, backend services, and intelligent automation.</p>
+    </div>
 
-    <h3>Teaching & Mentorship</h3>
-    <p>At Berkeley, I head the education department for <strong>Blackskies Investments</strong>, the largest undergraduate investment group on campus. I lead weekly workshops on equities analysis, fundamental valuation, and portfolio strategy. This has strengthened my ability to break down complex technical and financial concepts — a skill that translates directly to high-performance teams and fast-paced decision-making environments.</p>
+    <div class="about-card">
+      <div class="about-heading">
+        <span class="emoji">📘</span>
+        <div>
+          <h3>Teaching & Mentorship</h3>
+          <p class="subhead">Blackskies Investments · Equities Education</p>
+        </div>
+      </div>
+      <p>At Berkeley, I head the education department for <strong>Blackskies Investments</strong>, the largest undergraduate investment group on campus. I lead weekly workshops on equities analysis, fundamental valuation, and portfolio strategy. This has strengthened my ability to break down complex technical and financial concepts — a skill that translates directly to high-performance teams and fast-paced decision-making environments.</p>
+    </div>
 
-    <h3>Leadership</h3>
-    <p>As a <strong>Residential Assistant at Clark Kerr</strong>, I support over 50 students in academic, social, and crisis management settings. This role sharpened my leadership, empathy, and communication skills — all essential when navigating technical group projects and organizational challenges.</p>
+    <div class="about-card">
+      <div class="about-heading">
+        <span class="emoji">🎯</span>
+        <div>
+          <h3>Leadership</h3>
+          <p class="subhead">Clark Kerr · Residential Assistant</p>
+        </div>
+      </div>
+      <p>As a <strong>Residential Assistant at Clark Kerr</strong>, I support over 50 students in academic, social, and crisis management settings. This role sharpened my leadership, empathy, and communication skills — all essential when navigating technical group projects and organizational challenges.</p>
+    </div>
 
-    <h3>Hands-On Learning</h3>
-    <p>I enjoy building to learn — which is why this website is more than a portfolio; it’s my playground for applying new frontend techniques, design systems, and full-stack development workflows. I continuously incorporate what I learn into this site, treating it as a live showcase of technical growth.</p>
-
-    <h3>Outside of Tech</h3>
-    <p>I follow tennis and cricket, and I find that curiosity across disciplines fuels my ability to approach software problems creatively and from fresh angles.</p>
-
-    <h3>What I’m Looking For</h3>
-    <p>I’m especially excited by roles in backend engineering, infrastructure tooling, machine learning systems, or quantitative development — anywhere I can apply both algorithmic rigor and real-world pragmatism. Whether it’s scaling internal platforms or optimizing for low-latency systems, I’m driven by making high-impact ideas come alive through clean, maintainable code.</p>
+    <div class="about-card">
+      <div class="about-heading">
+        <span class="emoji">🛠️</span>
+        <div>
+          <h3>Hands-On Learning</h3>
+          <p class="subhead">Frontend Exploration · Full-Stack Curiosity</p>
+        </div>
+      </div>
+      <p>I enjoy building to learn — which is why this website is more than a portfolio; it’s my playground for applying new frontend techniques, layout systems, and full-stack development workflows. I continuously incorporate what I learn into real tools — improving both my intuition and design instinct.</p>
+    </div>
   </section>
-
-  <<footer class="footer container">
-    <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>
-    <p>
-      <span id="emailText">mansoormmamnoon@berkeley.edu</span>
-      <button onclick="copyEmail()">Copy Email</button>
-    </p>
-  </footer>
-
-  <script>
-    function copyEmail() {
-      const email = document.getElementById("emailText").textContent;
-      navigator.clipboard.writeText(email).then(() => {
-        alert("Email copied to clipboard!");
-      }, () => {
-        alert("Failed to copy email.");
-      });
-    }
-  </script>
-
 </body>
 </html>
