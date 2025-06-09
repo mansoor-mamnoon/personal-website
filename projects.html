@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <title>Mansoor Mamnoon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- ✅ This line -->
+  </head>
+  
+<body>
+  <nav class="navbar container">
+    <div class="nav-left">Mansoor Mamnoon</div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">Experience</a>
+      <a href="projects.html">Projects</a>
+    </div>
+  </nav>
+
+  <section class="projects container" id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+        <h3>🌐 Personal Website</h3>
+        <p><strong>Type:</strong> Independent Project</p>
+        <p>Built from scratch to showcase my work and reflect my learning in frontend development. Focused on clean design, recruiter readability, and SEO optimization using HTML, CSS, and semantic structure.</p>
+        <p class="tech-stack"><strong>Stack:</strong> HTML, CSS, GitHub Pages</p>
+      </div>
+
+    <div class="project-card">
+      <h3>🗃️ Gitlet – A Git Version Control System</h3>
+      <p><strong>Type:</strong> Course Project — CS 61B</p>
+      <p>Implemented a mini version of Git in Java, including branching, merging, rebasing, and staging. Developed custom serialization, tree-based data structures, and conflict resolution logic without using external libraries.</p>
+      <p class="tech-stack"><strong>Stack:</strong> Java, HashMaps, Trees, Serialization</p>
+    </div>
+
+    <div class="project-card">
+      <h3>🧠 RISC-V OCR System</h3>
+      <p><strong>Type:</strong> Course Project — CS 61C</p>
+      <p>Built a handwriting recognition pipeline using a convolutional neural network and optimized the matrix multiplication stage with OpenMP for parallelism. Demonstrated near real-time digit recognition on RISC-V architecture.</p>
+      <p class="tech-stack"><strong>Stack:</strong> RISC-V, OpenMP, C, Python (for model training)</p>
+    </div>
+
+    <div class="project-card">
+      <h3>🔧 Custom CPU Pipeline</h3>
+      <p><strong>Type:</strong> Course Project — CS 61C</p>
+      <p>Designed a 2-stage pipelined CPU supporting custom RISC-V-like instructions. Implemented forwarding, hazard detection, and control logic for performance. Integrated testbenches to validate correctness.</p>
+      <p class="tech-stack"><strong>Stack:</strong> Logisim, RISC-V, Assembly</p>
+    </div>
+
+  </section>
+
+  <footer class="footer container">
+    <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>
+    <p>
+      <span id="emailText">mansoormmamnoon@berkeley.edu</span>
+      <button onclick="copyEmail()">Copy Email</button>
+    </p>
+  </footer>
+
+  <script>
+    function copyEmail() {
+      const email = document.getElementById("emailText").textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }, () => {
+        alert("Failed to copy email.");
+      });
+    }
+  </script>
+
+
+</body>
+</html>

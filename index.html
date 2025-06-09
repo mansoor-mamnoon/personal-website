@@ -1,29 +1,67 @@
+<!-- index.html (Homepage) -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Mansoor Mamnoon</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mansoor Mamnoon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- ✅ This line -->
+  </head>
+  
 <body>
-
-  <!-- 🔹 NAVIGATION BAR -->
   <nav class="navbar container">
     <div class="nav-left">Mansoor Mamnoon</div>
     <div class="nav-right">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#resume">Resume</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">Experience</a>
+      <a href="projects.html">Projects</a>
     </div>
   </nav>
 
-  <!-- 🔸 HERO SECTION -->
   <section class="container hero" id="home">
     <h1>Hi, I’m Mansoor 👋</h1>
-    <p>I’m a CS major at UC Berkeley and a SWE intern at Amazon.</p>
-    <a class="button" href="https://linkedin.com/in/mansoormamnoon" target="_blank">View My LinkedIn</a>
+    <p>I’m a Computer Science major at UC Berkeley and a SWE intern at Amazon.</p>
+    <a class="button" href="https://linkedin.com/in/mansoormamnoon" target="_blank">Connect on LinkedIn →</a>
   </section>
+
+  <section class="container summary-box" id="about-preview">
+    <h2>About Me</h2>
+    <p>
+      I'm a Berkeley Computer Science student and Amazon SWE intern passionate about backend systems and infrastructure.
+    </p>
+    <p>
+      I lead the education team at <strong>Blackskies Investments</strong> and serve as a <strong>Residential Assistant at Clark Kerr</strong>, mentoring students in both technical and community settings.
+    </p>
+    <a class="button" href="about.html">Read More</a>
+  </section>
+
+  <section class="container summary-box" id="projects-preview">
+    <h2>Projects</h2>
+    <p>
+      I’ve worked on systems-level and infrastructure-focused course projects like Gitlet, CPU design, and an OCR pipeline on RISC-V. These experiences reflect my focus on backend scalability, parallel computing, and systems architecture.
+    </p>
+    <a class="button" href="projects.html">Explore Projects →</a>
+  </section>
+
+  <footer class="footer container">
+    <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>
+    <p>
+      <span id="emailText">mansoormmamnoon@berkeley.edu</span>
+      <button onclick="copyEmail()">Copy Email</button>
+    </p>
+  </footer>
+
+  <script>
+    function copyEmail() {
+      const email = document.getElementById("emailText").textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email copied to clipboard!");
+      }, () => {
+        alert("Failed to copy email.");
+      });
+    }
+  </script>
 
 </body>
 </html>
+
