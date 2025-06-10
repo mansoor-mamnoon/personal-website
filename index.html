@@ -1,6 +1,7 @@
 <!-- index.html (Homepage) -->
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8">
     <title>Mansoor Mamnoon</title>
@@ -11,10 +12,18 @@
     <meta property="og:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
     <meta property="og:url" content="https://mansoor-mamnoon.github.io/personal-website/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- AOS Animations -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 
   </head>
   
 <body>
+
+  <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+
+
   <nav class="navbar container">
     <div class="nav-left">Mansoor Mamnoon</div>
     <div class="nav-right">
@@ -24,13 +33,13 @@
     </div>
   </nav>
 
-  <section class="container hero" id="home">
+  <section class="container hero" id="home" data-aos="fade-up">
     <h1>Hi, I’m Mansoor 👋</h1>
     <p>I’m a Computer Science major at UC Berkeley and a SWE intern at Amazon.</p>
     <a class="button" href="https://linkedin.com/in/mansoormamnoon" target="_blank">Connect on LinkedIn →</a>
   </section>
 
-  <section class="container summary-box" id="about-preview">
+  <section class="container summary-box" id="about-preview" data-aos="fade-up">
     <h2 class="section-title">About Me</h2>
     <p>
       I'm a Berkeley Computer Science student and Amazon SWE intern passionate about backend systems and infrastructure.
@@ -41,7 +50,7 @@
     <a class="button" href="about.html">Read More</a>
   </section>
 
-  <section class="container summary-box" id="projects-preview">
+  <section class="container summary-box" id="projects-preview" data-aos="fade-up">
     <h2 class="section-title">Projects</h2>
     <p>
       I've worked on systems-level and infrastructure-focused course projects like Gitlet, CPU design, and an OCR pipeline on RISC-V. These experiences reflect my focus on backend scalability, parallel computing, and systems architecture.
@@ -67,6 +76,20 @@
       });
     }
   </script>
+
+  <!-- AOS Script -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<!-- Dark Mode Toggle Script -->
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+  }
+</script>
+
 
 </body>
 </html>
