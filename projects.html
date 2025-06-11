@@ -20,6 +20,7 @@
 
   <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
 
+
   <nav class="navbar container">
     <div class="nav-left">Mansoor Mamnoon</div>
     <div class="nav-right">
@@ -68,6 +69,19 @@
       <span id="emailText">mansoormmamnoon@berkeley.edu</span>
       <button onclick="copyEmail()">Copy Email</button>
     </p>
+
+    <div style="margin-top: 1.5rem;">
+      <img 
+        src="https://visitor-badge.laobi.icu/badge?page_id=mansoor-mamnoon.personal-website&title=Visitors&color=0077cc&style=flat-square" 
+        alt="Visitor Count" 
+        class="visitor-badge"
+      />
+    </div>
+    <p style="font-size: 0.9rem; color: gray;">
+      👀 <em>You're one of many who've explored this site — thanks for stopping by!</em>
+    </p>
+    
+    
   </footer>
 
   <script>
@@ -89,11 +103,32 @@
 
 <!-- Dark Mode Toggle Script -->
 <script>
+  // Check for saved mode on load
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+  }
+
   function toggleDarkMode() {
-    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
 </script>
 
+
+
+<script>
+  document.addEventListener("mousemove", (e) => {
+    const dot = document.createElement("span");
+    dot.classList.add("trail-dot");
+    dot.style.left = `${e.clientX}px`;
+    dot.style.top = `${e.clientY}px`;
+    document.body.appendChild(dot);
+
+    setTimeout(() => {
+      dot.remove();
+    }, 400); // how long it stays
+  });
+</script>
 
 
 </body>
