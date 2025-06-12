@@ -92,6 +92,56 @@ body.dark .hero {
   margin-bottom: 2rem;
 }
 
+.hero-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.hero-heading span {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+  display: inline-block;
+}
+
+/* Apply delay to each word */
+.hero-heading span:nth-child(1) { animation-delay: 0s; }
+.hero-heading span:nth-child(2) { animation-delay: 0.15s; }
+.hero-heading span:nth-child(3) { animation-delay: 0.3s; }
+.hero-heading span:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  color: var(--accent-color);
+  animation: blink 0.8s steps(2) infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
 /* === BUTTON === */
 .button {
   display: inline-block;
