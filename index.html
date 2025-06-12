@@ -34,7 +34,11 @@
   </nav>
 
   <section class="container hero" id="home" data-aos="fade-up">
-    <h1>Hi, I’m Mansoor 👋</h1>
+    <h1 class="hero-heading">
+      <span id="typed-text"></span><span class="cursor">|</span>
+    </h1>
+    
+    
     <p>I’m a Computer Science major at UC Berkeley and a SWE intern at Amazon.</p>
     <a class="button" href="https://linkedin.com/in/mansoormamnoon" target="_blank">Connect on LinkedIn →</a>
   </section>
@@ -124,6 +128,23 @@
     }, 400); // how long it stays
   });
 </script>
+
+<script>
+  const text = "Hi, I'm Mansoor 👋";
+  const typedText = document.getElementById("typed-text");
+  let index = 0;
+
+  function typeChar() {
+    if (index < text.length) {
+      typedText.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeChar, 200); // speed: 100ms per character
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", typeChar);
+</script>
+
 
 
 
