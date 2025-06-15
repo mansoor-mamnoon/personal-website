@@ -128,7 +128,7 @@ body.dark .hero {
   overflow: hidden;
 }
 
-.cursor {
+.custom-cursor {
   display: inline-block;
   margin-left: 4px;
   color: var(--accent-color);
@@ -236,8 +236,12 @@ body.dark .about-heading .subhead {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  perspective: 1000px;
 }
+
 
 body.dark .project-card {
   background-color: #1e1e1e;
@@ -269,6 +273,83 @@ body.dark .project-card {
 body.dark .tech-stack {
   color: #cccccc;
 }
+
+/* === FILTER BUTTON STYLES === */
+/* === Search + Filter Wrapper === */
+.search-filter-wrapper {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#projectSearch {
+  width: 90%;
+  max-width: 500px;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#projectSearch:focus {
+  border-color: var(--accent-color);
+}
+
+body.dark #projectSearch {
+  background-color: #2a2a2a;
+  color: white;
+  border-color: #555;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.filter-button {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+body.dark .filter-button {
+  background-color: #2a2a2a;
+  color: white;
+  border-color: #555;
+}
+
+.filter-button.active {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: 600;
+}
+
+
+/* === PROJECT CARD FADE/ANIMATION === */
+.project-card {
+  transition: all 0.4s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.project-card.hide {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 
 /* === FOOTER === */
 .footer {
@@ -370,4 +451,137 @@ body.dark .badge {
     transform: translate(-50%, -50%) scale(0.3);
   }
 }
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--accent-color);
+  width: 0%;
+  z-index: 10000;
+  transition: width 0.1s ease-out;
+}
+
+body.dark #scroll-progress {
+  background: #90caf9; /* or another lighter accent */
+}
+
+
+/* === PAGE TRANSITION === */
+body {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+body.fade-out {
+  opacity: 0;
+}
+
+/* Prevent flash when loading */
+html {
+  background-color: #f9f9f9; /* or your light mode bg */
+}
+
+body.dark.fade-out {
+  background-color: #121212;
+}
+
+
+
+.command-palette {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  color: #000;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+body.dark .command-palette {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.command-palette input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: inherit;
+  color: inherit;
+  border-bottom: 1px solid #ccc;
+}
+
+.command-palette ul {
+  list-style: none;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.command-palette li {
+  padding: 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.command-palette li:hover,
+.command-palette li.selected {
+  background: var(--accent-color);
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0077cc;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, background-color 0.3s, width 0.3s, height 0.3s;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.link-hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: #0077cc;
+}
+
+.custom-cursor.button-hover {
+  transform: translate(-50%, -50%) scale(2);
+  background-color: #00cc99;
+}
+
+.custom-cursor.card-hover {
+  width: 40px;
+  height: 40px;
+  border-color: #0077cc; /* Your brand blue */
+  background-color: rgba(0, 119, 204, 0.15); /* Transparent blue */
+}
+
+
+
 
