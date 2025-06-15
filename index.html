@@ -19,12 +19,22 @@
   <!-- ✅ Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 
   <!-- ✅ CSS & AOS -->
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css" rel="stylesheet">
+
+  <!-- ✅ Preload and defer Google Fonts -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"></noscript>
+
+<!-- ✅ Preload and defer AOS CSS -->
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"></noscript>
+
 
   <script type="application/ld+json">
     {
@@ -154,6 +164,8 @@
         alt="Visitor Count" 
         class="visitor-badge"
         loading="lazy"
+        height = 88.59
+        width = 20
       />
     </div>
     <p style="font-size: 0.9rem; color: gray;">
