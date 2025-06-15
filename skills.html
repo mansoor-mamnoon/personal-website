@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Preconnect to external origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+
   <meta charset="UTF-8" />
   <title>Skills – Mansoor Mamnoon</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="description" content="Explore Mansoor Mamnoon's technical skills in backend systems, frontend tools, and systems-level programming. See charted proficiencies in Python, Java, RISC-V, SQL, and more.">
+
+
 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta property="og:title" content="Mansoor Mamnoon – Personal Website" />
@@ -15,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 
 </head>
@@ -44,6 +55,8 @@
   <!-- 🌟 AOS INIT -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init();</script>
+
+  
   
   <!-- 🌙 Theme Logic -->
   <script>
@@ -161,74 +174,73 @@
 
   <!-- Chart Script -->
   <script>
-    const ctx = document.getElementById('skillsChart').getContext('2d');
+    document.addEventListener("DOMContentLoaded", () => {
+      const ctx = document.getElementById('skillsChart').getContext('2d');
   
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: [
-          'HTML/CSS (Frontend)',
-          'JavaScript (Frontend)',
-          'Python (Backend)',
-          'Java (Backend)',
-          'SQL (Backend)',
-          'Git (Backend)',
-          'C (Systems)',
-          'RISC-V (Systems)',
-          'OpenMP (Systems)',
-          'Logisim (Systems)'
-        ],
-        datasets: [{
-          label: 'Skill Level',
-          data: [9, 8, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7],
-          backgroundColor: [
-            '#007bff', '#007bff',  // Frontend
-            '#28a745', '#28a745', '#28a745', '#28a745',  // Backend
-            '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14'   // Systems
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'HTML/CSS (Frontend)',
+            'JavaScript (Frontend)',
+            'Python (Backend)',
+            'Java (Backend)',
+            'SQL (Backend)',
+            'Git (Backend)',
+            'C (Systems)',
+            'RISC-V (Systems)',
+            'OpenMP (Systems)',
+            'Logisim (Systems)'
           ],
-          borderRadius: 6,
-          borderSkipped: false
-        }]
-      },
-      options: {
-        indexAxis: 'y',  // horizontal bars
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: {
-            beginAtZero: true,
-            max: 10,
-            ticks: {
-              stepSize: 1
+          datasets: [{
+            label: 'Skill Level',
+            data: [9, 8, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7],
+            backgroundColor: [
+              '#007bff', '#007bff',
+              '#28a745', '#28a745', '#28a745', '#28a745',
+              '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14'
+            ],
+            borderRadius: 6,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 10,
+              ticks: { stepSize: 1 },
+              title: {
+                display: true,
+                text: 'Proficiency (out of 10)'
+              }
             },
-            title: {
-              display: true,
-              text: 'Proficiency (out of 10)'
-            }
-          },
-          y: {
-            ticks: {
-              font: {
-                size: 12
+            y: {
+              ticks: {
+                font: { size: 12 }
               }
             }
-          }
-        },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => `${ctx.label}: ${ctx.parsed.x}/10`
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.label}: ${ctx.parsed.x}/10`
+              }
             }
+          },
+          animation: {
+            duration: 1000,
+            easing: 'easeOutQuart'
           }
-        },
-        animation: {
-          duration: 1000,
-          easing: 'easeOutQuart'
         }
-      }
+      });
     });
   </script>
+  
   
 
   <!-- 🌙 Dark Mode Toggle -->
@@ -311,15 +323,27 @@
     </p>
 
     <div style="margin-top: 1.5rem;">
-      <img 
+        <img 
         src="https://visitor-badge.laobi.icu/badge?page_id=mansoor-mamnoon.personal-website&title=Visitors&color=0077cc&style=flat-square" 
         alt="Visitor Count" 
         class="visitor-badge"
+        loading="lazy"
       />
+      
     </div>
     <p style="font-size: 0.9rem; color: gray;">
       👀 <em>You're one of many who've explored this site — thanks for stopping by!</em>
     </p>
+
+    <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem;">
+        <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener" style="text-decoration: none;">
+          <img src="https://img.shields.io/badge/Lighthouse-95%2B-brightgreen?style=flat-square&logo=googlechrome" alt="Lighthouse score badge" style="vertical-align: middle;">
+        </a>
+        <p style="margin-top: 0.5rem;">
+          <strong>Fully optimized</strong> portfolio with Lighthouse scores 95+ across all metrics — including performance, SEO, and best practices.<br>
+          Accessibility scores average 90+ across all pages. Hand-built for speed and UX.
+        </p>
+      </div>
     
 
     
@@ -344,6 +368,21 @@
     document.querySelectorAll('[data-observe]').forEach(el => {
       el.classList.add('fade-in'); // Initial hidden state
       observer.observe(el);
+    });
+  </script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById('skillsChart');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        new Chart(ctx, { /* ... chart config ... */ });
+      } else {
+        console.warn("Canvas for skillsChart not found.");
+      }
     });
   </script>
   

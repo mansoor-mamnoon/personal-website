@@ -25,6 +25,8 @@ body.dark {
   color: #f5f5f5;
 }
 
+
+
 /* === HAMBURGER BUTTON === */
 .hamburger {
   display: none;
@@ -289,8 +291,9 @@ body.dark .about-card {
 }
 
 body.dark .about-heading .subhead {
-  color: #cccccc;
+  color: #eeeeee;
 }
+
 
 .about-card p {
   line-height: 1.6;
@@ -459,7 +462,7 @@ body.dark .filter-button {
 body.dark .footer button {
   background-color: #2e2e2e;
   color: white;
-  border: 1px solid #666;
+  border: 1px solid #333;
 }
 
 .visitor-badge {
@@ -706,6 +709,28 @@ body.dark .command-palette {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* === Accessibility Improvements === */
+a {
+  text-decoration: underline; /* Make links visible without color */
+}
+
+a.button {
+  text-decoration: none; /* Keep button-style links clean */
+}
+
+a.button:focus,
+a:focus {
+  outline: 2px dashed var(--accent-color);
+  outline-offset: 3px;
+}
+
+#emailText {
+  color: inherit;
+}
+
+
 
 
 
