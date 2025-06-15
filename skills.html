@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Skills – Mansoor Mamnoon</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta property="og:title" content="Mansoor Mamnoon – Personal Website" />
+  <meta property="og:description" content="Amazon SWE Intern | Berkeley CS | Backend + Systems Enthusiast" />
+  <meta property="og:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+  <meta property="og:url" content="https://mansoor-mamnoon.github.io/personal-website/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body>
+<!-- 🧭 Command Palette -->
+<div class="command-palette hidden" id="commandPalette">
+    <input type="text" id="commandInput" placeholder="Type a command..." autocomplete="off" />
+    <ul id="commandList">
+      <li data-action="navigate" data-target="index.html">Go to Home</li>
+      <li data-action="navigate" data-target="about.html">Go to Experience</li>
+      <li data-action="navigate" data-target="projects.html">Go to Projects</li>
+      <li data-action="navigate" data-target="skills.html">Go to Skills</li>
+      <li data-action="copyEmail">Copy Email</li>
+      <li data-action="toggleDark">Toggle Dark Mode</li>
+    </ul>
+  </div>
+  
+  <!-- 📧 Email Copy Support -->
+  <script>
+    function copyEmail() {
+      navigator.clipboard.writeText("mansoormmamnoon@berkeley.edu").then(() => showToast("Email copied!"));;
+    }
+  </script>
+  
+  <!-- 🌟 AOS INIT -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  
+  <!-- 🌙 Theme Logic -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+  </script>
+  
+  <!-- 🎯 Cursor Trail -->
+  <script>
+    document.addEventListener("mousemove", (e) => {
+      const dot = document.createElement("span");
+      dot.classList.add("trail-dot");
+      dot.style.left = `${e.clientX}px`;
+      dot.style.top = `${e.clientY}px`;
+      document.body.appendChild(dot);
+      setTimeout(() => dot.remove(), 400);
+    });
+  </script>
+  
+  <!-- ⌨️ Command Palette Logic -->
+  <script>
+    const palette = document.getElementById('commandPalette');
+    const input = document.getElementById('commandInput');
+    const list = document.getElementById('commandList');
+    const commands = [...list.querySelectorAll('li')];
+    let selectedIndex = -1;
+  
+    document.addEventListener('keydown', e => {
+      const isMacCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
+      const isSlash = e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey;
+      if (isMacCmdK || isSlash) {
+        e.preventDefault(); palette.classList.remove('hidden'); input.focus();
+      }
+      if (e.key === 'Escape') {
+        palette.classList.add('hidden'); input.value = ''; selectedIndex = -1; updateSelection();
+      }
+    });
+  
+    input.addEventListener('input', () => {
+      const value = input.value.toLowerCase();
+      commands.forEach(cmd => {
+        cmd.style.display = cmd.textContent.toLowerCase().includes(value) ? 'block' : 'none';
+      });
+      selectedIndex = -1;
+      updateSelection();
+    });
+  
+    input.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown') { selectedIndex = (selectedIndex + 1) % commands.length; updateSelection(); e.preventDefault(); }
+      else if (e.key === 'ArrowUp') { selectedIndex = (selectedIndex - 1 + commands.length) % commands.length; updateSelection(); e.preventDefault(); }
+      else if (e.key === 'Enter' && selectedIndex >= 0) { commands[selectedIndex].click(); }
+    });
+  
+    commands.forEach((cmd, i) => {
+      cmd.addEventListener('click', () => {
+        handleCommand(cmd); palette.classList.add('hidden'); input.value = ''; selectedIndex = -1;
+      });
+    });
+  
+    function updateSelection() {
+      commands.forEach((cmd, i) => cmd.classList.toggle('selected', i === selectedIndex));
+    }
+  
+    function handleCommand(cmd) {
+      const action = cmd.getAttribute('data-action');
+      const target = cmd.getAttribute('data-target');
+      switch (action) {
+        case 'navigate': window.location.href = target; break;
+        case 'copyEmail': copyEmail(); break;
+        case 'toggleDark':
+          const isDark = document.body.classList.toggle('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          document.getElementById('themeIcon').textContent = isDark ? '🌞' : '🌙';
+          break;
+      }
+    }
+  </script>
+
+
+  <!-- 🌙 Dark Mode Toggle -->
+  <button id="themeToggleBtn" aria-label="Toggle dark mode">
+    <span id="themeIcon">🌙</span>
+  </button>
+
+  <!-- 🔗 Navbar -->
+  <nav class="navbar container">
+    <div class="nav-left">Mansoor Mamnoon</div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+    <div class="drawer" id="mobileDrawer">
+      <button class="close-drawer" id="closeDrawerBtn" aria-label="Close menu">×</button>
+      <a href="index.html">Home</a>
+      <a href="about.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="skills.html" class="active">Skills</a>
+    </div>
+  </nav>
+
+  <!-- 📊 Skills Section -->
+  <section class="container summary-box" id="skills" data-aos="fade-up">
+    <h2 class="section-title">Tech Stack Proficiency</h2>
+    <p style="text-align: center; margin-bottom: 1rem;">Proficiency scale: 0–10, based on experience level and project usage.</p>
+    <div class="chart-container">
+      <canvas id="skillsChart"></canvas>
+    </div>
+  </section>
+  
+
+
+  <!-- Chart Script -->
+  <script>
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+          'HTML/CSS (Frontend)',
+          'JavaScript (Frontend)',
+          'Python (Backend)',
+          'Java (Backend)',
+          'SQL (Backend)',
+          'Git (Backend)',
+          'C (Systems)',
+          'RISC-V (Systems)',
+          'OpenMP (Systems)',
+          'Logisim (Systems)'
+        ],
+        datasets: [{
+          label: 'Skill Level',
+          data: [9, 8, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7],
+          backgroundColor: [
+            '#007bff', '#007bff',  // Frontend
+            '#28a745', '#28a745', '#28a745', '#28a745',  // Backend
+            '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14'   // Systems
+          ],
+          borderRadius: 6,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',  // horizontal bars
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 10,
+            ticks: {
+              stepSize: 1
+            },
+            title: {
+              display: true,
+              text: 'Proficiency (out of 10)'
+            }
+          },
+          y: {
+            ticks: {
+              font: {
+                size: 12
+              }
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.label}: ${ctx.parsed.x}/10`
+            }
+          }
+        },
+        animation: {
+          duration: 1000,
+          easing: 'easeOutQuart'
+        }
+      }
+    });
+  </script>
+  
+
+  <!-- 🌙 Dark Mode Toggle -->
+  <script>
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      themeIcon.textContent = '🌞';
+    }
+
+    themeBtn.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  themeIcon.textContent = isDark ? '🌞' : '🌙';
+  showToast(`Switched to ${isDark ? 'dark' : 'light'} mode`);
+});
+
+  </script>
+
+  <!-- 🍔 Drawer Toggle -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+    hamburgerBtn.addEventListener('click', () => drawer.classList.add('open'));
+    closeDrawerBtn.addEventListener('click', () => drawer.classList.remove('open'));
+
+    window.addEventListener('click', e => {
+      if (!drawer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        drawer.classList.remove('open');
+      }
+    });
+  </script>
+
+
+
+<script>
+    // Intercept internal nav link clicks
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const target = this.getAttribute('href');
+  
+        // Only fade out if staying on same domain
+        if (target && !target.startsWith('http')) {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = target;
+          }, 400); // match your CSS transition duration
+        }
+      });
+    });
+  </script>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+  
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500); // how long it stays visible
+    }
+  </script>
+
+<footer class="footer container">
+    <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>
+    <p>
+      <span id="emailText">mansoormmamnoon@berkeley.edu</span>
+      <button onclick="copyEmail()">Copy Email</button>
+    </p>
+
+    <div style="margin-top: 1.5rem;">
+      <img 
+        src="https://visitor-badge.laobi.icu/badge?page_id=mansoor-mamnoon.personal-website&title=Visitors&color=0077cc&style=flat-square" 
+        alt="Visitor Count" 
+        class="visitor-badge"
+      />
+    </div>
+    <p style="font-size: 0.9rem; color: gray;">
+      👀 <em>You're one of many who've explored this site — thanks for stopping by!</em>
+    </p>
+    
+
+    
+  </footer>
+
+
+  <script>
+    // Dynamically tag all .summary-box elements for observation
+    document.querySelectorAll('.summary-box').forEach(el => el.setAttribute('data-observe', ''));
+  
+    // Create observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Animate once
+        }
+      });
+    }, { threshold: 0.1 });
+  
+    // Observe all elements with [data-observe]
+    document.querySelectorAll('[data-observe]').forEach(el => {
+      el.classList.add('fade-in'); // Initial hidden state
+      observer.observe(el);
+    });
+  </script>
+  
+
+</body>
+</html>

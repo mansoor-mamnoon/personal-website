@@ -654,6 +654,61 @@ body.dark .command-palette {
   background-color: rgba(0, 119, 204, 0.15); /* Transparent blue */
 }
 
+#skillsChart {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 750px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #323232;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px);
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
 
 
 
