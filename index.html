@@ -43,14 +43,28 @@
 
 
 
-  <nav class="navbar container">
-    <div class="nav-left">Mansoor Mamnoon</div>
-    <div class="nav-right">
-      <a href="index.html">Home</a>
-      <a href="about.html">Experience</a>
-      <a href="projects.html">Projects</a>
-    </div>
-  </nav>
+<nav class="navbar container">
+  <div class="nav-left">Mansoor Mamnoon</div>
+
+  <!-- Hamburger icon (mobile only) -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+
+  <!-- Drawer menu -->
+  <div class="drawer" id="mobileDrawer">
+    <button class="close-drawer" id="closeDrawerBtn" aria-label="Close menu">×</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="projects.html">Projects</a>
+  </div>
+
+  <!-- Full nav for desktop -->
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="projects.html">Projects</a>
+  </div>
+</nav>
+
 
   <section class="container hero" id="home" data-aos="fade-up">
     <h1 class="hero-heading">
@@ -260,6 +274,28 @@
     }
   }
 </script>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+  hamburgerBtn.addEventListener('click', () => {
+    drawer.classList.add('open');
+  });
+
+  closeDrawerBtn.addEventListener('click', () => {
+    drawer.classList.remove('open');
+  });
+
+  // Optional: close on outside click
+  window.addEventListener('click', (e) => {
+    if (!drawer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+      drawer.classList.remove('open');
+    }
+  });
+</script>
+
 
 
 
