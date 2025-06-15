@@ -3,6 +3,18 @@
 <html lang="en">
   
 <head>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E6BWCTKVQ3');
+</script>
+
+
   <meta charset="UTF-8">
   <title>Mansoor Mamnoon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,10 +69,6 @@
       }
     }
     </script>
-    
-
-
-
 
 </head>
 
@@ -132,14 +140,16 @@
   <section class="container summary-box" id="about-preview" data-aos="fade-up">
     <h2 class="section-title">About Me</h2>
     <p>
-      I'm a Berkeley Computer Science student and Amazon SWE intern passionate about backend systems and infrastructure.
+      I specialize in backend engineering, infrastructure, and scalable systems — with a strong interest in high-performance computing and distributed architectures.
     </p>
     <p>
-      I lead the education team at <strong>Blackskies Investments</strong> and serve as a <strong>Residential Assistant at Clark Kerr</strong>, mentoring students in both technical and community settings.
+      I lead the education division at <strong>Blackskies Investments</strong>, where I design and teach equity research curriculum to analysts, and serve as a <strong>Residential Assistant</strong> at Clark Kerr campus, mentoring peers on both technical and personal development. At <strong>BLCK UNICRN </strong>, a startup pioneering an operating system for the immersive creator marketplace, I’ve built internal tooling and automation workflows to optimize operations in the creative industry.
     </p>
     <a class="button" href="about.html" aria-label="Learn more about Mansoor Mamnoon’s background and experience">
       Learn more about my background →
     </a>
+  </section>
+  
     
   </section>
 
@@ -164,8 +174,8 @@
         alt="Visitor Count" 
         class="visitor-badge"
         loading="lazy"
-        height = 88.59
-        width = 20
+        height = 400
+        width = 90
       />
     </div>
     <p style="font-size: 0.9rem; color: gray;">
@@ -249,18 +259,23 @@
 <script>
   const text = "Hi, I'm Mansoor 👋";
   const typedText = document.getElementById("typed-text");
+  const cursor = document.querySelector(".cursor");
   let index = 0;
 
   function typeChar() {
     if (index < text.length) {
       typedText.textContent += text.charAt(index);
       index++;
-      setTimeout(typeChar, 200); // speed: 100ms per character
+      setTimeout(typeChar, 150); // adjust speed if needed
+    } else {
+      // ✅ Hide cursor after typing finishes
+      cursor.style.display = "none";
     }
   }
 
   document.addEventListener("DOMContentLoaded", typeChar);
 </script>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
