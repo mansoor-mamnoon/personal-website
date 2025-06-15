@@ -169,11 +169,13 @@ body.dark .hero {
 .hero-heading {
   font-size: 2.5rem;
   font-weight: 700;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
+  text-align: center;
+  white-space: normal; /* allow wrapping */
+  overflow: visible;   /* allow full text to show */
+  padding: 0 1rem;     /* add space on sides */
+  box-sizing: border-box;
 }
+
 
 .hero-heading span {
   opacity: 0;
@@ -198,9 +200,18 @@ body.dark .hero {
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
+  white-space: normal;
+  overflow: visible;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
+
+@media (max-width: 480px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+}
+
 
 .custom-cursor {
   display: inline-block;
@@ -729,6 +740,13 @@ a:focus {
 #emailText {
   color: inherit;
 }
+
+@media (max-width: 480px) {
+  .hero-heading {
+    font-size: 2rem;
+  }
+}
+
 
 
 
