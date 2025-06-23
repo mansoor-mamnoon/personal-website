@@ -3,6 +3,15 @@
   
 <head>
 
+  <script>
+    // Apply dark mode *immediately* before CSS loads
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body && (document.body.style.backgroundColor = '#121212'); // optional
+    }
+  </script>
+  
+
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
 <script>
@@ -73,6 +82,43 @@
     content="https://mansoor-mamnoon.github.io/personal-website/"
   />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/projects.html">
+
+
+  <meta name="twitter:title" content="Mansoor Mamnoon | Software Projects" />
+<meta name="twitter:description" content="Explore projects in systems, backend engineering, and interpreters built by Mansoor Mamnoon, Amazon SWE Intern." />
+<meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+<meta name="twitter:creator" content="@your_twitter_handle">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mansoor Mamnoon",
+    "url": "https://mansoor-mamnoon.github.io/personal-website/",
+    "image": "https://mansoor-mamnoon.github.io/personal-website/assets/mansoor.jpg",
+    "jobTitle": "Software Engineer Intern",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Amazon"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "UC Berkeley"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/mansoormmamnoon",
+      "https://github.com/mansoor-mamnoon"
+    ],
+    "knowsAbout": [
+      "Java", "Python", "Backend Development", "Interpreters", "Data Science"
+    ],
+    "description": "CS student at UC Berkeley and SWE Intern at Amazon. Check out my projects in backend, systems, and automation."
+  }
+  </script>
+  
 </head>
 
 

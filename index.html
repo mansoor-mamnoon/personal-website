@@ -4,6 +4,15 @@
   
 <head>
 
+  <script>
+    // Apply dark mode *immediately* before CSS loads
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body && (document.body.style.backgroundColor = '#121212'); // optional
+    }
+  </script>
+  
+
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
 <script>
@@ -14,11 +23,27 @@
   gtag('config', 'G-E6BWCTKVQ3');
 </script>
 
+<script>
+  // Apply dark mode immediately if it's saved in localStorage
+  const theme = localStorage.getItem('theme');
+  if (theme === 'dark') {
+    document.documentElement.classList.add('dark');
+  }
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+  });
+</script>
+
+
 
   <meta charset="UTF-8">
   <title>Mansoor Mamnoon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal website of Mansoor Mamnoon, SWE Intern at Amazon and CS student at UC Berkeley. Explore projects, skills, and experience.">
+  <meta name="description" content="Mansoor Mamnoon is a Software Development Engineer Intern at Amazon and Computer Science student at UC Berkeley. Passionate about backend systems, tennis, cricket, and A Song of Ice and Fire. Explore my projects, skills, and story.">
+
 
   <!-- 🧠 SEO & Social -->
   <meta property="og:title" content="Mansoor Mamnoon – Personal Website" />
@@ -26,6 +51,14 @@
   <meta property="og:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
   <meta property="og:url" content="https://mansoor-mamnoon.github.io/personal-website/" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:site_name" content="Mansoor Mamnoon Portfolio" />
+  <meta name="twitter:title" content="Mansoor Mamnoon | SWE Intern @ Amazon" />
+  <meta name="twitter:description" content="CS @ UC Berkeley. Backend, systems, and storytelling through code." />
+  <meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+  <meta name="twitter:creator" content="@your_twitter_handle"> <!-- Optional -->
+  <meta name="keywords" content="Mansoor Mamnoon, Amazon intern, Berkeley CS, backend engineering, personal website, cricket, tennis, ASOIAF, software engineer portfolio">
+
+
   <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/">
 
   <!-- ✅ Performance -->
@@ -48,27 +81,38 @@
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css"></noscript>
 
 
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Mansoor Mamnoon",
-      "url": "https://mansoor-mamnoon.github.io/personal-website/",
-      "sameAs": [
-        "https://linkedin.com/in/mansoormmamnoon",
-        "https://github.com/mansoor-mamnoon"
-      ],
-      "jobTitle": "SWE Intern",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Amazon"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "UC Berkeley"
-      }
-    }
-    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mansoor Mamnoon",
+  "url": "https://mansoor-mamnoon.github.io/personal-website/",
+  "image": "https://mansoor-mamnoon.github.io/personal-website/assets/mansoor.jpg",
+  "jobTitle": "Software Engineer Intern",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Amazon"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "UC Berkeley"
+  },
+  "sameAs": [
+    "https://linkedin.com/in/mansoormmamnoon",
+    "https://github.com/mansoor-mamnoon"
+  ],
+  "knowsAbout": [
+    "Backend Engineering",
+    "Systems Programming",
+    "Tennis",
+    "Cricket",
+    "A Song of Ice and Fire",
+    "Historical Fiction"
+  ],
+  "description": "Mansoor Mamnoon is a CS student at UC Berkeley and Amazon SWE Intern passionate about backend systems, tennis, and dragons."
+}
+</script>
+
 
 </head>
 

@@ -5,11 +5,31 @@
   --accent-heading: #007acc;
 }
 
-body.dark {
-  --accent-color: #90caf9;
-  --accent-hover: #64b5f6;
-  --accent-heading: #90caf9;
+/* default (light) */
+html {
+  background-color: #f9f9f9;
 }
+
+
+
+
+
+
+/* dark mode before body is ready */
+
+html.dark, html.dark body {
+  background-color: #121212;
+}
+
+
+body.dark {
+  --accent-color: #42a5f5;       /* stronger blue */
+  --accent-hover: #1e88e5;       /* deep hover blue */
+  --accent-heading: #64b5f6;     /* slightly brighter for headings */
+  --button-text-color: #ffffff;  /* explicitly white text */
+  color: #e0e0e0;                /* slightly dimmed body text for readability */
+}
+
 
 /* === GLOBAL STYLES === */
 body {
@@ -18,11 +38,18 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 body.dark {
   background-color: #121212;
   color: #f5f5f5;
+}
+
+
+body.loaded {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out, background-color 0.4s ease;
 }
 
 
@@ -232,16 +259,27 @@ body.dark .hero {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background-color: var(--accent-color);
-  color: white;
+  color: var(--button-text-color, white);  /* fallback for light mode */
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
-.button:hover {
-  background-color: var(--accent-hover);
+body.dark .filter-button.active {
+  background-color: var(--accent-color);
+  color: var(--button-text-color, white);
 }
+
+body.dark .button {
+  border: 1px solid #64b5f6;
+}
+
+
+.button:hover {
+  box-shadow: 0 0 6px var(--accent-hover);
+}
+
 
 /* === SUMMARY BOX === */
 .summary-box {
@@ -746,7 +784,6 @@ a:focus {
     font-size: 2rem;
   }
 }
-
 
 
 

@@ -2,6 +2,15 @@
 <html lang="en">
   <head>
 
+    <script>
+      // Apply dark mode *immediately* before CSS loads
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.body && (document.body.style.backgroundColor = '#121212'); // optional
+      }
+    </script>
+    
+
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
 <script>
@@ -14,6 +23,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/about.html">
+
     <title>About - Mansoor Mamnoon</title>
   
     <!-- ✅ Meta -->
@@ -23,6 +34,11 @@
     <meta property="og:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
     <meta property="og:url" content="https://mansoor-mamnoon.github.io/personal-website/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mansoor Mamnoon | About Me" />
+<meta name="twitter:description" content="CS @ UC Berkeley. SWE Intern at Amazon. Learn about my journey, teaching, and passions like tennis and fantasy fiction." />
+<meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+<meta name="twitter:creator" content="@your_twitter_handle">
+
   
     <!-- ✅ Preload & Defer Google Fonts -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
@@ -36,6 +52,38 @@
   
     <!-- ✅ Local CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mansoor Mamnoon",
+        "url": "https://mansoor-mamnoon.github.io/personal-website/",
+        "image": "https://mansoor-mamnoon.github.io/personal-website/assets/mansoor.jpg",
+        "jobTitle": "Software Engineer Intern",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Amazon"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "UC Berkeley"
+        },
+        "sameAs": [
+          "https://linkedin.com/in/mansoormmamnoon",
+          "https://github.com/mansoor-mamnoon"
+        ],
+        "knowsAbout": [
+          "Backend Engineering",
+          "Tennis",
+          "Cricket",
+          "A Song of Ice and Fire",
+          "Historical Fiction"
+        ],
+        "description": "CS student at UC Berkeley and Amazon SWE Intern. Passionate about backend systems, teaching, and storytelling."
+      }
+      </script>
+      
   </head>
 
   

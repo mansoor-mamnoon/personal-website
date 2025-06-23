@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 
+  <script>
+    // Apply dark mode *immediately* before CSS loads
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body && (document.body.style.backgroundColor = '#121212'); // optional
+    }
+  </script>
+  
+
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
@@ -47,6 +56,43 @@
   <!-- Defer JS libraries -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js" defer></script>
+
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/skills.html">
+
+
+  <meta name="twitter:title" content="Mansoor Mamnoon | Technical Skills" />
+<meta name="twitter:description" content="Skills in backend systems, Java, Python, full-stack development, and systems design. CS @ UC Berkeley." />
+<meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+<meta name="twitter:creator" content="@your_twitter_handle">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mansoor Mamnoon",
+    "url": "https://mansoor-mamnoon.github.io/personal-website/",
+    "image": "https://mansoor-mamnoon.github.io/personal-website/assets/mansoor.jpg",
+    "jobTitle": "Software Engineer Intern",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Amazon"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "UC Berkeley"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/mansoormmamnoon",
+      "https://github.com/mansoor-mamnoon"
+    ],
+    "knowsAbout": [
+      "Python", "Java", "SQL", "C", "Data Structures", "Parallel Computing", "APIs", "Web Development"
+    ],
+    "description": "Explore technical skills of Mansoor Mamnoon, CS student at Berkeley and Amazon SWE Intern."
+  }
+  </script>
+  
 </head>
 <body>
   <!-- Command Palette -->
