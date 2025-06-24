@@ -10,11 +10,6 @@ html {
   background-color: #f9f9f9;
 }
 
-
-
-
-
-
 /* dark mode before body is ready */
 
 html.dark, html.dark body {
@@ -784,6 +779,81 @@ a:focus {
     font-size: 2rem;
   }
 }
+
+/* === 📝 NOW PAGE STYLING === */
+
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.now-card {
+  background-color: var(--card-bg, #fff);
+  color: var(--text-color, #000);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.now-card:hover {
+  transform: translateY(-4px);
+}
+
+.dark .now-card {
+  background-color: var(--card-bg, #1e1e1e);
+  color: var(--text-color, #f0f0f0);
+}
+
+.now-title {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.2rem;
+}
+
+.centered {
+  text-align: center;
+}
+
+.last-updated {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: gray;
+}
+
+
+/* GitHub Activity image (fallback + dark mode) */
+.now-github-activity img {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+  object-fit: contain;
+}
+
+/* Optional: small note at bottom */
+.now-footer {
+  font-size: 0.9rem;
+  color: var(--text-color, #666);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Light/Dark Theming */
+body.dark .now-section h2 {
+  color: var(--accent-heading);
+}
+body.dark .now-section p,
+body.dark .now-section li,
+body.dark .now-footer {
+  color: #e0e0e0;
+}
+
+
+
 
 
 
