@@ -161,7 +161,7 @@ personal-website/
 If you’re a recruiter, engineer, or just curious about my work:
 
 - 📧 Email: [mansoormmamnoon@berkeley.edu](mailto:mansoormmamnoon@berkeley.edu)
-- 🔗 LinkedIn: [linkedin.com/in/mansoormmamnoon](https://linkedin.com/in/mansoormmamnoon)
+- 🔗 LinkedIn: [linkedin.com/in/mansoormmamnoon](https://linkedin.com/in/mansoormamnoon)
 - 🌐 Website: [mansoor-mamnoon.github.io/personal-website](https://mansoor-mamnoon.github.io/personal-website)
 
 ---
