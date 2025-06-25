@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <script>
+    // Apply dark mode *immediately* before CSS loads
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body && (document.body.style.backgroundColor = '#121212'); // optional
+    }
+  </script>
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E6BWCTKVQ3');
+</script>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mansoor Mamnoon – Skills</title>
+
+  <meta name="description" content="Explore Mansoor Mamnoon's technical skills in software engineering, backend systems, and full-stack development.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Preconnects for Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Async Google Fonts Loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Async AOS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
+
+  <!-- Main Stylesheet (deferred) -->
+  <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+
+  <!-- OG Metadata -->
+  <meta property="og:title" content="Mansoor Mamnoon – Skills">
+  <meta property="og:description" content="Amazon SWE Intern | Berkeley CS | Backend + Systems Enthusiast">
+  <meta property="og:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png">
+  <meta property="og:url" content="https://mansoor-mamnoon.github.io/personal-website/skills.html">
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Defer JS libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js" defer></script>
+
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/skills.html">
+
+
+  <meta name="twitter:title" content="Mansoor Mamnoon | Technical Skills" />
+<meta name="twitter:description" content="Skills in backend systems, Java, Python, full-stack development, and systems design. CS @ UC Berkeley." />
+<meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+<meta name="twitter:creator" content="@your_twitter_handle">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mansoor Mamnoon",
+    "url": "https://mansoor-mamnoon.github.io/personal-website/",
+    "image": "https://mansoor-mamnoon.github.io/personal-website/assets/mansoor.jpg",
+    "jobTitle": "Software Engineer Intern",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Amazon"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "UC Berkeley"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/mansoormmamnoon",
+      "https://github.com/mansoor-mamnoon"
+    ],
+    "knowsAbout": [
+      "Python", "Java", "SQL", "C", "Data Structures", "Parallel Computing", "APIs", "Web Development"
+    ],
+    "description": "Explore technical skills of Mansoor Mamnoon, CS student at Berkeley and Amazon SWE Intern."
+  }
+  </script>
+  
+</head>
+<body>
+  <!-- Command Palette -->
+  <div class="command-palette hidden" id="commandPalette">
+    <input type="text" id="commandInput" placeholder="Type a command..." autocomplete="off" />
+    <ul id="commandList">
+      <li data-action="navigate" data-target="index.html">Go to Home</li>
+      <li data-action="navigate" data-target="about.html">Go to Experience</li>
+      <li data-action="navigate" data-target="projects.html">Go to Projects</li>
+      <li data-action="navigate" data-target="skills.html">Go to Skills</li>
+      <li data-action="copyEmail">Copy Email</li>
+      <li data-action="toggleDark">Toggle Dark Mode</li>
+    </ul>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="themeToggleBtn" aria-label="Toggle dark mode">
+    <span id="themeIcon">🌙</span>
+  </button>
+
+  <!-- Navbar -->
+  <!-- 🚀 Navbar -->
+<<nav class="navbar container">
+  <div class="nav-left">Mansoor Mamnoon</div>
+
+  <!-- Hamburger icon (mobile only) -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+
+  <!-- Drawer menu -->
+  <div class="drawer" id="mobileDrawer">
+    <button class="close-drawer" id="closeDrawerBtn" aria-label="Close menu">×</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+
+  </div>
+
+  <!-- Full nav for desktop -->
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+
+  </div>
+</nav>
+
+  <!-- Skills Section -->
+  <section class="container summary-box" id="skills" data-aos="fade-up">
+    <h2 class="section-title">Tech Stack Proficiency</h2>
+    <p style="text-align: center; margin-bottom: 1rem;">Proficiency scale: 0–10, based on experience level and project usage.</p>
+    <div class="chart-container">
+      <canvas id="skillsChart" width="600" height="400"></canvas>
+    </div>
+    <p style="text-align: center; font-size: 0.85rem; margin-top: 1rem;">
+      <span style="color:#007bff;">🟦 Frontend</span> &nbsp; 
+      <span style="color:#28a745;">🟩 Backend</span> &nbsp; 
+      <span style="color:#fd7e14;">🟧 Systems</span> &nbsp; 
+      <span style="color:#6f42c1;">🟪 Infra / Tools</span>
+    </p>
+    
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer class="footer container">
+    <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>
+    <p>
+      <span id="emailText">mansoormmamnoon@berkeley.edu</span>
+      <button onclick="navigator.clipboard.writeText('mansoormmamnoon@berkeley.edu').then(() => showToast('Email copied!'))">Copy Email</button>
+    </p>
+    <div style="margin-top: 1.5rem;">
+      <img 
+        src="https://visitor-badge.laobi.icu/badge?page_id=mansoor-mamnoon.personal-website&title=Visitors&color=0077cc&style=flat-square" 
+        alt="Visitor Count" 
+        loading="lazy" 
+        width="88" height="20" />
+    </div>
+    <p style="font-size: 0.9rem; color: gray;">👀 <em>You're one of many who've explored this site — thanks for stopping by!</em></p>
+  </footer>
+
+  <!-- Init Scripts -->
+  <script>
+    window.addEventListener('load', () => {
+      AOS.init();
+
+      const ctx = document.getElementById('skillsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+  'HTML/CSS',
+  'JavaScript',
+  'React',
+  'Python',
+  'Java',
+  'SQL',
+  'Git',
+  'C',
+  'RISC-V',
+  'OpenMP',
+  'Logisim',
+  'Terraform',
+  'Electron'
+],
+datasets: [{
+  label: 'Skill Level',
+  data: [9, 8, 7.5, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7, 7, 6.5],
+  backgroundColor: [
+    // 🟦 Frontend
+    '#007bff', '#007bff', '#007bff',
+
+    // 🟩 Backend
+    '#28a745', '#28a745', '#28a745', '#28a745',
+
+    // 🟧 Systems
+    '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14',
+
+    // 🟪 Infra/Tools
+    '#6f42c1', '#6f42c1'
+  ],
+  borderRadius: 6,
+  borderSkipped: false
+}]
+
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 10,
+              ticks: { stepSize: 1 },
+              title: {
+                display: true,
+                text: 'Proficiency (out of 10)'
+              }
+            },
+            y: {
+              ticks: {
+                font: { size: 12 }
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.label}: ${ctx.parsed.x}/10`
+              }
+            }
+          },
+          animation: {
+            duration: 1000,
+            easing: 'easeOutQuart'
+          }
+        }
+      });
+
+      const savedTheme = localStorage.getItem('theme');
+      const themeIcon = document.getElementById('themeIcon');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        themeIcon.textContent = '🌞';
+      }
+
+      document.getElementById('themeToggleBtn').addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeIcon.textContent = isDark ? '🌞' : '🌙';
+        showToast(`Switched to ${isDark ? 'dark' : 'light'} mode`);
+      });
+
+      document.getElementById('hamburgerBtn').addEventListener('click', () => {
+        document.getElementById('mobileDrawer').classList.add('open');
+      });
+      document.getElementById('closeDrawerBtn').addEventListener('click', () => {
+        document.getElementById('mobileDrawer').classList.remove('open');
+      });
+      window.addEventListener('click', e => {
+        const drawer = document.getElementById('mobileDrawer');
+        const button = document.getElementById('hamburgerBtn');
+        if (!drawer.contains(e.target) && !button.contains(e.target)) {
+          drawer.classList.remove('open');
+        }
+      });
+
+      document.addEventListener('keydown', e => {
+        const palette = document.getElementById('commandPalette');
+        const input = document.getElementById('commandInput');
+        const list = document.getElementById('commandList');
+        const commands = [...list.querySelectorAll('li')];
+        let selectedIndex = -1;
+
+        const isMacCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
+        const isSlash = e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey;
+        if (isMacCmdK || isSlash) {
+          e.preventDefault(); palette.classList.remove('hidden'); input.focus();
+        }
+        if (e.key === 'Escape') {
+          palette.classList.add('hidden'); input.value = ''; selectedIndex = -1;
+        }
+
+        input.addEventListener('input', () => {
+          const value = input.value.toLowerCase();
+          commands.forEach(cmd => {
+            cmd.style.display = cmd.textContent.toLowerCase().includes(value) ? 'block' : 'none';
+          });
+        });
+
+        input.addEventListener('keydown', e => {
+          if (e.key === 'ArrowDown') { selectedIndex = (selectedIndex + 1) % commands.length; updateSelection(); e.preventDefault(); }
+          else if (e.key === 'ArrowUp') { selectedIndex = (selectedIndex - 1 + commands.length) % commands.length; updateSelection(); e.preventDefault(); }
+          else if (e.key === 'Enter' && selectedIndex >= 0) { commands[selectedIndex].click(); }
+        });
+
+        function updateSelection() {
+          commands.forEach((cmd, i) => cmd.classList.toggle('selected', i === selectedIndex));
+        }
+
+        commands.forEach((cmd, i) => {
+          cmd.addEventListener('click', () => {
+            const action = cmd.getAttribute('data-action');
+            const target = cmd.getAttribute('data-target');
+            switch (action) {
+              case 'navigate': window.location.href = target; break;
+              case 'copyEmail': navigator.clipboard.writeText('mansoormmamnoon@berkeley.edu').then(() => showToast('Email copied!')); break;
+              case 'toggleDark': document.getElementById('themeToggleBtn').click(); break;
+            }
+            palette.classList.add('hidden'); input.value = ''; selectedIndex = -1; updateSelection();
+          });
+        });
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        const dot = document.createElement('span');
+        dot.classList.add('trail-dot');
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        document.body.appendChild(dot);
+        setTimeout(() => dot.remove(), 400);
+      });
+    });
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+  </script>
+</body>
+</html>

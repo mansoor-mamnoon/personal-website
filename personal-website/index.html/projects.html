@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+  <script>
+    // Apply dark mode *immediately* before CSS loads
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body && (document.body.style.backgroundColor = '#121212'); // optional
+    }
+  </script>
+  
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E6BWCTKVQ3');
+</script>
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse Mansoor Mamnoon's software projects including interpreters, games, neural networks, and backend systems using Python, Java, and C." />
+
+  <title>Mansoor Mamnoon</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Async Inter Font Load -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+
+  <!-- AOS Animations (Deferred) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+  </noscript>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Mansoor Mamnoon – Personal Website" />
+  <meta
+    property="og:description"
+    content="Amazon SWE Intern | Berkeley CS | Backend + Systems Enthusiast"
+  />
+  <meta
+    property="og:image"
+    content="https://mansoor-mamnoon.github.io/personal-website/preview.png"
+  />
+  <meta
+    property="og:url"
+    content="https://mansoor-mamnoon.github.io/personal-website/"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/projects.html">
+
+
+  <meta name="twitter:title" content="Mansoor Mamnoon | Software Projects" />
+<meta name="twitter:description" content="Explore projects in systems, backend engineering, and interpreters built by Mansoor Mamnoon, Amazon SWE Intern." />
+<meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
+<meta name="twitter:creator" content="@your_twitter_handle">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mansoor Mamnoon",
+    "url": "https://mansoor-mamnoon.github.io/personal-website/",
+    "image": "https://mansoor-mamnoon.github.io/personal-website/assets/mansoor.jpg",
+    "jobTitle": "Software Engineer Intern",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Amazon"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "UC Berkeley"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/mansoormmamnoon",
+      "https://github.com/mansoor-mamnoon"
+    ],
+    "knowsAbout": [
+      "Java", "Python", "Backend Development", "Interpreters", "Data Science"
+    ],
+    "description": "CS student at UC Berkeley and SWE Intern at Amazon. Check out my projects in backend, systems, and automation."
+  }
+  </script>
+  
+</head>
+
+
+<body>
+
+
+
+  <!-- 🧭 Command Palette -->
+<div class="command-palette hidden" id="commandPalette">
+  <input type="text" id="commandInput" placeholder="Type a command..." autocomplete="off" />
+
+  <ul id="commandList">
+    <li data-action="navigate" data-target="index.html">Go to Home</li>
+    <li data-action="navigate" data-target="about.html">Go to Experience</li>
+    <li data-action="navigate" data-target="projects.html">Go to Projects</li>
+    <li data-action="navigate" data-target="skills.html">Go to Skills</li>
+    <li data-action="copyEmail">Copy Email</li>
+    <li data-action="toggleDark">Toggle Dark Mode</li>
+  </ul>
+</div>
+
+
+<button id="themeToggleBtn" aria-label="Toggle dark mode">
+  <span id="themeIcon">🌙</span>
+</button>
+
+
+
+<!-- 🚀 Navbar -->
+<nav class="navbar container">
+  <div class="nav-left">Mansoor Mamnoon</div>
+
+  <!-- Hamburger icon (mobile only) -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">☰</button>
+
+  <!-- Drawer menu -->
+  <div class="drawer" id="mobileDrawer">
+    <button class="close-drawer" id="closeDrawerBtn" aria-label="Close menu">×</button>
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+
+  </div>
+
+  <!-- Full nav for desktop -->
+  <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+
+  </div>
+</nav>
+
+
+  <section class="projects container" id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+
+
+    <!-- 🔍 Search and Filter Bar -->
+<div class="search-filter-wrapper">
+  <input type="text" id="projectSearch" placeholder="Search by keyword, tech, or project name..." />
+
+  <div class="filter-bar">
+    <button class="filter-button active" data-filter="all">All</button>
+    <button class="filter-button" data-filter="python">Python</button>
+    <button class="filter-button" data-filter="java">Java</button>
+    <button class="filter-button" data-filter="c">C</button>
+    <button class="filter-button" data-filter="risc-v">RISC-V</button>
+    <button class="filter-button" data-filter="openmp">OpenMP</button>
+    <button class="filter-button" data-filter="oop">OOP</button>
+    <button class="filter-button" data-filter="neural-networks">Neural Networks</button>
+  </div>
+</div>
+
+
+<div class="project-card" data-tags="electron,react,terraform,cloudflare,aws,vercel,cdk,backend,ide">
+  <h3>⚡ Edge Deployer – Serverless API IDE</h3>
+  <p><strong>Type:</strong> Independent Project</p>
+  <p>Built a cross-platform drag-and-drop IDE that deploys user-written serverless APIs to edge platforms like Cloudflare Workers, AWS Lambda@Edge, and Vercel. Designed a multi-cloud backend architecture with dynamic configuration, Terraform integration, and real-time logs.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Electron · React · Cloudflare API · AWS CLI · Vercel REST API · Terraform · JavaScript · CI/CD</p>
+</div>
+
+
+    <div class="project-card" data-tags="web,html,css">
+        <h3>🌐 Personal Website</h3>
+        <p><strong>Type:</strong> Independent Project</p>
+        <p>Built from scratch to showcase my work and reflect my learning in frontend development. Focused on clean design, recruiter readability, and SEO optimization using HTML, CSS, and semantic structure.</p>
+        <p class="tech-stack"><strong>Stack:</strong> HTML, CSS, GitHub Pages</p>
+      </div>
+
+      <!-- === BEGIN PROJECT CARDS === -->
+
+      
+<div class="project-card" data-tags="python,cs61a,game,simulation,functional-programming">
+  <h3>🐷 Hog – Dice Game Simulator</h3>
+  <p><strong>Type:</strong> Course Project – CS 61A</p>
+  <p>Engineered a functional Python simulator for a two-player dice strategy game. Focused on probabilistic modeling, control flow, and modular testing.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Python · Functional Programming · Simulation · Unit Testing</p>
+</div>
+
+<div class="project-card" data-tags="python,cs61a,nlp,algorithms,string-matching">
+  <h3>🐱 Cats – Autocorrect Engine</h3>
+  <p><strong>Type:</strong> Course Project – CS 61A</p>
+  <p>Developed an autocorrect engine in Python using edit distance algorithms and word similarity scoring. Emphasized algorithmic efficiency and real-time accuracy.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Python · Edit Distance · String Matching · Algorithms · Natural Language Processing</p>
+</div>
+
+<div class="project-card" data-tags="python,cs61a,oop,game-engine,inheritance">
+  <h3>🐜 Ants vs. SomeBees – Tower Defense Game</h3>
+  <p><strong>Type:</strong> Course Project – CS 61A</p>
+  <p>Created a fully functional OOP-based game engine for a tower defense scenario. Implemented entity systems, inheritance hierarchies, and turn-based AI logic.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Python · Object-Oriented Design · Game Logic · AI Behavior Trees</p>
+</div>
+
+<div class="project-card" data-tags="interpreter,scheme,python,cs61a,tail-recursion,parsing">
+  <h3>📜 Scheme Interpreter</h3>
+  <p><strong>Type:</strong> Course Project – CS 61A</p>
+  <p>Built a recursive interpreter for Scheme from scratch in Python, featuring tail-call optimization, token parsing, and REPL behavior.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Python · Scheme · AST Parsing · Tail Recursion · Functional Programming · REPL</p>
+</div>
+
+<div class="project-card" data-tags="java,git,version-control,serialization,cs61b">
+  <h3>🗃️ Gitlet – Git Version Control</h3>
+  <p><strong>Type:</strong> Course Project – CS 61B</p>
+  <p>Re-implemented Git functionality in Java, including commits, branching, merging, and file diffing using custom serialization techniques.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Java · Version Control Systems · File I/O · Serialization · Data Persistence · CLI Tooling</p>
+</div>
+
+<div class="project-card" data-tags="java,data-structures,deque,cs61b,arraylist,linkedlist">
+  <h3>🔄 Deques – ArrayDeque & LinkedListDeque</h3>
+  <p><strong>Type:</strong> Course Project – CS 61B</p>
+  <p>Implemented performant double-ended queue (deque) structures using both dynamic arrays and doubly linked lists. Focused on constant-time operations.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Java · Data Structures · Linked Lists · Array Lists · Algorithmic Efficiency · Queue Implementation</p>
+</div>
+
+<div class="project-card" data-tags="java,procedural-generation,cs61b,world-generation,tile-engine">
+  <h3>🏙️ Build Your Own World</h3>
+  <p><strong>Type:</strong> Course Project – CS 61B</p>
+  <p>Built a procedurally generated tile-based world using random seeds and player input. Included custom tile engine, entity logic, and serialization.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Java · Procedural Generation · OOP · Serialization · Game Dev · UI Rendering</p>
+</div>
+
+<div class="project-card" data-tags="java,graphics,cs61b,state-machine,ui">
+  <h3>🧱 Building 2048</h3>
+  <p><strong>Type:</strong> Course Project – CS 61B</p>
+  <p>Designed a custom interactive UI simulating architectural layouts and environmental behavior using Java GUI principles and event-driven programming.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Java · Graphics · Event-Driven Programming · Finite State Machines · UI Simulation</p>
+</div>
+
+<div class="project-card" data-tags="c,cs61c,pointers,memory,low-level,terminal">
+  <h3>🐍 Snek – Terminal Game in C</h3>
+  <p><strong>Type:</strong> Course Project – CS 61C</p>
+  <p>Built a terminal-based snake game in C using pointer arithmetic and manual memory management. Emphasized safety, efficiency, and modularity.</p>
+  <p class="tech-stack"><strong>Stack:</strong> C · Pointer Arithmetic · Memory Management · Low-Level Programming · Terminal I/O</p>
+</div>
+
+<div class="project-card" data-tags="logisim,cpu,cs61c,architecture,risc-v">
+  <h3>🔧 1-Stage CPU in Logisim</h3>
+  <p><strong>Type:</strong> Course Project – CS 61C</p>
+  <p>Engineered a single-stage CPU in Logisim supporting custom RISC-V-like instructions with control logic, ALU, register file, and memory access.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Logisim · Digital Logic Design · RISC-V · CPU Architecture · Control Flow · ALU Design</p>
+</div>
+
+<div class="project-card" data-tags="c,risc-v,openmp,cs61c,neural-networks,ocr,parallelism">
+  <h3>🧠 RISC-V OCR Neural Network</h3>
+  <p><strong>Type:</strong> Course Project – CS 61C</p>
+  <p>Created a neural network-based OCR pipeline and optimized inference on RISC-V using matrix multiplication and parallelization via OpenMP.</p>
+  <p class="tech-stack"><strong>Stack:</strong> C · RISC-V · Neural Networks · OpenMP · Matrix Multiplication · Parallel Computing · OCR</p>
+</div>
+<!-- === END PROJECT CARDS === -->
+
+  </section>
+
+
+  <footer class="footer container">
+    <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>
+    <p>
+      <span id="emailText">mansoormmamnoon@berkeley.edu</span>
+      <button onclick="copyEmail()">Copy Email</button>
+    </p>
+
+    <div style="margin-top: 1.5rem;">
+      <img 
+        src="https://visitor-badge.laobi.icu/badge?page_id=mansoor-mamnoon.personal-website&title=Visitors&color=0077cc&style=flat-square" 
+        alt="Visitor Count" 
+        class="visitor-badge"
+        width = 88.59
+        height = 20
+
+      />
+    </div>
+    <p style="font-size: 0.9rem; color: gray;">
+      👀 <em>You're one of many who've explored this site — thanks for stopping by!</em>
+    </p>
+
+    <div style="text-align: center; margin-top: 2rem; font-size: 0.9rem;">
+      <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener" style="text-decoration: none;">
+        <img src="https://img.shields.io/badge/Lighthouse-95%2B-brightgreen?style=flat-square&logo=googlechrome" alt="Lighthouse score badge" style="vertical-align: middle;">
+      </a>
+      <p style="margin-top: 0.5rem;">
+        <strong>Fully optimized</strong> portfolio with Lighthouse scores 95+ across all metrics — including performance, SEO, and best practices.<br>
+        Accessibility scores average 90+ across all pages. Hand-built for speed and UX.
+      </p>
+    </div>
+    
+    
+  </footer>
+
+  <script>
+    function copyEmail() {
+      const email = document.getElementById("emailText").textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        showToast("Email copied!");
+      }, () => {
+        alert("Failed to copy email.");
+      });
+    } defer
+  </script>
+
+  <!-- AOS Script -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+  defer
+</script>
+
+<!-- Dark Mode Toggle Script -->
+<script>
+  // Check for saved mode on load
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+  }
+
+  const themeBtn = document.getElementById('themeToggleBtn');
+  const themeIcon = document.getElementById('themeIcon');
+
+  // Load saved preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+    themeIcon.textContent = '🌞';
+  }
+
+  themeBtn.addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  themeIcon.textContent = isDark ? '🌞' : '🌙';
+  showToast(`Switched to ${isDark ? 'dark' : 'light'} mode`);
+});
+
+defer
+
+</script>
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-button');
+  const projectCards = document.querySelectorAll('.project-card');
+  const searchInput = document.getElementById('projectSearch');
+
+  let activeFilter = "all";
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // UI highlight
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.getAttribute('data-filter');
+      updateVisibleProjects();
+    });
+  });
+
+  searchInput.addEventListener('input', updateVisibleProjects);
+
+  function updateVisibleProjects() {
+    const query = searchInput.value.toLowerCase().trim();
+
+    projectCards.forEach(card => {
+      const tags = card.getAttribute('data-tags').toLowerCase();
+      const text = card.textContent.toLowerCase();
+      const matchesTag = activeFilter === 'all' || tags.includes(activeFilter);
+      const matchesSearch = query === '' || tags.includes(query) || text.includes(query);
+
+      if (matchesTag && matchesSearch) {
+        card.classList.remove('hide');
+      } else {
+        card.classList.add('hide');
+      }
+    });
+  }
+
+  defer
+</script>
+
+
+
+<script>
+  document.addEventListener("mousemove", (e) => {
+    const dot = document.createElement("span");
+    dot.classList.add("trail-dot");
+    dot.style.left = `${e.clientX}px`;
+    dot.style.top = `${e.clientY}px`;
+    document.body.appendChild(dot);
+
+    setTimeout(() => {
+      dot.remove();
+    }, 400); // how long it stays
+  });
+  defer
+</script>
+
+<script>
+  const palette = document.getElementById('commandPalette');
+  const input = document.getElementById('commandInput');
+  const list = document.getElementById('commandList');
+  const commands = [...list.querySelectorAll('li')];
+  let selectedIndex = -1;
+
+  // ⌨️ Show/Hide Palette
+  document.addEventListener('keydown', e => {
+    const isMacCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
+    const isSlash = e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey;
+
+    if (isMacCmdK || isSlash) {
+      e.preventDefault();
+      palette.classList.remove('hidden');
+      input.focus();
+    }
+
+    if (e.key === 'Escape') {
+      palette.classList.add('hidden');
+      input.value = '';
+      selectedIndex = -1;
+      updateSelection();
+    }
+  });
+
+  // 🔍 Search
+  input.addEventListener('input', () => {
+    const value = input.value.toLowerCase();
+    commands.forEach(cmd => {
+      cmd.style.display = cmd.textContent.toLowerCase().includes(value) ? 'block' : 'none';
+    });
+    selectedIndex = -1;
+    updateSelection();
+  });
+
+  // ⬆️⬇️ Navigate
+  input.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') {
+      selectedIndex = (selectedIndex + 1) % commands.length;
+      updateSelection();
+      e.preventDefault();
+    } else if (e.key === 'ArrowUp') {
+      selectedIndex = (selectedIndex - 1 + commands.length) % commands.length;
+      updateSelection();
+      e.preventDefault();
+    } else if (e.key === 'Enter' && selectedIndex >= 0) {
+      commands[selectedIndex].click();
+    }
+  });
+
+  // ✅ Click or Enter
+  commands.forEach((cmd, i) => {
+    cmd.addEventListener('click', () => {
+      handleCommand(cmd);
+      palette.classList.add('hidden');
+      input.value = '';
+      selectedIndex = -1;
+    });
+  });
+
+  function updateSelection() {
+    commands.forEach((cmd, i) => {
+      cmd.classList.toggle('selected', i === selectedIndex);
+    });
+  }
+
+  function handleCommand(cmd) {
+    const action = cmd.getAttribute('data-action');
+    const target = cmd.getAttribute('data-target');
+
+    switch (action) {
+      case 'navigate':
+        window.location.href = target;
+        break;
+      case 'copyEmail':
+        navigator.clipboard.writeText("mansoormmamnoon@berkeley.edu").then(() => alert("Email copied!"));
+        break;
+      case 'toggleDark':
+        const isDark = document.body.classList.toggle('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        break;
+    }
+  }
+  defer
+</script>
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+
+  hamburgerBtn.addEventListener('click', () => {
+    drawer.classList.add('open');
+  });
+
+  closeDrawerBtn.addEventListener('click', () => {
+    drawer.classList.remove('open');
+  });
+
+  // Optional: close on outside click
+  window.addEventListener('click', (e) => {
+    if (!drawer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+      drawer.classList.remove('open');
+    }
+  });
+  defer
+</script>
+
+<script>
+  // Intercept internal nav link clicks
+  document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const target = this.getAttribute('href');
+
+      // Only fade out if staying on same domain
+      if (target && !target.startsWith('http')) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = target;
+        }, 400); // match your CSS transition duration
+      }
+    });
+  });
+  defer
+</script>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 2500); // how long it stays visible
+  }
+  defer
+</script>
+
+<script>
+  // Dynamically tag all .summary-box elements for observation
+  document.querySelectorAll('.summary-box').forEach(el => el.setAttribute('data-observe', ''));
+
+  // Create observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Animate once
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe all elements with [data-observe]
+  document.querySelectorAll('[data-observe]').forEach(el => {
+    el.classList.add('fade-in'); // Initial hidden state
+    observer.observe(el);
+  });
+  defer
+</script>
+
+
+
+</body>
+</html>
