@@ -148,6 +148,13 @@
     <div class="chart-container">
       <canvas id="skillsChart" width="600" height="400"></canvas>
     </div>
+    <p style="text-align: center; font-size: 0.85rem; margin-top: 1rem;">
+      <span style="color:#007bff;">🟦 Frontend</span> &nbsp; 
+      <span style="color:#28a745;">🟩 Backend</span> &nbsp; 
+      <span style="color:#fd7e14;">🟧 Systems</span> &nbsp; 
+      <span style="color:#6f42c1;">🟪 Infra / Tools</span>
+    </p>
+    
   </section>
 
   <!-- Toast Notification -->
@@ -180,28 +187,40 @@
         type: 'bar',
         data: {
           labels: [
-            'HTML/CSS (Frontend)',
-            'JavaScript (Frontend)',
-            'Python (Backend)',
-            'Java (Backend)',
-            'SQL (Backend)',
-            'Git (Backend)',
-            'C (Systems)',
-            'RISC-V (Systems)',
-            'OpenMP (Systems)',
-            'Logisim (Systems)'
-          ],
-          datasets: [{
-            label: 'Skill Level',
-            data: [9, 8, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7],
-            backgroundColor: [
-              '#007bff', '#007bff',
-              '#28a745', '#28a745', '#28a745', '#28a745',
-              '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14'
-            ],
-            borderRadius: 6,
-            borderSkipped: false
-          }]
+  'HTML/CSS',
+  'JavaScript',
+  'React',
+  'Python',
+  'Java',
+  'SQL',
+  'Git',
+  'C',
+  'RISC-V',
+  'OpenMP',
+  'Logisim',
+  'Terraform',
+  'Electron'
+],
+datasets: [{
+  label: 'Skill Level',
+  data: [9, 8, 7.5, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7, 7, 6.5],
+  backgroundColor: [
+    // 🟦 Frontend
+    '#007bff', '#007bff', '#007bff',
+
+    // 🟩 Backend
+    '#28a745', '#28a745', '#28a745', '#28a745',
+
+    // 🟧 Systems
+    '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14',
+
+    // 🟪 Infra/Tools
+    '#6f42c1', '#6f42c1'
+  ],
+  borderRadius: 6,
+  borderSkipped: false
+}]
+
         },
         options: {
           indexAxis: 'y',
