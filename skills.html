@@ -141,21 +141,53 @@
   </div>
 </nav>
 
-  <!-- Skills Section -->
-  <section class="container summary-box" id="skills" data-aos="fade-up">
-    <h2 class="section-title">Tech Stack Proficiency</h2>
-    <p style="text-align: center; margin-bottom: 1rem;">Proficiency scale: 0–10, based on experience level and project usage.</p>
-    <div class="chart-container">
-      <canvas id="skillsChart" width="600" height="400"></canvas>
-    </div>
-    <p style="text-align: center; font-size: 0.85rem; margin-top: 1rem;">
-      <span style="color:#007bff;">🟦 Frontend</span> &nbsp; 
-      <span style="color:#28a745;">🟩 Backend</span> &nbsp; 
-      <span style="color:#fd7e14;">🟧 Systems</span> &nbsp; 
-      <span style="color:#6f42c1;">🟪 Infra / Tools</span>
-    </p>
-    
-  </section>
+<!-- Skills Section -->
+<section class="container summary-box" id="skills" data-aos="fade-up">
+  <h2 class="section-title">Tech Stack Proficiency</h2>
+  <p style="text-align:center;margin-bottom:1rem">
+    Proficiency 0–10 based on production usage, course work, and project depth.
+  </p>
+
+  <div class="chart-container" style="position:relative; width:100%; height:auto;">
+    <canvas id="skillsChart"></canvas>
+  </div>
+
+  <p style="text-align:center;font-size:.85rem;margin-top:.75rem;">
+    <span style="color:#007bff;">● Frontend</span> &nbsp;
+    <span style="color:#28a745;">● Backend</span> &nbsp;
+    <span style="color:#fd7e14;">● Systems</span> &nbsp;
+    <span style="color:#17a2b8;">● ML / RL</span> &nbsp;
+    <span style="color:#6f42c1;">● Cloud / Infra</span> &nbsp;
+    <span style="color:#6c757d;">● Tools</span>
+  </p>
+
+  <!-- Quick-scan skill chips -->
+  <div class="skills-grid" style="display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin-top:1rem;">
+    <span class="skill-chip">Python</span>
+    <span class="skill-chip">FastAPI</span>
+    <span class="skill-chip">Java</span>
+    <span class="skill-chip">SQL · PostgreSQL</span>
+    <span class="skill-chip">C</span>
+    <span class="skill-chip">RISC-V</span>
+    <span class="skill-chip">OpenMP</span>
+    <span class="skill-chip">PyTorch</span>
+    <span class="skill-chip">Gymnasium</span>
+    <span class="skill-chip">AWS Lambda</span>
+    <span class="skill-chip">ECS Fargate</span>
+    <span class="skill-chip">SQS</span>
+    <span class="skill-chip">DynamoDB</span>
+    <span class="skill-chip">Timestream</span>
+    <span class="skill-chip">CloudWatch</span>
+    <span class="skill-chip">Terraform</span>
+    <span class="skill-chip">Docker</span>
+    <span class="skill-chip">GitHub Actions</span>
+    <span class="skill-chip">Electron</span>
+    <span class="skill-chip">React</span>
+    <span class="skill-chip">HTML/CSS</span>
+    <span class="skill-chip">Git</span>
+  </div>
+</section>
+
 
   <!-- Toast Notification -->
   <div id="toast" class="toast"></div>
@@ -181,46 +213,76 @@
   <script>
     window.addEventListener('load', () => {
       AOS.init();
-
-      const ctx = document.getElementById('skillsChart').getContext('2d');
+  
+      // ---------- Skills data (edit numbers if you want) ----------
+      const items = [
+        // Frontend
+        {label:'HTML/CSS',        score:9,  cat:'frontend'},
+        {label:'JavaScript',      score:8,  cat:'frontend'},
+        {label:'React',           score:7.5,cat:'frontend'},
+        {label:'Electron',        score:6.5,cat:'frontend'},
+        // Backend
+        {label:'Python',          score:9,  cat:'backend'},
+        {label:'FastAPI',         score:8.5,cat:'backend'},
+        {label:'Java',            score:8.5,cat:'backend'},
+        {label:'SQL / PostgreSQL',score:7.5,cat:'backend'},
+        // Systems
+        {label:'C',               score:8,  cat:'systems'},
+        {label:'RISC-V',          score:7,  cat:'systems'},
+        {label:'OpenMP',          score:6.5,cat:'systems'},
+        // ML / RL
+        {label:'PyTorch',         score:7.5,cat:'ml'},
+        {label:'Gymnasium',       score:7,  cat:'ml'},
+        // Cloud / Infra
+        {label:'AWS Lambda',      score:8.5,cat:'infra'},
+        {label:'ECS Fargate',     score:7.5,cat:'infra'},
+        {label:'SQS',             score:8,  cat:'infra'},
+        {label:'DynamoDB',        score:7.5,cat:'infra'},
+        {label:'Timestream',      score:7,  cat:'infra'},
+        {label:'CloudWatch',      score:7.5,cat:'infra'},
+        {label:'Terraform',       score:7,  cat:'infra'},
+        {label:'Docker',          score:7.5,cat:'infra'},
+        {label:'GitHub Actions',  score:7,  cat:'infra'},
+        // Tools
+        {label:'Git',             score:8.5,cat:'tools'},
+      ];
+  
+      // Colors by category
+      const catColor = {
+        frontend:'#007bff',
+        backend :'#28a745',
+        systems :'#fd7e14',
+        ml      :'#17a2b8',
+        infra   :'#6f42c1',
+        tools   :'#6c757d'
+      };
+  
+      const labels = items.map(i => i.label);
+      const data   = items.map(i => i.score);
+      const colors = items.map(i => catColor[i.cat]);
+  
+      // Set dynamic height so bars aren't cramped
+      const perBar = 30; // px per bar
+      const canvas = document.getElementById('skillsChart');
+      canvas.height = Math.max(320, labels.length * perBar);
+  
+      // Theme-aware styling
+      const isDark = document.body.classList.contains('dark');
+      const axisColor = isDark ? '#d0d0d0' : '#333';
+      const gridColor = isDark ? 'rgba(255,255,255,.12)' : 'rgba(0,0,0,.08)';
+  
+      const ctx = canvas.getContext('2d');
       new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: [
-  'HTML/CSS',
-  'JavaScript',
-  'React',
-  'Python',
-  'Java',
-  'SQL',
-  'Git',
-  'C',
-  'RISC-V',
-  'OpenMP',
-  'Logisim',
-  'Terraform',
-  'Electron'
-],
-datasets: [{
-  label: 'Skill Level',
-  data: [9, 8, 7.5, 9, 8.5, 7.5, 8.5, 8, 7, 6.5, 7, 7, 6.5],
-  backgroundColor: [
-    // 🟦 Frontend
-    '#007bff', '#007bff', '#007bff',
-
-    // 🟩 Backend
-    '#28a745', '#28a745', '#28a745', '#28a745',
-
-    // 🟧 Systems
-    '#fd7e14', '#fd7e14', '#fd7e14', '#fd7e14',
-
-    // 🟪 Infra/Tools
-    '#6f42c1', '#6f42c1'
-  ],
-  borderRadius: 6,
-  borderSkipped: false
-}]
-
+          labels,
+          datasets: [{
+            label: 'Proficiency',
+            data,
+            backgroundColor: colors,
+            borderRadius: 6,
+            borderSkipped: false,
+          }]
         },
         options: {
           indexAxis: 'y',
@@ -230,124 +292,39 @@ datasets: [{
             x: {
               beginAtZero: true,
               max: 10,
-              ticks: { stepSize: 1 },
-              title: {
-                display: true,
-                text: 'Proficiency (out of 10)'
-              }
+              ticks: { stepSize: 1, color: axisColor },
+              grid: { color: gridColor },
+              title: { display:true, text:'Proficiency (out of 10)', color: axisColor }
             },
             y: {
-              ticks: {
-                font: { size: 12 }
-              }
+              ticks: { color: axisColor, font: { size: 12 }},
+              grid: { color: gridColor }
             }
           },
           plugins: {
             legend: { display: false },
             tooltip: {
-              callbacks: {
-                label: ctx => `${ctx.label}: ${ctx.parsed.x}/10`
-              }
+              callbacks: { label: c => `${c.label}: ${c.parsed.x}/10` }
             }
           },
-          animation: {
-            duration: 1000,
-            easing: 'easeOutQuart'
-          }
+          animation: { duration: 800, easing: 'easeOutQuart' }
         }
       });
-
-      const savedTheme = localStorage.getItem('theme');
+  
+      // Keep your existing theme toggle behavior
+      const themeBtn = document.getElementById('themeToggleBtn');
       const themeIcon = document.getElementById('themeIcon');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark');
-        themeIcon.textContent = '🌞';
-      }
-
-      document.getElementById('themeToggleBtn').addEventListener('click', () => {
-        const isDark = document.body.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        themeIcon.textContent = isDark ? '🌞' : '🌙';
-        showToast(`Switched to ${isDark ? 'dark' : 'light'} mode`);
-      });
-
-      document.getElementById('hamburgerBtn').addEventListener('click', () => {
-        document.getElementById('mobileDrawer').classList.add('open');
-      });
-      document.getElementById('closeDrawerBtn').addEventListener('click', () => {
-        document.getElementById('mobileDrawer').classList.remove('open');
-      });
-      window.addEventListener('click', e => {
-        const drawer = document.getElementById('mobileDrawer');
-        const button = document.getElementById('hamburgerBtn');
-        if (!drawer.contains(e.target) && !button.contains(e.target)) {
-          drawer.classList.remove('open');
-        }
-      });
-
-      document.addEventListener('keydown', e => {
-        const palette = document.getElementById('commandPalette');
-        const input = document.getElementById('commandInput');
-        const list = document.getElementById('commandList');
-        const commands = [...list.querySelectorAll('li')];
-        let selectedIndex = -1;
-
-        const isMacCmdK = (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k';
-        const isSlash = e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey;
-        if (isMacCmdK || isSlash) {
-          e.preventDefault(); palette.classList.remove('hidden'); input.focus();
-        }
-        if (e.key === 'Escape') {
-          palette.classList.add('hidden'); input.value = ''; selectedIndex = -1;
-        }
-
-        input.addEventListener('input', () => {
-          const value = input.value.toLowerCase();
-          commands.forEach(cmd => {
-            cmd.style.display = cmd.textContent.toLowerCase().includes(value) ? 'block' : 'none';
-          });
-        });
-
-        input.addEventListener('keydown', e => {
-          if (e.key === 'ArrowDown') { selectedIndex = (selectedIndex + 1) % commands.length; updateSelection(); e.preventDefault(); }
-          else if (e.key === 'ArrowUp') { selectedIndex = (selectedIndex - 1 + commands.length) % commands.length; updateSelection(); e.preventDefault(); }
-          else if (e.key === 'Enter' && selectedIndex >= 0) { commands[selectedIndex].click(); }
-        });
-
-        function updateSelection() {
-          commands.forEach((cmd, i) => cmd.classList.toggle('selected', i === selectedIndex));
-        }
-
-        commands.forEach((cmd, i) => {
-          cmd.addEventListener('click', () => {
-            const action = cmd.getAttribute('data-action');
-            const target = cmd.getAttribute('data-target');
-            switch (action) {
-              case 'navigate': window.location.href = target; break;
-              case 'copyEmail': navigator.clipboard.writeText('mansoormmamnoon@berkeley.edu').then(() => showToast('Email copied!')); break;
-              case 'toggleDark': document.getElementById('themeToggleBtn').click(); break;
-            }
-            palette.classList.add('hidden'); input.value = ''; selectedIndex = -1; updateSelection();
-          });
-        });
-      });
-
-      document.addEventListener('mousemove', (e) => {
-        const dot = document.createElement('span');
-        dot.classList.add('trail-dot');
-        dot.style.left = `${e.clientX}px`;
-        dot.style.top = `${e.clientY}px`;
-        document.body.appendChild(dot);
-        setTimeout(() => dot.remove(), 400);
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') { document.body.classList.add('dark'); themeIcon.textContent = '🌞'; }
+      themeBtn.addEventListener('click', () => {
+        const dark = document.body.classList.toggle('dark');
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+        themeIcon.textContent = dark ? '🌞' : '🌙';
+        showToast(`Switched to ${dark ? 'dark' : 'light'} mode`);
+        // Note: for full live re-theming you could re-render the chart with new axis/grid colors.
       });
     });
-
-    function showToast(message) {
-      const toast = document.getElementById('toast');
-      toast.textContent = message;
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
-    }
   </script>
+  
 </body>
 </html>

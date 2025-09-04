@@ -54,7 +54,7 @@
   <meta property="og:url" content="https://mansoor-mamnoon.github.io/personal-website/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:site_name" content="Mansoor Mamnoon Portfolio" />
-  <meta name="twitter:title" content="Mansoor Mamnoon | SDE Intern @ Amazon" />
+  <meta name="twitter:title" content="Mansoor Mamnoon | SWE Intern @ Amazon" />
   <meta name="twitter:description" content="CS @ UC Berkeley. Backend, systems, and storytelling through code." />
   <meta name="twitter:image" content="https://mansoor-mamnoon.github.io/personal-website/preview.png" />
   <meta name="twitter:creator" content="@your_twitter_handle"> <!-- Optional -->
@@ -179,7 +179,7 @@
     </h1>
     
     
-    <p>I’m a Computer Science major at UC Berkeley and a SDE intern at Amazon.</p>
+    <p>I’m a Computer Science major at UC Berkeley and a SWE intern at Amazon.</p>
     <a class="button" href="https://linkedin.com/in/mansoormamnoon" target="_blank">Connect on LinkedIn →</a>
   </section>
 
@@ -199,13 +199,56 @@
     
   </section>
 
-  <section class="container summary-box" id="projects-preview" data-aos="fade-up">
-    <h2 class="section-title">Projects</h2>
-    <p>
-      I've worked on systems-level and infrastructure-focused course projects like Gitlet, CPU design, and an OCR pipeline on RISC-V. These experiences reflect my focus on backend scalability, parallel computing, and systems architecture.
-    </p>
-    <a class="button" href="projects.html">Explore Projects →</a>
-  </section>
+<!-- 🔥 Featured Projects (Homepage) -->
+<section class="container summary-box" id="featured-projects" data-aos="fade-up">
+  <h2 class="section-title">Featured Projects</h2>
+
+  <div class="projects-grid">
+    <!-- Edge Deployer -->
+    <article class="project-teaser">
+      <h3 class="teaser-title">
+        ⚡ <a href="https://github.com/mansoor-mamnoon/edge-deployer" target="_blank" rel="noopener">
+          Edge Deployer – Serverless API IDE
+        </a>
+      </h3>
+      <p class="teaser-desc">
+        Cross-platform IDE that deploys user-written serverless APIs to Cloudflare Workers, AWS Lambda@Edge, and Vercel. Includes multi-cloud config, infra as code, and real-time logs.
+      </p>
+      <p class="teaser-stack">Electron · React · Terraform · Cloudflare · AWS · Vercel</p>
+    </article>
+
+    <!-- Order Book -->
+    <article class="project-teaser">
+      <h3 class="teaser-title">
+        🏦 <a href= https://github.com/mansoor-mamnoon/limit-order-book target="_blank" rel="noopener">
+          Limit Order Book + Matching Engine
+        </a>
+      </h3>
+      <p class="teaser-desc">
+        Production-style price–time priority engine with O(1) inserts/cancels via price-level maps and order indices. REST order entry + WebSocket market data; backtester for PnL and latency.
+      </p>
+      <p class="teaser-stack">Python · FastAPI · WebSocket · asyncio · pandas · Docker</p>
+    </article>
+
+    <!-- Offline RL Agent -->
+    <article class="project-teaser">
+      <h3 class="teaser-title">
+        🤖 <a href= https://github.com/mansoor-mamnoon/offline-rl-agent target="_blank" rel="noopener">
+          Offline RL Agent – NeuroQuant
+        </a>
+      </h3>
+      <p class="teaser-desc">
+        CQL and TD3+BC on a custom Gymnasium trading env. Dataset generation, conservative penalties, eval loops, PyGame trajectories, and t-SNE state embeddings with ablations.
+      </p>
+      <p class="teaser-stack">PyTorch · Gymnasium · NumPy · PyGame · Matplotlib · t-SNE</p>
+    </article>
+  </div>
+
+  <div class="projects-cta">
+    <a class="button" href="projects.html">See all projects →</a>
+  </div>
+</section>
+
 
   <footer class="footer container">
     <p>© 2025 Mansoor Mamnoon · <a href="mailto:mansoormmamnoon@berkeley.edu">Email Me</a></p>

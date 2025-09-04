@@ -25,7 +25,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Browse Mansoor Mamnoon's software projects including interpreters, games, neural networks, and backend systems using Python, Java, and C." />
+  <meta name="description" content="Browse Mansoor Mamnoon's projects in systems, trading infrastructure, offline RL, interpreters, and backend engineering." />
 
   <title>Mansoor Mamnoon</title>
 
@@ -192,16 +192,50 @@
     <button class="filter-button" data-filter="openmp">OpenMP</button>
     <button class="filter-button" data-filter="oop">OOP</button>
     <button class="filter-button" data-filter="neural-networks">Neural Networks</button>
+    <button class="filter-button" data-filter="trading">Trading</button>
+    <button class="filter-button" data-filter="rl">RL</button>
   </div>
 </div>
 
+<!-- 🏦 Order Book / Matching Engine -->
+<div class="project-card" data-tags="python,backend,systems,trading,orderbook,matching-engine,rest,websocket,backtesting,pandas,asyncio,pytest,docker">
+  <h3>
+    🏦 <a href= https://github.com/mansoor-mamnoon/limit-order-book target="_blank" rel="noopener">
+      Limit Order Book + Matching Engine
+    </a>
+  </h3>
+  <p><strong>Type:</strong> Independent Project</p>
+  <p>Implemented a production-style limit order book with price–time priority and a continuous matching engine. Supports O(1) inserts/cancels with price-level maps and order id indices. Exposes a REST API for order entry and a WebSocket market data feed for top-of-book and depth updates. Includes a backtester to replay historical ticks and compute PnL, latency, fill rate, and slippage.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Python · AsyncIO · FastAPI · WebSocket · pydantic · pandas · NumPy · pytest · Docker</p>
+</div>
+
+
+<!-- 🤖 Offline RL Agent (NeuroQuant) -->
+<div class="project-card" data-tags="python,rl,offline-rl,pytorch,gymnasium,ml,neural-networks,pygame,matplotlib,tsne,hydra">
+  <h3>
+    🤖 <a href= https://github.com/mansoor-mamnoon/offline-rl-agent target="_blank" rel="noopener">
+      Offline RL Agent – NeuroQuant
+    </a>
+  </h3>
+  <p><strong>Type:</strong> Independent Project</p>
+  <p>Built an offline RL agent using CQL and TD3+BC on a custom Gymnasium environment (NeuroQuantEnv) inspired by trading decisions. Implemented dataset generation with behavior policies, replay buffers, conservative Q-learning penalties, and evaluation loops. Added PyGame renderer for trajectories, t-SNE visualizations of latent state embeddings, and ablations on dataset coverage and conservatism strength.</p>
+  <p class="tech-stack"><strong>Stack:</strong> Python · PyTorch · Gymnasium · NumPy · PyGame · Matplotlib · t-SNE · Hydra</p>
+</div>
+
+
 
 <div class="project-card" data-tags="electron,react,terraform,cloudflare,aws,vercel,cdk,backend,ide">
-  <h3>⚡ Edge Deployer – Serverless API IDE</h3>
+  <h3>
+    ⚡ <a href="https://github.com/mansoor-mamnoon/edge-deployer" target="_blank" rel="noopener">
+      Edge Deployer – Serverless API IDE
+    </a>
+  </h3>
   <p><strong>Type:</strong> Independent Project</p>
   <p>Built a cross-platform drag-and-drop IDE that deploys user-written serverless APIs to edge platforms like Cloudflare Workers, AWS Lambda@Edge, and Vercel. Designed a multi-cloud backend architecture with dynamic configuration, Terraform integration, and real-time logs.</p>
   <p class="tech-stack"><strong>Stack:</strong> Electron · React · Cloudflare API · AWS CLI · Vercel REST API · Terraform · JavaScript · CI/CD</p>
 </div>
+
+
 
 
     <div class="project-card" data-tags="web,html,css">
