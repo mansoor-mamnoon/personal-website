@@ -236,21 +236,6 @@
 
 </script>
 
-
-<script>
-  document.addEventListener("mousemove", (e) => {
-    const dot = document.createElement("span");
-    dot.classList.add("trail-dot");
-    dot.style.left = `${e.clientX}px`;
-    dot.style.top = `${e.clientY}px`;
-    document.body.appendChild(dot);
-
-    setTimeout(() => {
-      dot.remove();
-    }, 400); // how long it stays
-  });
-</script>
-
 <script>
   function copyEmail() {
     const email = document.getElementById("emailText").textContent;
