@@ -267,13 +267,13 @@
   .nav-link.active { color: var(--accent); }
 
   .nav-resume {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 500;
     color: var(--text);
     border: 1px solid var(--border);
-    padding: 0.3rem 0.7rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 3px;
     transition: border-color var(--t), color var(--t);
     text-decoration: none;
     white-space: nowrap;
@@ -1160,7 +1160,29 @@
 
   @media (max-width: 700px) {
     .work-layout { grid-template-columns: 1fr; }
-    .work-sidebar { position: relative; height: auto; border-right: none; border-bottom: 1px solid var(--border-dim); padding: var(--s5) var(--content-px); }
+    .work-sidebar {
+      position: relative; height: auto;
+      border-right: none; border-bottom: 1px solid var(--border-dim);
+      padding: var(--s4) var(--content-px) var(--s3);
+    }
+    .work-sidebar .section-label { margin-bottom: var(--s3); }
+    .work-sidebar nav {
+      display: flex;
+      flex-direction: row;
+      gap: var(--s2);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: var(--s1);
+    }
+    .work-sidebar nav::-webkit-scrollbar { display: none; }
+    .proj-nav-item {
+      flex-shrink: 0;
+      padding: var(--s2) var(--s3);
+      margin-bottom: 0;
+    }
+    .proj-nav-type, .proj-nav-metric { display: none; }
+    .proj-nav-name { margin-bottom: 0; font-size: 0.8rem; }
     .work-detail { padding: var(--s6) var(--content-px); }
   }
 
@@ -1520,6 +1542,31 @@
     color: var(--muted);
     line-height: 1.65;
     margin-bottom: var(--s2);
+  }
+
+  .resume-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--s2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+  }
+
+  .resume-bullets li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.65;
+    padding-left: var(--s5);
+    position: relative;
+  }
+
+  .resume-bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--muted-dim);
+    font-family: var(--font-mono);
   }
 
   .resume-tech {

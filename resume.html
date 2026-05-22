@@ -97,7 +97,8 @@
       <div class="resume-contact">
         <a href="mailto:mansoormmamnoon@berkeley.edu" class="resume-contact-link">mansoormmamnoon@berkeley.edu</a>
         <a href="https://github.com/mansoor-mamnoon" class="resume-contact-link" target="_blank" rel="noopener">github.com/mansoor-mamnoon</a>
-        <a href="https://linkedin.com/in/mansoormamnoon" class="resume-contact-link" target="_blank" rel="noopener">linkedin.com/in/mansoormmamnoon</a>
+        <a href="https://linkedin.com/in/mansoormamnoon" class="resume-contact-link" target="_blank" rel="noopener">linkedin.com/in/mansoormamnoon</a>
+        <a href="https://mansoor-mamnoon.github.io/" class="resume-contact-link" target="_blank" rel="noopener">mansoor-mamnoon.github.io</a>
       </div>
 
       <!-- Education -->
@@ -107,10 +108,10 @@
         <div class="resume-row">
           <div class="resume-row-head">
             <span class="resume-org">University of California, Berkeley</span>
-            <span class="resume-date">2023 – 2027</span>
+            <span class="resume-date">Aug 2023 – May 2027</span>
           </div>
           <p class="resume-role">B.A. Computer Science — EECS Honors Program &nbsp;·&nbsp; GPA 3.984</p>
-          <p class="resume-desc">Selected coursework: Operating Systems (162) · Compilers (164) · Database Systems (186) · Algorithms (170) · Machine Learning (189) · Optimization (EECS 127) · Probability (Data 140)</p>
+          <p class="resume-desc">Selected coursework: Operating Systems (162) · Compilers (164) · Database Systems (186) · Algorithms (170) · Machine Learning (189) · Optimization (EECS 127) · Computer Vision (180) · Probability (Data 140) · Abstract Linear Algebra (Math H110)</p>
         </div>
       </section>
 
@@ -121,22 +122,60 @@
         <div class="resume-row">
           <div class="resume-row-head">
             <span class="resume-org">Databricks</span>
-            <span class="resume-date">Summer 2026</span>
+            <span class="resume-date">Summer 2026 · Bellevue, WA</span>
           </div>
           <p class="resume-role">Software Engineering Intern — Traffic Platform &nbsp;<span class="badge badge-incoming">incoming</span></p>
-          <p class="resume-desc">Bellevue, WA. Incoming intern on Databricks' Traffic Platform team — networking, security, and performance engineering for large-scale distributed infrastructure in Go and Rust.</p>
+          <p class="resume-desc">Incoming intern on Databricks' Traffic Platform team — networking, security, and performance engineering for large-scale distributed infrastructure in Go and Rust.</p>
           <p class="resume-tech">Go · Rust · Distributed Systems · Networking · Security · Performance</p>
         </div>
 
         <div class="resume-row">
           <div class="resume-row-head">
-            <span class="resume-org">Amazon</span>
-            <span class="resume-date">May – Aug 2025</span>
+            <span class="resume-org">Berkeley AI Research (BAIR) — AUTOLab</span>
+            <span class="resume-date">Sep 2025 – Present · Berkeley, CA</span>
           </div>
-          <p class="resume-role">Software Development Engineer Intern</p>
-          <p class="resume-desc">Seattle, WA. Built and shipped a real-time IoT occupancy monitoring platform processing 10,000+ events/min across 100+ sensors with &lt;500ms latency. Designed resilient cloud backend: Lambda/SQS event pipeline, ECS Fargate microservices, DynamoDB for operational state, Timestream for time-series analytics. Led design reviews with senior engineers and authored executive briefs.</p>
-          <p class="resume-tech">TypeScript · AWS Lambda · ECS Fargate · DynamoDB · SQS · Timestream · CDK</p>
+          <p class="resume-role">Undergraduate Researcher</p>
+          <ul class="resume-bullets">
+            <li>Working with postdoctoral researchers on extensions to Robo-DM, a data management toolkit for large-scale robot learning datasets (affiliated with UC Berkeley AUTOLab / BAIR).</li>
+            <li>Exploring efficient dataset compression, retrieval, and integration with ML training pipelines.</li>
+            <li>Applying prior experience in real-time event pipelines to robotics data loading and systems optimization.</li>
+          </ul>
+          <p class="resume-tech">Python · PyTorch · Data Engineering · Robot Learning</p>
         </div>
+
+        <div class="resume-row">
+          <div class="resume-row-head">
+            <span class="resume-org">Amazon</span>
+            <span class="resume-date">May – Aug 2025 · Seattle, WA</span>
+          </div>
+          <p class="resume-role">Software Development Engineer Intern — Backend &amp; Distributed Systems</p>
+          <ul class="resume-bullets">
+            <li>Architected and shipped an end-to-end, real-time occupancy monitoring platform — from ingesting live data from 100+ IoT sensors to frontend visualization — piloted across 4 Amazon buildings.</li>
+            <li>Built a scalable, fault-tolerant backend pipeline using AWS Lambda, SQS, DynamoDB, and Timestream, processing 10K+ streaming events/min with P99 latency &lt; 900ms.</li>
+            <li>Automated multi-region deployment workflows via AWS CDK (TypeScript), cutting infrastructure provisioning time by 85% and enabling horizontal scaling under peak load.</li>
+            <li>Engineered a real-time React dashboard with live occupancy visualizations (&lt;1s data freshness), enabling operations teams to monitor usage across facilities in real time.</li>
+            <li>Integrated CloudWatch logs, alarms, and metrics dashboards, reducing debugging time by ~40% during integration tests.</li>
+            <li>Authored a detailed design document and executive one-pager; presented and reviewed with a panel of SDE2s and SDE3s during design review cycles.</li>
+          </ul>
+          <p class="resume-tech">TypeScript · AWS Lambda · ECS Fargate · DynamoDB · SQS · Timestream · CDK · React · CloudWatch</p>
+        </div>
+
+        <div class="resume-row">
+          <div class="resume-row-head">
+            <span class="resume-org">BLCK UNICRN</span>
+            <span class="resume-date">Sep – Dec 2024 · Berkeley, CA</span>
+          </div>
+          <p class="resume-role">Software Engineering Intern</p>
+          <ul class="resume-bullets">
+            <li>Engineered a scraping and ranking system using Python, Beautiful Soup, and pandas, optimized via custom trie-based prefix matching and vectorized scoring — reducing runtime by 5× across 200+ client profiles.</li>
+            <li>Designed a weighted lead ranking algorithm scoring prospects on post frequency, keyword density, and engagement signals, enabling automated prioritization in outreach workflows.</li>
+            <li>A/B tested targeted outreach across Apollo CRM, LinkedIn, and email, improving contact conversion by 25% and pipelining feedback into internal analytics dashboards.</li>
+            <li>Built a reusable data ingestion module and led documentation and interface design for intern handoff.</li>
+            <li>Delivered live technical demos at SF Tech Week to 40+ clients, collecting real-time user feedback.</li>
+          </ul>
+          <p class="resume-tech">Python · Beautiful Soup · pandas · Apollo CRM · Data Pipelines</p>
+        </div>
+
       </section>
 
       <!-- Projects -->
@@ -146,32 +185,58 @@
         <div class="resume-row">
           <div class="resume-row-head">
             <span class="resume-org">LLMFirewall</span>
-            <span class="resume-date">2025 – 2026</span>
+            <span class="resume-date">Dec 2025 – May 2026</span>
           </div>
           <p class="resume-role">MCP Security Proxy — Prompt Injection Defense</p>
-          <p class="resume-desc">Four-layer policy engine: heuristic denylist, hashed feature vectors for semantic drift detection, taint-aware capability gating, document instruction density scoring. Self-play red-team pipeline generates 500+ adaptive attacks. Reduced attack success rate from 100% to 16% (vs. no-filter baseline) on local eval suite of 4,200+ cases. FPR held at 8.3%. 783 tests.</p>
+          <ul class="resume-bullets">
+            <li>Built a four-layer signal pipeline: heuristic denylist, hashed feature vectors for semantic drift detection (no external model, sub-ms), taint-aware capability gating, and document instruction density scoring.</li>
+            <li>Self-play red-team pipeline generates 500+ adaptive attacks across 7 classes via a 3-round mutation loop; reduced attack success rate from 100% to 16% on local eval suite of 4,200+ cases (vs. no-filter baseline).</li>
+            <li>Threshold calibration via FPR-constrained sweep holds false positive rate to 8.3%. 783 tests. p95 latency &lt; 1ms.</li>
+          </ul>
           <p class="resume-tech">Python · FastAPI · MCP Protocol · NumPy · pytest</p>
         </div>
 
         <div class="resume-row">
           <div class="resume-row-head">
             <span class="resume-org">C++20 Limit Order Book</span>
-            <span class="resume-date">2025</span>
+            <span class="resume-date">Jul – Aug 2025</span>
           </div>
           <p class="resume-role">Exchange-Style High-Frequency Matching Engine</p>
-          <p class="resume-desc">Price-time priority matching with FIFO fairness. Slab allocators, branch elimination, cache-hot pointer layouts, CPU pinning. Sustains 20.7M+ messages/sec at p50 = 0.04 µs and p99 ≈ 1 µs on local benchmark. Full analytics: VWAP, TWAP, Iceberg, POV with reproducible PnL. Crash recovery via snapshot/resume. Binance US market data connector. Synthetic local benchmark — hardware spec and harness in the GitHub README.</p>
+          <ul class="resume-bullets">
+            <li>Built a C++20 matching engine with intrusive FIFOs, slab allocators, and cache-hot ladders — achieving 20.7M+ msgs/sec throughput at p50 = 0.04 µs; validated determinism via snapshot/resume replay with bit-for-bit fill equivalence.</li>
+            <li>Designed an end-to-end analytics pipeline (Python, Parquet, Docker, Streamlit) to replay real Binance BTCUSDT data and evaluate VWAP/TWAP/POV/Iceberg strategies with reproducible PnL &amp; risk metrics.</li>
+            <li>Synthetic local benchmark — hardware spec and harness in the <a href="https://github.com/mansoor-mamnoon/limit-order-book#readme" target="_blank" rel="noopener" style="color:var(--muted);">GitHub README</a>.</li>
+          </ul>
           <p class="resume-tech">C++20 · Python · Docker · Streamlit · GitHub Actions</p>
         </div>
 
         <div class="resume-row">
           <div class="resume-row-head">
+            <span class="resume-org">Offline RL Agent</span>
+            <span class="resume-date">May – Jun 2025</span>
+          </div>
+          <p class="resume-role">Custom Reinforcement Learning System for Latency-Constrained Deployment</p>
+          <ul class="resume-bullets">
+            <li>Developed a custom Gym environment with dual observation channels and delayed reward functions, simulating high-dimensional control tasks with ~10⁵ state transitions per training run.</li>
+            <li>Implemented an offline RL training pipeline in PyTorch featuring a prioritized replay buffer (α=0.6, β=0.4), batch reward normalization, and dynamic ε-greedy exploration — achieving ~92% average reward recovery from expert trajectories.</li>
+            <li>Benchmarked Conservative Q-Learning (CQL) and DQN across 8 random seeds; achieved ~30% lower regret vs. baseline DQN under identical rollout constraints.</li>
+          </ul>
+          <p class="resume-tech">PyTorch · OpenAI Gym · NumPy · TensorBoard</p>
+        </div>
+
+        <div class="resume-row">
+          <div class="resume-row-head">
             <span class="resume-org">Edge Deployer</span>
-            <span class="resume-date">2024 – 2025</span>
+            <span class="resume-date">Mar – May 2025</span>
           </div>
           <p class="resume-role">Multi-Cloud Serverless IDE</p>
-          <p class="resume-desc">Zero-config Electron desktop IDE for deploying serverless APIs to Cloudflare Workers, AWS Lambda@Edge, and Vercel. Monaco editor, Pulumi-backed IaC per provider, real-time deploy logs, deployment history, per-provider ENV variable injection, and Lambda ZIP packaging.</p>
+          <ul class="resume-bullets">
+            <li>Zero-config Electron desktop IDE for deploying serverless APIs to Cloudflare Workers, AWS Lambda@Edge, and Vercel with per-provider Pulumi IaC, real-time deploy log streaming, and deployment history.</li>
+            <li>Monaco editor with dynamic per-provider ENV variable injection, code bundling, and ZIP export pipeline for Lambda packaging.</li>
+          </ul>
           <p class="resume-tech">Electron · React · TypeScript · Pulumi · Monaco Editor</p>
         </div>
+
       </section>
 
       <!-- Teaching -->
@@ -180,22 +245,28 @@
 
         <div class="resume-row">
           <div class="resume-row-head">
-            <span class="resume-org">UC Berkeley — CS 61C</span>
-            <span class="resume-date">2025 – 2026</span>
+            <span class="resume-org">UC Berkeley — CS 61C (Computer Architecture)</span>
+            <span class="resume-date">Sep 2025 – Present</span>
           </div>
-          <p class="resume-role">Senior Mentor & Content Lead</p>
-          <p class="resume-desc">Authored weekly worksheets on RISC-V assembly, C, memory hierarchy, caching, pipelining, and parallelism. Led small-group sections and office hours for CS 61C: Computer Architecture.</p>
+          <p class="resume-role">Senior Mentor &amp; Content Lead — Computer Science Mentors</p>
+          <ul class="resume-bullets">
+            <li>Authored weekly worksheets covering RISC-V assembly, C, memory hierarchy, caching, pipelining, and parallelism for 300+ students.</li>
+            <li>Led small-group sections and office hours; promoted to Content Lead (Dec 2025) to drive curriculum development.</li>
+          </ul>
           <p class="resume-tech">RISC-V · C · Memory Hierarchy · Pipelining · OpenMP</p>
         </div>
 
         <div class="resume-row">
           <div class="resume-row-head">
-            <span class="resume-org">UC Berkeley — Data 8</span>
-            <span class="resume-date">2024 – 2025</span>
+            <span class="resume-org">UC Berkeley — Data 8 (Foundations of Data Science)</span>
+            <span class="resume-date">Jun – Aug 2024</span>
           </div>
           <p class="resume-role">Course Tutor</p>
-          <p class="resume-desc">Led weekly tutoring groups (7 students each), hosted lab sessions for 40+ students, office hours serving 300+ students. Above-average feedback ratings.</p>
-          <p class="resume-tech">Python · NumPy · pandas</p>
+          <ul class="resume-bullets">
+            <li>Led weekly tutoring groups (7 students each), hosted lab sessions for 40+ students, and held office hours serving 300+ enrolled students.</li>
+            <li>Contributed to a library of instructional videos based on past exams; achieved above-average feedback ratings.</li>
+          </ul>
+          <p class="resume-tech">Python · NumPy · pandas · Statistical Analysis</p>
         </div>
       </section>
 
@@ -215,15 +286,15 @@
             </div>
             <div>
               <span class="resume-skills-label">Infrastructure</span>
-              <span class="resume-skills-value">AWS (Lambda, ECS, DynamoDB, SQS), Pulumi, Docker, CDK</span>
+              <span class="resume-skills-value">AWS (Lambda, ECS, DynamoDB, SQS, Timestream), Pulumi, Docker, CDK, GitHub Actions</span>
             </div>
             <div>
               <span class="resume-skills-label">ML / Data</span>
-              <span class="resume-skills-value">PyTorch, Gymnasium, pandas, NumPy</span>
+              <span class="resume-skills-value">PyTorch, OpenAI Gym, pandas, NumPy, TensorBoard</span>
             </div>
             <div>
               <span class="resume-skills-label">Domains</span>
-              <span class="resume-skills-value">Distributed Systems, Networking, Compilers, Database Internals, Secure AI Tooling, Low-Latency Infrastructure</span>
+              <span class="resume-skills-value">Distributed Systems, Networking, Compilers, Database Internals, Secure AI Tooling, Low-Latency Infrastructure, HFT Systems</span>
             </div>
           </div>
         </div>
@@ -231,31 +302,32 @@
 
       <!-- Honors -->
       <section class="resume-section">
-        <h2 class="resume-section-title">Honors & Awards</h2>
+        <h2 class="resume-section-title">Honors &amp; Awards</h2>
 
         <div class="resume-row">
           <div class="resume-row-head">
-            <span class="resume-org">EECS Honors Program</span>
+            <span class="resume-org">EECS Honors Program, UC Berkeley</span>
             <span class="resume-date">2025</span>
           </div>
-          <p class="resume-desc">Selective academic honors track at UC Berkeley for top-performing CS students.</p>
+          <p class="resume-desc">Selective academic honors track recognizing top-performing CS students. Includes advanced coursework, research components, and honors thesis option.</p>
         </div>
 
         <div class="resume-row">
           <div class="resume-row-head">
             <span class="resume-org">1st Place — Intuit × Berkeley Haas Case Competition</span>
-            <span class="resume-date">2025</span>
+            <span class="resume-date">May 2025</span>
           </div>
-          <p class="resume-desc">Judged by Intuit product marketing leadership.</p>
+          <p class="resume-desc">Judged and awarded by Intuit product marketing leadership for a go-to-market proposal targeting SMBs and solopreneurs.</p>
         </div>
 
         <div class="resume-row">
           <div class="resume-row-head">
-            <span class="resume-org">British Math Olympiad Qualifier</span>
+            <span class="resume-org">British Mathematical Olympiad Qualifier (UKMT)</span>
             <span class="resume-date">2022</span>
           </div>
-          <p class="resume-desc">Qualified from 74,000+ UKMT Senior Math Challenge participants.</p>
+          <p class="resume-desc">Qualified from 74,000+ Senior Math Challenge participants. A* in Further Mathematics A-Level.</p>
         </div>
+
       </section>
 
     </div>
@@ -269,7 +341,7 @@
     <nav class="footer-links">
       <a href="notes.html" class="footer-link">Notes</a>
       <a href="https://github.com/mansoor-mamnoon" class="footer-link" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://linkedin.com/in/mansoormmamnoon" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://linkedin.com/in/mansoormamnoon" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="mailto:mansoormmamnoon@berkeley.edu" class="footer-link">Email</a>
       <a href="assets/Mansoor_Mamnoon_Resume.pdf" class="footer-link" target="_blank" rel="noopener">PDF ↓</a>
     </nav>
