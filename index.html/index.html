@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mansoor Mamnoon — Systems & Infrastructure Engineer | UC Berkeley EECS</title>
+
+  <meta name="description" content="Mansoor Mamnoon — Berkeley EECS Honors, Class of 2027. Incoming SWE Intern at Databricks Traffic Platform. Previously Amazon SDE Intern. Builds distributed systems, low-latency infrastructure, and ML security tooling in C++, Go, and Rust.">
+
+  <!-- SEO / Open Graph -->
+  <meta property="og:title"       content="Mansoor Mamnoon — Systems & Infrastructure Engineer">
+  <meta property="og:description" content="Berkeley EECS Honors · Databricks Traffic Platform · Amazon SDE Intern · C++ / Go / Rust">
+  <meta property="og:image"       content="https://mansoor-mamnoon.github.io/personal-website/preview.webp">
+  <meta property="og:url"         content="https://mansoor-mamnoon.github.io/personal-website/">
+  <meta property="og:type"        content="website">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Mansoor Mamnoon — Systems & Infrastructure Engineer">
+  <meta name="twitter:description" content="Berkeley EECS Honors · Databricks · Amazon · C++ / Go / Rust">
+  <meta name="twitter:image"      content="https://mansoor-mamnoon.github.io/personal-website/preview.webp">
+  <meta name="keywords" content="Mansoor Mamnoon, Berkeley EECS, Databricks, Amazon, distributed systems, infrastructure engineer, C++, Go, Rust, limit order book, LLMFirewall, systems engineer portfolio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://mansoor-mamnoon.github.io/personal-website/#person",
+    "name": "Mansoor Mamnoon",
+    "url": "https://mansoor-mamnoon.github.io/personal-website/",
+    "image": "https://mansoor-mamnoon.github.io/personal-website/assets/Mansoor_Mamnoon_Headshot.jpeg",
+    "email": "mansoormmamnoon@berkeley.edu",
+    "description": "UC Berkeley EECS Honors student (Class of 2027), incoming Databricks SWE Intern on Traffic Platform, former Amazon SDE Intern. Builds distributed systems, low-latency C++ infrastructure, and ML security tooling.",
+    "jobTitle": "Software Engineering Intern",
+    "worksFor": { "@type": "Organization", "name": "Databricks" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Berkeley" },
+    "sameAs": [
+      "https://linkedin.com/in/mansoormamnoon",
+      "https://github.com/mansoor-mamnoon"
+    ],
+    "knowsAbout": [
+      "Distributed Systems",
+      "C++",
+      "Go",
+      "Rust",
+      "Low-Latency Systems",
+      "Backend Infrastructure",
+      "ML Security",
+      "High-Frequency Trading Systems",
+      "Networking",
+      "Database Internals",
+      "Compiler Design",
+      "Infrastructure Engineering",
+      "Secure AI Tooling",
+      "LLM Agent Security"
+    ]
+  }
+  </script>
+
+  <!-- Fonts: Newsreader + Geist + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Apply theme before first paint to avoid flash -->
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();
+  </script>
+</head>
+
+<body>
+
+<!-- Scroll Progress (CSS scroll-driven — no JS needed) -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ── Command Palette ─────────────────────────────────────────────────── -->
+<div id="cmd-overlay" class="cmd-overlay" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmd-box" role="combobox" aria-expanded="true" aria-owns="cmd-list">
+    <div class="cmd-input-wrap">
+      <span class="cmd-prompt" aria-hidden="true">›</span>
+      <input id="cmd-input" type="text" placeholder="Type a command or search..." autocomplete="off" spellcheck="false" aria-label="Command search" aria-autocomplete="list" aria-controls="cmd-list">
+    </div>
+    <ul id="cmd-list" class="cmd-list" role="listbox" aria-label="Commands"></ul>
+    <div class="cmd-footer" aria-hidden="true">
+      <span class="cmd-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span class="cmd-hint"><kbd>↵</kbd> select</span>
+      <span class="cmd-hint"><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Navigation ─────────────────────────────────────────────────────── -->
+<header>
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mansoor Mamnoon — Home">MM</a>
+
+      <div class="nav-links" role="list">
+        <a href="projects.html" class="nav-link" role="listitem">Projects</a>
+        <a href="experience.html" class="nav-link" role="listitem">Experience</a>
+        <a href="notes.html" class="nav-link" role="listitem">Notes</a>
+        <a href="about.html" class="nav-link" role="listitem">About</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="resume.html" class="nav-resume">Resume</a>
+        <button id="cmd-hint" class="nav-icon-btn nav-cmd-subtle" title="Command palette (⌘K)" aria-label="Open command palette">⌘K</button>
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme">◐</button>
+      </div>
+
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">☰</button>
+    </div>
+  </nav>
+
+  <div id="nav-drawer" class="nav-drawer" role="navigation" aria-label="Mobile navigation">
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="experience.html" class="nav-link">Experience</a>
+    <a href="notes.html" class="nav-link">Notes</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="resume.html" class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<!-- ── Main Content ────────────────────────────────────────────────────── -->
+<main>
+  <div class="page">
+
+    <!-- ── Identity ────────────────────────────────────────────────────── -->
+    <section class="identity" aria-label="Introduction">
+
+      <img
+        src="assets/Mansoor_Mamnoon_Headshot.jpeg"
+        alt="Mansoor Mamnoon"
+        class="identity-photo"
+        width="72" height="72"
+        loading="eager"
+        onerror="this.style.display='none'"
+      >
+
+      <div class="identity-meta">
+        <span style="color:var(--accent-warm);font-weight:500;">Open to 2027 new grad roles</span>
+        <span aria-hidden="true" style="color:var(--muted-dim)">·</span>
+        <span>Distributed systems · Networking · Databases · Compilers</span>
+      </div>
+
+      <h1 class="identity-name">Mansoor Mamnoon</h1>
+      <p class="identity-role">Berkeley EECS Honors &nbsp;·&nbsp; Systems / Infrastructure Engineer &nbsp;·&nbsp; Class of 2027</p>
+
+      <!-- 5-Second Scan — above the fold, right after name/role -->
+      <div class="scan-grid" style="margin: var(--s4) 0 var(--s6);" aria-label="Quick profile">
+        <span>UC Berkeley CS, EECS Honors, GPA 3.984</span>
+        <span style="color:var(--accent-warm);border-color:rgba(201,143,90,0.4);">Incoming Databricks SWE Intern, Traffic Platform</span>
+        <span style="color:var(--accent-warm);border-color:rgba(201,143,90,0.4);">Former Amazon SDE Intern, real-time IoT infrastructure</span>
+        <span>C++20, Go, Rust, Python, TypeScript</span>
+        <span>Distributed systems, networking, databases, compilers, low-latency infra</span>
+      </div>
+
+      <div class="btn-group">
+        <a href="assets/Mansoor_Mamnoon_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener">Resume PDF ↓</a>
+        <a href="https://github.com/mansoor-mamnoon" class="btn" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://linkedin.com/in/mansoormamnoon" class="btn" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="mailto:mansoormmamnoon@berkeley.edu" class="btn">Email</a>
+      </div>
+
+      <div class="headline-metrics" style="margin-top:var(--s6);display:flex;flex-wrap:wrap;gap:var(--s3);" aria-label="Key project metrics">
+        <a href="projects.html#orderbook" class="headline-metric-pill" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--metric);border:1px solid rgba(142,240,176,0.3);padding:0.3rem 0.8rem;border-radius:2px;text-decoration:none;">C++ Matching Engine — 20.7M msgs/sec, p50 = 0.04 µs → GitHub</a>
+        <a href="projects.html#llmfirewall" class="headline-metric-pill" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);border:1px solid rgba(214,255,127,0.3);padding:0.3rem 0.8rem;border-radius:2px;text-decoration:none;">LLMFirewall — 100%→16% ASR on 4,200+ evals → GitHub</a>
+      </div>
+
+      <div class="identity-proof" style="margin-top: var(--s8);">
+        <p>Incoming intern on <strong>Databricks' Traffic Platform</strong> — networking, security, and performance engineering for large-scale distributed infrastructure in Go and Rust.</p>
+        <p>Previously <strong>Amazon SDE Intern</strong> — built real-time IoT platform processing 10K+ events/min across 100+ sensors with &lt;500ms latency on ECS Fargate.</p>
+        <p>I build systems projects around <strong>LLM agent security</strong>, low-latency C++ infrastructure, and multi-cloud developer tooling.</p>
+      </div>
+    </section>
+
+    <!-- ── Highlights ───────────────────────────────────────────────────── -->
+    <section class="routes reveal" aria-label="Experience and project highlights">
+      <div class="section-label">Highlights</div>
+      <p class="section-kicker">Selected experience and projects. Each item links to code, benchmarks, or details.</p>
+
+      <div class="routes-outer">
+        <div>
+          <div role="table" aria-label="Experience and projects table">
+            <div class="routes-head" role="row" aria-hidden="true">
+              <span role="columnheader">where</span>
+              <span role="columnheader">type</span>
+              <span role="columnheader">what</span>
+              <span role="columnheader">tech</span>
+              <span></span>
+            </div>
+
+            <a class="route-row" href="experience.html" role="row" aria-label="Amazon SDE Intern — Real-time IoT platform"
+               data-preview-title="Amazon · SDE Intern"
+               data-preview-desc="Built and shipped a real-time IoT monitoring platform processing 10K+ events/min across 100+ sensors with &lt;500ms latency. Lambda/SQS pipeline, ECS Fargate microservices, DynamoDB and Timestream."
+               data-preview-tech="TypeScript · AWS Lambda · ECS Fargate · DynamoDB · SQS · Timestream">
+              <span class="route-path" role="cell">Amazon SDE Intern</span>
+              <span role="cell"><span class="badge badge-intern">shipped</span></span>
+              <span class="route-signal" role="cell">Real-time IoT platform · 10K+ events/min</span>
+              <span class="route-tech" role="cell">TypeScript · AWS · ECS</span>
+              <span class="route-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="route-row" href="experience.html" role="row" aria-label="Databricks Traffic Platform internship"
+               data-preview-title="Databricks · Traffic Platform"
+               data-preview-desc="Incoming SWE Intern on the Traffic Platform team. Networking, security, and performance engineering for large-scale distributed infrastructure in Go and Rust."
+               data-preview-tech="Go · Rust · Networking · Distributed Systems">
+              <span class="route-path" role="cell">Databricks Traffic Platform</span>
+              <span role="cell"><span class="badge badge-incoming">incoming</span></span>
+              <span class="route-signal" role="cell">SWE Intern · Summer 2026</span>
+              <span class="route-tech" role="cell">Go · Rust · Networking</span>
+              <span class="route-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="route-row" href="projects.html#llmfirewall" role="row" aria-label="LLMFirewall — MCP security proxy"
+               data-preview-title="LLMFirewall"
+               data-preview-desc="MCP security proxy for tool-using LLM agents. MCP is the protocol agents use to call external tools; LLMFirewall sits between agent and tools to block prompt-injection-driven misuse. 100% → 16% ASR on 4,200+ cases."
+               data-preview-tech="Python · FastAPI · MCP Protocol · pytest">
+              <span class="route-path" role="cell">LLMFirewall</span>
+              <span role="cell"><span class="badge badge-security">security</span></span>
+              <span class="route-signal" role="cell">MCP security proxy · 100%→16% ASR (4,200+ evals)</span>
+              <span class="route-tech" role="cell">Python · FastAPI</span>
+              <span class="route-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="route-row" href="projects.html#orderbook" role="row" aria-label="C++ Matching Engine"
+               data-preview-title="C++20 Matching Engine"
+               data-preview-desc="Exchange-style matching engine at 20.7M msgs/sec. p50 = 0.04µs, p99 ≈ 1µs. Slab allocators, branch elimination, cache-hot pointer layouts, CPU pinning. Includes TAQ replay, Binance US data connector, crash recovery."
+               data-preview-tech="C++20 · Python · Docker · Streamlit · GitHub Actions">
+              <span class="route-path" role="cell">C++ Matching Engine</span>
+              <span role="cell"><span class="badge badge-perf">performance</span></span>
+              <span class="route-signal" role="cell">20.7M msgs/sec · p50 = 0.04 µs</span>
+              <span class="route-tech" role="cell">C++20 · Python</span>
+              <span class="route-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="route-row" href="projects.html#edgedeployer" role="row" aria-label="Edge Deployer — Multi-cloud serverless IDE"
+               data-preview-title="Edge Deployer"
+               data-preview-desc="Desktop deployment tool that generates provider-specific serverless configs, provisions infrastructure with Pulumi, streams deploy logs, and normalizes workflows across Cloudflare Workers, Lambda@Edge, and Vercel."
+               data-preview-tech="Electron · React · TypeScript · Pulumi · Monaco Editor">
+              <span class="route-path" role="cell">Edge Deployer</span>
+              <span role="cell"><span class="badge badge-tools">infra-tools</span></span>
+              <span class="route-signal" role="cell">Multi-cloud serverless IDE</span>
+              <span class="route-tech" role="cell">Electron · React · Pulumi</span>
+              <span class="route-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a class="route-row" href="experience.html#teaching" role="row" aria-label="CS 61C Senior Mentor — UC Berkeley"
+               data-preview-title="CS 61C Senior Mentor"
+               data-preview-desc="Senior Mentor & Content Lead at UC Berkeley. Authored weekly worksheets covering RISC-V assembly, C, memory hierarchy, caching, pipelining, and parallelism."
+               data-preview-tech="RISC-V · C · Memory Hierarchy · Pipelining · OpenMP">
+              <span class="route-path" role="cell">CS 61C Senior Mentor</span>
+              <span role="cell"><span class="badge badge-neutral">teaching</span></span>
+              <span class="route-signal" role="cell">Content Lead · Berkeley CS 61C</span>
+              <span class="route-tech" role="cell">RISC-V · C · Systems</span>
+              <span class="route-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="route-preview" id="route-preview" aria-live="polite" aria-label="Detail preview">
+          <p class="preview-label">detail</p>
+          <p class="preview-name" id="preview-name">Hover a row</p>
+          <p class="preview-desc" id="preview-desc" style="color:var(--muted-dim)">Details appear here →</p>
+          <p class="preview-tech" id="preview-tech"></p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── Featured Systems ─────────────────────────────────────────────── -->
+    <section class="systems reveal" aria-label="Featured systems and projects">
+      <div class="section-label">Featured Systems</div>
+
+      <article class="system-record">
+        <div class="system-header">
+          <div style="display:flex;align-items:center;gap:var(--s3)">
+            <img src="assets/LLMFirewall_Logo.jpeg" alt="LLMFirewall project logo" class="system-logo" loading="lazy">
+            <h2 class="system-name">LLMFirewall</h2>
+          </div>
+          <a href="https://github.com/mansoor-mamnoon/prompt-injection-lab" class="system-link" target="_blank" rel="noopener" aria-label="LLMFirewall on GitHub">GitHub ↗</a>
+        </div>
+        <p class="system-desc">Security proxy for tool-using LLM agents that detects prompt-injection attempts before high-risk tool calls. MCP is the protocol agents use to call external tools; LLMFirewall sits between agent and tools enforcing taint-aware trust levels, capability gating, heuristic detectors, and lightweight semantic-drift scoring.</p>
+        <div class="system-meta">
+          <span class="system-metric">4,200+ eval cases</span>
+          <span class="system-metric">100%→16% ASR <span style="font-size:0.65rem;color:var(--muted-dim);">(vs. no-filter)</span></span>
+          <span class="system-metric">sub-ms policy checks</span>
+          <span class="system-metric">783 tests</span>
+          <span class="system-stack">Python · FastAPI · MCP</span>
+        </div>
+      </article>
+
+      <article class="system-record">
+        <div class="system-header">
+          <div style="display:flex;align-items:center;gap:var(--s3)">
+            <img src="assets/limit_order_book_logo.jpeg" alt="C++20 Matching Engine project logo" class="system-logo" loading="lazy">
+            <h2 class="system-name">C++20 Matching Engine</h2>
+          </div>
+          <a href="https://github.com/mansoor-mamnoon/limit-order-book" class="system-link" target="_blank" rel="noopener" aria-label="Limit Order Book on GitHub">GitHub ↗</a>
+        </div>
+        <p class="system-desc">Exchange-style matching engine with deterministic price-time priority, FIFO fairness, and reproducible benchmark harnesses. Optimized with slab allocators, cache-conscious order layout, branch reduction, and CPU pinning. Includes Binance US market data connector, TAQ replay, and crash recovery.</p>
+        <div class="system-meta">
+          <span class="system-metric"><span data-count="20700000" data-fmt="millions">20</span>M+ msgs/sec</span>
+          <span class="system-metric">p50 = 0.04 µs</span>
+          <span class="system-metric">p99 ≈ 1 µs</span>
+          <span class="system-stack">C++20 · Python · Docker · Streamlit</span>
+        </div>
+        <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--muted-dim);margin-top:var(--s3);">Synthetic local benchmark — <a href="https://github.com/mansoor-mamnoon/limit-order-book#readme" target="_blank" rel="noopener" style="color:var(--muted);">hardware spec and harness in repo README</a>.</p>
+      </article>
+
+      <article class="system-record">
+        <div class="system-header">
+          <div style="display:flex;align-items:center;gap:var(--s3)">
+            <img src="assets/edge_deployer_logo.jpeg" alt="Edge Deployer project logo" class="system-logo" loading="lazy">
+            <h2 class="system-name">Edge Deployer</h2>
+          </div>
+          <a href="https://github.com/mansoor-mamnoon/edge-deployer" class="system-link" target="_blank" rel="noopener" aria-label="Edge Deployer on GitHub">GitHub ↗</a>
+        </div>
+        <p class="system-desc">Desktop deployment tool that generates provider-specific serverless configs, provisions infrastructure with Pulumi, streams real-time deploy logs, and normalizes deployment workflows across Cloudflare Workers, AWS Lambda@Edge, and Vercel. Monaco editor, per-provider ENV injection, and deployment history.</p>
+        <div class="system-meta">
+          <span class="system-metric">multi-cloud deploy</span>
+          <span class="system-metric">Pulumi IaC</span>
+          <span class="system-stack">Electron · React · TypeScript · Pulumi</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- ── Experience (preview) ──────────────────────────────────────────── -->
+    <section class="exp-ledger reveal" aria-label="Experience summary">
+      <div class="section-label">Experience</div>
+
+      <p class="exp-year">2025</p>
+      <div class="exp-entry">
+        <div>
+          <p class="exp-org">Amazon</p>
+          <p class="exp-org-meta">Seattle, WA · May–Aug 2025</p>
+        </div>
+        <div>
+          <p class="exp-role">SDE Intern</p>
+          <ul class="exp-bullets">
+            <li>Built real-time IoT occupancy monitoring platform processing 10K+ events/min across 100+ sensors.</li>
+            <li>Designed AWS backend with Lambda/SQS event pipeline, ECS Fargate microservices, DynamoDB, and Timestream.</li>
+            <li>Achieved &lt;500ms dashboard latency for live occupancy updates.</li>
+            <li>Led design reviews with senior engineers; authored technical documentation and executive briefs.</li>
+          </ul>
+          <p class="exp-tech">TypeScript · AWS Lambda · ECS Fargate · DynamoDB · SQS · Timestream</p>
+        </div>
+      </div>
+
+      <p class="exp-year">2026 (incoming)</p>
+      <div class="exp-entry">
+        <div>
+          <p class="exp-org">Databricks</p>
+          <p class="exp-org-meta">Bellevue, WA · Summer 2026</p>
+        </div>
+        <div>
+          <p class="exp-role">SWE Intern — Traffic Platform <span class="badge badge-incoming" style="margin-left:0.5rem">incoming</span></p>
+          <p class="exp-desc">Incoming SWE intern on the Traffic Platform team — networking, security, and performance engineering for large-scale distributed infrastructure.</p>
+          <p class="exp-tech">Go · Rust · Distributed Systems · Networking</p>
+        </div>
+      </div>
+
+      <div style="margin-top:var(--s5); padding-top:var(--s4); border-top:1px solid var(--border-dim);">
+        <a href="experience.html" class="btn">Full experience →</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Mansoor Mamnoon &nbsp;·&nbsp; Berkeley EECS Honors, Class of 2027</p>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="notes.html" class="footer-link">Notes</a>
+      <a href="https://github.com/mansoor-mamnoon" class="footer-link" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/mansoormamnoon" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:mansoormmamnoon@berkeley.edu" class="footer-link">Email</a>
+      <a href="assets/Mansoor_Mamnoon_Resume.pdf" class="footer-link" target="_blank" rel="noopener">Resume ↓</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="main.js"></script>
+</body>
+</html>

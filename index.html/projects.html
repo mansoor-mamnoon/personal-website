@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Mansoor Mamnoon | C++ Matching Engine · LLMFirewall · Systems</title>
+  <meta name="description" content="Systems projects by Mansoor Mamnoon (Berkeley EECS): C++20 matching engine at 20.7M msgs/sec and p50 0.04µs; LLMFirewall MCP security proxy reducing attack success rate from 100% to 16% on 4,200+ evals; multi-cloud serverless Edge Deployer.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title"       content="Projects — Mansoor Mamnoon | C++ Matching Engine · LLMFirewall">
+  <meta property="og:description" content="C++20 matching engine at 20.7M msgs/sec · LLMFirewall MCP security proxy · Edge Deployer — systems projects by Mansoor Mamnoon (Berkeley EECS, Databricks, Amazon).">
+  <meta property="og:image"       content="https://mansoor-mamnoon.github.io/personal-website/preview.webp">
+  <meta property="og:url"         content="https://mansoor-mamnoon.github.io/personal-website/projects.html">
+  <meta property="og:type"        content="website">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Projects — Mansoor Mamnoon | C++ Matching Engine · LLMFirewall">
+  <meta name="twitter:description" content="C++20 matching engine at 20.7M msgs/sec, p50 0.04µs. LLMFirewall: 100%→16% ASR on 4,200+ evals. Multi-cloud Edge Deployer.">
+  <meta name="twitter:image"       content="https://mansoor-mamnoon.github.io/personal-website/preview.webp">
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/projects.html">
+
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "LLMFirewall",
+    "description": "MCP security proxy for tool-using LLM agents. Reduces prompt-injection attack success rate from 100% to 16% on a 4,200+ case eval suite using a four-layer signal pipeline.",
+    "codeRepository": "https://github.com/mansoor-mamnoon/prompt-injection-lab",
+    "programmingLanguage": ["Python"],
+    "author": {
+      "@type": "Person",
+      "name": "Mansoor Mamnoon",
+      "@id": "https://mansoor-mamnoon.github.io/personal-website/#person"
+    },
+    "keywords": ["LLM security", "prompt injection", "MCP protocol", "AI agent security"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "C++20 Limit Order Book — Matching Engine",
+    "description": "Exchange-style matching engine sustaining 20.7M messages/sec at p50 = 0.04 µs on a synthetic local benchmark. Relevant to high-frequency trading and quantitative systems.",
+    "codeRepository": "https://github.com/mansoor-mamnoon/limit-order-book",
+    "programmingLanguage": ["C++", "Python"],
+    "author": {
+      "@type": "Person",
+      "name": "Mansoor Mamnoon",
+      "@id": "https://mansoor-mamnoon.github.io/personal-website/#person"
+    },
+    "keywords": ["C++20", "matching engine", "limit order book", "high-frequency trading", "HFT", "low-latency systems", "quantitative engineering"]
+  }
+]
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div id="cmd-overlay" class="cmd-overlay" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmd-box">
+    <div class="cmd-input-wrap">
+      <span class="cmd-prompt" aria-hidden="true">›</span>
+      <input id="cmd-input" type="text" placeholder="Type a command..." autocomplete="off" spellcheck="false" aria-label="Command search">
+    </div>
+    <ul id="cmd-list" class="cmd-list" role="listbox"></ul>
+    <div class="cmd-footer" aria-hidden="true">
+      <span class="cmd-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span class="cmd-hint"><kbd>↵</kbd> select</span>
+      <span class="cmd-hint"><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mansoor Mamnoon — Home">MM</a>
+      <div class="nav-links">
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="notes.html" class="nav-link">Notes</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="resume.html" class="nav-resume">Resume</a>
+        <button id="cmd-hint" class="nav-icon-btn nav-cmd-subtle" title="Command palette (⌘K)">⌘K</button>
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme">◐</button>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">☰</button>
+    </div>
+  </nav>
+  <div id="nav-drawer" class="nav-drawer">
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="experience.html" class="nav-link">Experience</a>
+    <a href="notes.html" class="nav-link">Notes</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="resume.html" class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<main>
+  <h1 class="sr-only">Projects — Mansoor Mamnoon</h1>
+  <div class="work-layout">
+
+    <!-- Sidebar: Project Index -->
+    <aside class="work-sidebar" aria-label="Project index">
+      <div class="section-label">Project Index</div>
+
+      <nav aria-label="Project list">
+        <button class="proj-nav-item" data-project="llmfirewall" aria-controls="llmfirewall">
+          <span class="proj-nav-name">LLMFirewall</span>
+          <span class="proj-nav-type">security · ML systems</span>
+          <span class="proj-nav-metric">100%→16% ASR · 783 tests</span>
+        </button>
+        <button class="proj-nav-item" data-project="orderbook" aria-controls="orderbook">
+          <span class="proj-nav-name">Limit Order Book</span>
+          <span class="proj-nav-type">performance · C++20</span>
+          <span class="proj-nav-metric">20.7M msg/s · p50 = 0.04 µs</span>
+        </button>
+        <button class="proj-nav-item" data-project="edgedeployer" aria-controls="edgedeployer">
+          <span class="proj-nav-name">Edge Deployer</span>
+          <span class="proj-nav-type">infra tools · multi-cloud</span>
+          <span class="proj-nav-metric">Cloudflare · Lambda@Edge · Vercel</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Detail Panel -->
+    <section class="work-detail" aria-live="polite">
+
+      <!-- LLMFirewall -->
+      <div class="proj-panel" id="llmfirewall" role="region" aria-label="LLMFirewall project detail">
+        <h2 class="proj-panel-title">LLMFirewall</h2>
+        <p class="proj-panel-summary">MCP security proxy enforcing taint-aware least privilege for tool-using LLM agents.</p>
+
+        <div class="project-brief">
+          <div>
+            <span class="brief-label">Problem</span>
+            <p>Tool-using LLM agents are vulnerable to prompt injection through malicious tool outputs and retrieved documents. Regex denylists are enumerable — an attacker can iterate every known rule.</p>
+          </div>
+          <div>
+            <span class="brief-label">System</span>
+            <p>Four-layer signal pipeline: heuristic denylist → lightweight hashed feature vectors for semantic drift (no external model) → capability gating (taint-aware tool allowlisting) → instruction density scoring. Self-play red-team generates 500+ adaptive attacks.</p>
+          </div>
+          <div>
+            <span class="brief-label">Proof</span>
+            <p>100% → 16% ASR on local eval suite of 4,200+ cases — baseline is an unfiltered passthrough, not a production system. 783 tests. FPR held at 8.3% via FPR-constrained threshold sweep.</p>
+          </div>
+        </div>
+
+        <div class="proj-section">
+          <h4>What I Built</h4>
+          <p>A four-layer signal pipeline fused into a single calibrated policy score:</p>
+          <ul>
+            <li>Heuristic denylist (fast path — regex + keyword)</li>
+            <li>Semantic drift detector using lightweight hashed feature vectors — catches paraphrased attacks the regex layer cannot see (no external model required, sub-ms)</li>
+            <li>Capability gating — taint-aware tool allowlisting based on document trust level</li>
+            <li>Document instruction density scoring — flags embedded adversarial instructions</li>
+          </ul>
+          <p style="margin-top:var(--s3)">Self-play red-team pipeline generates 500+ adaptive attacks across 7 classes via a 3-round mutation loop. Threshold calibration via FPR-constrained sweep holds false positives to 8.3%. Tested against real MCP servers: filesystem, git, and sqlite.</p>
+        </div>
+
+        <div class="proj-section">
+          <h4>Results</h4>
+          <div class="proj-metrics">
+            <span class="proj-metric">
+              4,200+ evaluation cases
+              <span class="metric-note">local eval suite</span>
+            </span>
+            <span class="proj-metric">
+              100% → 16% ASR
+              <span class="metric-note">vs. no-filter baseline</span>
+            </span>
+            <span class="proj-metric">
+              p95 latency &lt; 1 ms
+              <span class="metric-note">policy check</span>
+            </span>
+            <span class="proj-metric">783 tests</span>
+            <span class="proj-metric">FPR held at 8.3%</span>
+          </div>
+          <p style="margin-top:var(--s4)">Ablation: removing the semantic layer has the same effect as removing regex (+4pp ASR each). The two layers catch completely different attack classes — neither is redundant.</p>
+        </div>
+
+        <div class="proj-section">
+          <h4>Stack</h4>
+          <div class="proj-stack-chips">
+            <span class="proj-stack-chip">Python</span>
+            <span class="proj-stack-chip">FastAPI</span>
+            <span class="proj-stack-chip">MCP Protocol</span>
+            <span class="proj-stack-chip">hashed feature vectors</span>
+            <span class="proj-stack-chip">NumPy</span>
+            <span class="proj-stack-chip">pytest (783 tests)</span>
+          </div>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/mansoor-mamnoon/prompt-injection-lab" class="btn btn-primary" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://github.com/mansoor-mamnoon/prompt-injection-lab#readme" class="btn" target="_blank" rel="noopener">Design Notes ↗</a>
+        </div>
+      </div>
+
+      <!-- Limit Order Book -->
+      <div class="proj-panel" id="orderbook" role="region" aria-label="Limit Order Book project detail">
+        <h2 class="proj-panel-title">Limit Order Book + Matching Engine</h2>
+        <p class="proj-panel-summary">C++20 exchange-style matching engine for high-frequency trading (HFT) and quantitative systems — sustaining 20M+ messages/sec at sub-µs latency.</p>
+
+        <div class="project-brief">
+          <div>
+            <span class="brief-label">Problem</span>
+            <p>Exchange matching engines and high-frequency trading (HFT) systems require deterministic order matching at throughputs and latencies that commodity implementations cannot reach. Memory allocation, branch misprediction, and cache misses are the bottlenecks — not algorithm complexity.</p>
+          </div>
+          <div>
+            <span class="brief-label">System</span>
+            <p>Price-time priority matching engine with slab allocators, branch elimination, cache-hot pointer layouts, and CPU pinning. Full analytics: VWAP, TWAP, Iceberg, POV with reproducible PnL. Binance US market data connector and TAQ replay.</p>
+          </div>
+          <div>
+            <span class="brief-label">Proof</span>
+            <p>20.7M msgs/sec on a synthetic local benchmark (single-threaded, compiler-optimized). p50 = 0.04 µs, p99 ≈ 1 µs. Hardware spec and benchmark harness in the GitHub README. Crash recovery via snapshot/resume — mid-file restart produces identical fills.</p>
+          </div>
+        </div>
+
+        <div class="proj-section">
+          <h4>What I Built</h4>
+          <ul>
+            <li><strong>Matching Engine:</strong> Price-time priority with FIFO fairness. Limit, market, IOC, FOK, POST_ONLY, and STP order types with deterministic fill semantics.</li>
+            <li><strong>Performance Engineering:</strong> Slab allocators eliminate heap fragmentation, branch elimination reduces misprediction cost, cache-hot pointer layouts maximize L1 hit rate, CPU pinning eliminates NUMA penalties.</li>
+            <li><strong>Market Data:</strong> WebSocket + REST connector for Binance US feeds, normalization to Parquet. Replay engine regenerates TAQ-style quotes and trades at 1×–100× speed.</li>
+            <li><strong>Analytics:</strong> Spread, imbalance, depth, volatility, impact curves. VWAP, TWAP, POV, and Iceberg execution strategies with reproducible PnL.</li>
+            <li><strong>Crash Recovery:</strong> Snapshot/resume proof — mid-file restart produces identical fills and PnL as single-pass replay.</li>
+            <li><strong>Tooling:</strong> Streamlit dashboard for real-time replay, Docker + GitHub Actions CI, one-command HTML report generator.</li>
+          </ul>
+        </div>
+
+        <div class="proj-section">
+          <h4>Results</h4>
+          <div class="proj-metrics">
+            <span class="proj-metric">
+              20.7M msgs/sec
+              <span class="metric-note">local benchmark</span>
+            </span>
+            <span class="proj-metric">
+              p50 = 0.04 µs
+              <span class="metric-note">single-threaded</span>
+            </span>
+            <span class="proj-metric">
+              p99 ≈ 1 µs
+              <span class="metric-note">1M event replay</span>
+            </span>
+            <span class="proj-metric">Deterministic replay</span>
+            <span class="proj-metric">Full analytics suite</span>
+          </div>
+          <p class="metric-note" style="margin-top:var(--s4);font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);line-height:1.6;">Synthetic local benchmark — single-threaded, compiler-optimized build. Hardware spec and benchmark harness in the <a href="https://github.com/mansoor-mamnoon/limit-order-book#readme" target="_blank" rel="noopener" style="color:var(--metric);">GitHub README</a>.</p>
+        </div>
+
+        <div class="proj-section">
+          <h4>Stack</h4>
+          <div class="proj-stack-chips">
+            <span class="proj-stack-chip">C++20</span>
+            <span class="proj-stack-chip">Python</span>
+            <span class="proj-stack-chip">FastAPI</span>
+            <span class="proj-stack-chip">WebSocket</span>
+            <span class="proj-stack-chip">pandas / NumPy</span>
+            <span class="proj-stack-chip">Docker</span>
+            <span class="proj-stack-chip">Streamlit</span>
+            <span class="proj-stack-chip">GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/mansoor-mamnoon/limit-order-book" class="btn btn-primary" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://github.com/mansoor-mamnoon/limit-order-book#readme" class="btn" target="_blank" rel="noopener">Design Notes ↗</a>
+        </div>
+      </div>
+
+      <!-- Edge Deployer -->
+      <div class="proj-panel" id="edgedeployer" role="region" aria-label="Edge Deployer project detail">
+        <h2 class="proj-panel-title">Edge Deployer — Serverless IDE</h2>
+        <p class="proj-panel-summary">Zero-config desktop IDE for deploying serverless APIs to Cloudflare Workers, AWS Lambda@Edge, and Vercel.</p>
+
+        <div class="project-brief">
+          <div>
+            <span class="brief-label">Problem</span>
+            <p>Deploying serverless functions across providers requires context-switching between dashboards, CLIs, and config formats. There's no single interface with live feedback, history, and IaC.</p>
+          </div>
+          <div>
+            <span class="brief-label">System</span>
+            <p>Electron desktop app: Monaco editor, multi-cloud deploy logic, Pulumi IaC per provider, real-time log streaming, deployment history, and per-provider ENV variable injection.</p>
+          </div>
+          <div>
+            <span class="brief-label">Proof</span>
+            <p>Cloudflare Workers, AWS Lambda@Edge, and Vercel deployed from one interface. Pulumi applies infra dynamically. Code bundling + ZIP export pipeline for Lambda packaging.</p>
+          </div>
+        </div>
+
+        <div class="proj-section">
+          <h4>What I Built</h4>
+          <ul>
+            <li>Monaco-based code editor with language server integration for TypeScript/JavaScript</li>
+            <li>Multi-cloud deploy logic: Cloudflare Workers API, AWS CLI scaffolding, Vercel REST API</li>
+            <li>Pulumi IaC: generates and applies infra config per provider dynamically</li>
+            <li>Real-time deploy logs streamed back to the IDE terminal</li>
+            <li>Deployment history: local cache of last 5 deploys with timestamp, provider, and status</li>
+            <li>Environment configuration panel: per-provider ENV vars, dynamic injection at build time</li>
+            <li>Code bundling + ZIP export pipeline for Lambda packaging</li>
+          </ul>
+        </div>
+
+        <div class="proj-section">
+          <h4>Stack</h4>
+          <div class="proj-stack-chips">
+            <span class="proj-stack-chip">Electron</span>
+            <span class="proj-stack-chip">React</span>
+            <span class="proj-stack-chip">TypeScript</span>
+            <span class="proj-stack-chip">Monaco Editor</span>
+            <span class="proj-stack-chip">Pulumi</span>
+            <span class="proj-stack-chip">Cloudflare API</span>
+            <span class="proj-stack-chip">AWS CLI</span>
+            <span class="proj-stack-chip">Vercel REST API</span>
+          </div>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/mansoor-mamnoon/edge-deployer" class="btn btn-primary" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://github.com/mansoor-mamnoon/edge-deployer#readme" class="btn" target="_blank" rel="noopener">Design Notes ↗</a>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Mansoor Mamnoon</p>
+    <nav class="footer-links">
+      <a href="notes.html" class="footer-link">Notes</a>
+      <a href="https://github.com/mansoor-mamnoon" class="footer-link" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/mansoormamnoon" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:mansoormmamnoon@berkeley.edu" class="footer-link">Email</a>
+      <a href="assets/Mansoor_Mamnoon_Resume.pdf" class="footer-link" target="_blank" rel="noopener">Resume ↓</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="main.js"></script>
+</body>
+</html>

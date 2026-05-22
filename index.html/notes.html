@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering Notes — Mansoor Mamnoon | Distributed Systems, Databases, Compilers</title>
+  <meta name="description" content="Engineering notebook by Mansoor Mamnoon — short technical notes on distributed systems, databases, compilers, networking, and secure AI tooling. UC Berkeley EECS Honors, Class of 2027.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title"       content="Engineering Notes — Mansoor Mamnoon">
+  <meta property="og:description" content="Short technical notes on distributed systems, databases, compilers, networking, and secure AI tooling by Mansoor Mamnoon (Berkeley EECS).">
+  <meta property="og:image"       content="https://mansoor-mamnoon.github.io/personal-website/preview.webp">
+  <meta property="og:url"         content="https://mansoor-mamnoon.github.io/personal-website/notes.html">
+  <meta property="og:type"        content="website">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Engineering Notes — Mansoor Mamnoon">
+  <meta name="twitter:description" content="Technical notes on distributed systems, databases, compilers, and networking by Mansoor Mamnoon (Berkeley EECS, Databricks intern).">
+  <meta name="twitter:image"       content="https://mansoor-mamnoon.github.io/personal-website/preview.webp">
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/personal-website/notes.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div id="cmd-overlay" class="cmd-overlay" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmd-box">
+    <div class="cmd-input-wrap">
+      <span class="cmd-prompt" aria-hidden="true">›</span>
+      <input id="cmd-input" type="text" placeholder="Type a command..." autocomplete="off" spellcheck="false" aria-label="Command search">
+    </div>
+    <ul id="cmd-list" class="cmd-list" role="listbox"></ul>
+    <div class="cmd-footer" aria-hidden="true">
+      <span class="cmd-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span class="cmd-hint"><kbd>↵</kbd> select</span>
+      <span class="cmd-hint"><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mansoor Mamnoon — Home">MM</a>
+      <div class="nav-links">
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="notes.html" class="nav-link active">Notes</a>
+        <a href="about.html" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="resume.html" class="nav-resume">Resume</a>
+        <button id="cmd-hint" class="nav-icon-btn nav-cmd-subtle" title="Command palette (⌘K)">⌘K</button>
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme">◐</button>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">☰</button>
+    </div>
+  </nav>
+  <div id="nav-drawer" class="nav-drawer">
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="experience.html" class="nav-link">Experience</a>
+    <a href="notes.html" class="nav-link active">Notes</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="resume.html" class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<main>
+  <div class="page">
+
+    <div style="padding: var(--s10) 0 var(--s6); border-bottom: 1px solid var(--border);">
+      <h1 style="font-size:1.8rem; margin-bottom:var(--s3)">Engineering Notes</h1>
+      <p style="font-size:0.9rem; color:var(--muted); max-width:520px; line-height:1.65">Short engineering notes on the systems ideas I am actively learning and building with. Concise by design.</p>
+    </div>
+
+    <div class="notes-filter" role="group" aria-label="Filter notes by category">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="systems">Systems</button>
+      <button class="filter-btn" data-filter="databases">Databases</button>
+      <button class="filter-btn" data-filter="compilers">Compilers</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+      <button class="filter-btn" data-filter="networking">Networking</button>
+    </div>
+
+    <div role="list" aria-label="Notes">
+
+      <article class="note-item reveal" data-category="networking" role="listitem">
+        <details>
+          <summary>
+            <time class="note-date" datetime="2026-05">2026-05</time>
+            <span class="note-title">Envoy's xDS control plane: how config reaches the data plane</span>
+            <span class="badge badge-tools note-tag">networking</span>
+            <span class="note-toggle" aria-hidden="true">›</span>
+          </summary>
+          <div class="note-body">
+            <p>xDS (discovery services) is the API by which a control plane pushes configuration to data-plane Envoy instances. The key insight: Envoy doesn't pull config on a schedule — it opens a long-lived gRPC stream to the management server and receives incremental updates. This is the Aggregated Discovery Service (ADS) pattern.</p>
+            <p>Resource types: <code>LDS</code> (listeners), <code>RDS</code> (routes), <code>CDS</code> (clusters), <code>EDS</code> (endpoints). The dependency order matters: LDS references RDS, RDS references CDS, CDS references EDS. ADS serializes updates so Envoy doesn't get a route pointing to a cluster it hasn't heard about yet.</p>
+            <p>Relevant for: service mesh control planes (Istio Pilot, Linkerd), Databricks Traffic Platform, any large-scale proxy fleet management.</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="note-item reveal" data-category="security" role="listitem">
+        <details>
+          <summary>
+            <time class="note-date" datetime="2026-04">2026-04</time>
+            <span class="note-title">Why taint tracking applies to LLM tool calls</span>
+            <span class="badge badge-security note-tag">security</span>
+            <span class="note-toggle" aria-hidden="true">›</span>
+          </summary>
+          <div class="note-body">
+            <p>Taint analysis, a classical program analysis technique, tracks whether untrusted data can flow to sensitive sinks without being sanitized. The same model applies cleanly to tool-using LLM agents.</p>
+            <p>In classic taint analysis: source (user input) → propagation (through program logic) → sink (SQL query, shell exec). The question is whether untrusted source data reaches a dangerous sink unsanitized.</p>
+            <p>In LLM tool-use: source (untrusted document retrieved by a tool) → propagation (LLM processes and reasons over it) → sink (another tool call, e.g., writing a file, running code, exfiltrating memory). The attack is prompt injection — malicious instructions embedded in retrieved documents hijack the agent's next action.</p>
+            <p>LLMFirewall implements taint tracking by assigning a trust level to each document the agent reads, then checking whether high-capability tool calls (file writes, shell execution) are being triggered with arguments that seem to contain injected instructions rather than agent-generated content.</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="note-item reveal" data-category="systems" role="listitem">
+        <details>
+          <summary>
+            <time class="note-date" datetime="2026-02">2026-02</time>
+            <span class="note-title">SPSC queues: why the lock-free ring buffer works</span>
+            <span class="badge badge-perf note-tag">systems</span>
+            <span class="note-toggle" aria-hidden="true">›</span>
+          </summary>
+          <div class="note-body">
+            <p>A single-producer single-consumer (SPSC) ring buffer is the canonical lock-free queue for high-throughput pipelines. The core insight: if only one thread writes the head pointer and only one thread reads the tail pointer, you never need a lock — you only need to ensure the writes are visible in the right order.</p>
+            <p>Implementation: circular array of capacity N. Producer writes to <code>buf[head % N]</code>, then increments <code>head</code> with a release store. Consumer reads <code>buf[tail % N]</code>, checks that <code>head != tail</code> with an acquire load, then increments <code>tail</code> with a release store. The acquire/release pairing ensures the data write is visible before the index update, and the index update is visible before the consumer reads.</p>
+            <p>Why it works for LOB: market data events flow from the network receive thread to the matching engine thread. SPSC eliminates all lock contention on the critical path. Cache line alignment of head and tail prevents false sharing — the two threads never fight over the same cache line.</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="note-item reveal" data-category="databases" role="listitem">
+        <details>
+          <summary>
+            <time class="note-date" datetime="2026-04">2026-04</time>
+            <span class="note-title">ARIES recovery in one page</span>
+            <span class="badge badge-security note-tag">databases</span>
+            <span class="note-toggle" aria-hidden="true">›</span>
+          </summary>
+          <div class="note-body">
+            <p>ARIES (Algorithm for Recovery and Isolation Exploiting Semantics) is the standard WAL-based recovery algorithm used by most commercial databases. Three phases on restart:</p>
+            <p><strong>Analysis:</strong> Scan log forward from the last checkpoint. Reconstruct the dirty page table (pages modified but not yet written to disk) and the transaction table (active transactions at crash time). This tells you what needs to be redone and what transactions were in-flight.</p>
+            <p><strong>Redo:</strong> Replay history forward from the earliest LSN in the dirty page table. Every logged action is redone, even from transactions that will later be aborted. This restores the database to its exact pre-crash state.</p>
+            <p><strong>Undo:</strong> Roll back all transactions that were active at crash time (loser transactions). Undo is logged (CLRs — compensation log records) so undo itself is idempotent on a second crash.</p>
+            <p>Key invariant: <em>write-ahead logging</em> — the log record for a page modification must hit disk before the modified page does. This is what makes redo correct after a crash mid-write.</p>
+          </div>
+        </details>
+      </article>
+
+      <article class="note-item reveal" data-category="compilers" role="listitem">
+        <details>
+          <summary>
+            <time class="note-date" datetime="2026-03">2026-03</time>
+            <span class="note-title">Why short-circuit codegen is easy to get wrong</span>
+            <span class="badge badge-tools note-tag">compilers</span>
+            <span class="note-toggle" aria-hidden="true">›</span>
+          </summary>
+          <div class="note-body">
+            <p>Short-circuit evaluation for <code>&&</code> and <code>||</code> is simple to implement naively but breaks down in the presence of nested conditionals and control flow merges.</p>
+            <p>The naive approach: emit a conditional branch at each <code>&&</code> / <code>||</code> operand, jumping to a "false" or "true" label. The problem is that multiple branches need to merge to a single result before the outer expression can continue, and that merge point gets confused when the same variable appears in multiple sub-expressions with different liveness states.</p>
+            <p>The clean solution is to compile boolean expressions with an explicit "destination" parameter — either a "true branch" label or a "false branch" label — and thread this through the recursion. Each subexpression knows where to jump on success and where to jump on failure, avoiding the need for a merge point entirely. This is the "backpatching" or "destination-passing" style used in most production compilers.</p>
+            <p>Covered in CS 164 (Compilers) at Berkeley. Easy to see why it matters when you hit your first spec test for nested <code>&&</code> inside an <code>if</code> inside another <code>&&</code>.</p>
+          </div>
+        </details>
+      </article>
+
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Mansoor Mamnoon</p>
+    <nav class="footer-links">
+      <a href="https://github.com/mansoor-mamnoon" class="footer-link" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/mansoormamnoon" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:mansoormmamnoon@berkeley.edu" class="footer-link">Email</a>
+      <a href="resume.html" class="footer-link">Resume</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="main.js"></script>
+</body>
+</html>
