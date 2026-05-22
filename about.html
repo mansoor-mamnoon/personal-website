@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Mansoor Mamnoon — Berkeley EECS Honors | Systems Engineer</title>
+  <meta name="description" content="Mansoor Mamnoon is a UC Berkeley EECS Honors student (Class of 2027) and incoming Databricks SWE Intern targeting new grad roles in distributed systems, infrastructure, networking, and secure AI tooling.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title"       content="About Mansoor Mamnoon — Berkeley EECS Honors | Systems Engineer">
+  <meta property="og:description" content="UC Berkeley EECS Honors, Class of 2027. Incoming Databricks SWE Intern. Former Amazon SDE Intern. Targeting new grad roles in distributed systems and infrastructure.">
+  <meta property="og:image"       content="https://mansoor-mamnoon.github.io/preview.webp">
+  <meta property="og:url"         content="https://mansoor-mamnoon.github.io/about.html">
+  <meta property="og:type"        content="website">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="About Mansoor Mamnoon — Berkeley EECS | Systems Engineer">
+  <meta name="twitter:description" content="UC Berkeley EECS Honors, Class of 2027. Incoming Databricks intern. Former Amazon SDE Intern. Distributed systems, infrastructure, secure AI tooling.">
+  <meta name="twitter:image"       content="https://mansoor-mamnoon.github.io/preview.webp">
+  <link rel="canonical" href="https://mansoor-mamnoon.github.io/about.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Geist:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>(function(){var t=localStorage.getItem('theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6BWCTKVQ3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E6BWCTKVQ3');
+  </script>
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div id="cmd-overlay" class="cmd-overlay" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmd-box">
+    <div class="cmd-input-wrap">
+      <span class="cmd-prompt" aria-hidden="true">›</span>
+      <input id="cmd-input" type="text" placeholder="Type a command..." autocomplete="off" spellcheck="false" aria-label="Command search">
+    </div>
+    <ul id="cmd-list" class="cmd-list" role="listbox"></ul>
+    <div class="cmd-footer" aria-hidden="true">
+      <span class="cmd-hint"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span class="cmd-hint"><kbd>↵</kbd> select</span>
+      <span class="cmd-hint"><kbd>esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Mansoor Mamnoon — Home">Mansoor Mamnoon</a>
+      <div class="nav-links">
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="experience.html" class="nav-link">Experience</a>
+        <a href="notes.html" class="nav-link">Notes</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="resume.html" class="nav-resume">Resume</a>
+        <button id="cmd-hint" class="nav-icon-btn nav-cmd-subtle" title="Command palette (⌘K)">⌘K</button>
+        <button id="theme-toggle" class="nav-icon-btn" aria-label="Toggle theme">◐</button>
+      </div>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">☰</button>
+    </div>
+  </nav>
+  <div id="nav-drawer" class="nav-drawer">
+    <a href="projects.html" class="nav-link">Projects</a>
+    <a href="experience.html" class="nav-link">Experience</a>
+    <a href="notes.html" class="nav-link">Notes</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="resume.html" class="nav-resume">Resume</a>
+  </div>
+</header>
+
+<main>
+  <h1 class="sr-only">About Mansoor Mamnoon</h1>
+  <div class="page">
+
+    <!-- ── Header ──────────────────────────────────────────────── -->
+    <div class="about-header">
+      <img
+        src="assets/Mansoor_Mamnoon_Headshot.jpeg"
+        alt="Mansoor Mamnoon"
+        class="about-photo"
+        width="96" height="96"
+        loading="eager"
+        onerror="this.style.display='none'"
+      >
+      <div>
+        <h2 class="about-name">Mansoor Mamnoon</h2>
+        <p class="about-sub">Berkeley EECS Honors · Class of 2027</p>
+      </div>
+    </div>
+
+    <!-- ── Story ───────────────────────────────────────────────── -->
+    <div class="about-story">
+
+      <p>Before I wrote code, I spent years on UKMT math competitions — evenings on problems where the only tools are attention and patience, and the only reward is the feeling of the solution clicking into place. That habit of looking for structure under a complicated surface is still how I approach engineering. When I arrived at Berkeley and took my first systems course, I wasn't learning something entirely new: I was learning that the things I already found beautiful — invariants, state machines, careful reasoning about what can go wrong — had been hiding inside computer architecture the whole time.</p>
+
+      <p>I gravitate toward the layer of software where decisions are irreversible. A dropped packet, a corrupt log record, a race condition on a hot path — these are not bugs you fix with a unit test and a redeploy. They require understanding the machine at every level: the cache hierarchy, the memory model, the protocol, the scheduler. That's what drew me to OS 162, Compilers 164, and DB 186, and to building a C++20 matching engine from scratch with slab allocators and CPU pinning rather than reaching for a library. The interesting engineering is in the gap between what the abstraction promises and what the hardware actually does.</p>
+
+      <p>I became a CS 61C Senior Mentor and Content Lead because teaching forces honesty. You can bluff through an interview question about cache associativity; you cannot bluff through writing a worksheet for 300 students who will immediately notice if your explanation of false sharing is wrong. Writing the CS 61C worksheet on memory hierarchy and pipelining taught me things about those topics that three semesters of coursework hadn't. The notes page on this site is mostly me doing the same thing privately — writing a clear sentence about something until the sentence stops being wrong.</p>
+
+      <p>This summer I'm joining <strong>Databricks' Traffic Platform</strong> team, working on the networking, security, and performance layer for large-scale distributed infrastructure in Go and Rust. Before that I spent a summer at <strong>Amazon</strong> building a real-time IoT platform. The common thread in the work I find most interesting: systems where correctness and performance are in tension, and getting both right requires understanding what's actually happening below the interface.</p>
+
+      <p>Outside of engineering, I play cricket and tennis, follow both poorly, and have strong opinions about RISC-V and moderate opinions about everything else. I think the most underrated quality in an engineer is being genuinely useful to the people around you — clear in code review, honest about what you don't know, good at making the person next to you faster. That's what I'm trying to build toward.</p>
+
+    </div>
+
+    <!-- ── Quick Facts ─────────────────────────────────────────── -->
+    <div class="about-facts-grid">
+      <div class="about-fact">
+        <span class="about-fact-label">currently</span>
+        <span class="about-fact-value">Berkeley EECS Honors, GPA 3.984</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">this summer</span>
+        <span class="about-fact-value">Databricks Traffic Platform, Bellevue WA</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">previously</span>
+        <span class="about-fact-value">Amazon SDE Intern · CS 61C Senior Mentor · Data 8 Tutor</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">background</span>
+        <span class="about-fact-value"> UKMT British Math Olympiad Qualifier</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">outside work</span>
+        <span class="about-fact-value">Cricket, tennis, reading about distributed systems for fun</span>
+      </div>
+      <div class="about-fact">
+        <span class="about-fact-label">looking for</span>
+        <span class="about-fact-value">2027 new grad — distributed systems, infra, low-latency, compilers</span>
+      </div>
+    </div>
+
+    <!-- ── Contact ─────────────────────────────────────────────── -->
+    <div class="about-contact">
+      <p class="about-contact-note">If you're working on something in distributed systems, infrastructure, or secure AI tooling and want to talk — I'm always up for it.</p>
+      <div class="btn-group">
+        <a href="mailto:mansoormmamnoon@berkeley.edu" class="btn btn-primary">Email me →</a>
+        <a href="https://www.linkedin.com/in/mansoormamnoon/" class="btn" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="resume.html" class="btn">Resume →</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-copy">© 2026 Mansoor Mamnoon</p>
+    <nav class="footer-links">
+      <a href="notes.html" class="footer-link">Notes</a>
+      <a href="https://github.com/mansoor-mamnoon" class="footer-link" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/mansoormamnoon" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:mansoormmamnoon@berkeley.edu" class="footer-link">Email</a>
+      <a href="assets/Mansoor_Mamnoon_Resume.pdf" class="footer-link" target="_blank" rel="noopener">Resume ↓</a>
+    </nav>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="main.js"></script>
+</body>
+</html>
