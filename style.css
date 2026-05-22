@@ -108,7 +108,7 @@
    BASE
    ============================================================ */
 @layer base {
-  html { background: var(--bg); scroll-behavior: smooth; }
+  html { background: var(--bg); scroll-behavior: smooth; overflow-x: clip; }
 
   body {
     font-family: var(--font-sans);
@@ -740,14 +740,17 @@
   @media (max-width: 700px) {
     .routes-head { display: none; }
     .route-row {
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr 1.5rem;
       grid-template-rows: auto auto;
-      gap: var(--s1) var(--s3);
+      gap: var(--s1) var(--s2);
+      padding: 0.75rem 0;
     }
     .route-path   { grid-column: 1; grid-row: 1; }
-    .route-signal { grid-column: 1; grid-row: 2; font-size: 0.7rem; }
+    .route-row > span:nth-child(2) { display: none; }
+    .route-signal { grid-column: 1; grid-row: 2; font-size: 0.72rem; }
     .route-tech   { display: none; }
-    .route-arrow  { grid-column: 2; grid-row: 1; opacity: 1; }
+    .route-arrow  { grid-column: 2; grid-row: 1 / span 2; opacity: 1; align-self: center; }
+    .route-row:hover, .route-row:focus-visible { padding-left: var(--s2); }
   }
 
   /* ── Experience Bullets ─────────────────────────────────── */
@@ -1608,13 +1611,28 @@
   }
 
   @media print {
+    @page { margin: 1.5cm; size: A4 portrait; }
     .nav, .footer, #scroll-progress, #cmd-overlay, #toast { display: none !important; }
-    body { background: #fff; color: #111; font-size: 0.85rem; }
-    body::before { display: none; }
-    .resume-page { max-width: 100%; box-shadow: none; border: none; padding: 0; }
-    .resume-header { padding-top: 0; }
-    .btn { display: none; }
-    a[href]::after { content: ' (' attr(href) ')'; font-size: 0.7rem; color: #666; }
+    body { background: #fff !important; color: #111 !important; font-size: 0.85rem; }
+    body::before { display: none !important; }
+    .page { padding: 0 !important; }
+    .resume-page { max-width: 100%; box-shadow: none !important; border: none !important; padding: 0; background: #fff !important; }
+    .resume-header { padding-top: 0; border-color: #ddd !important; }
+    .resume-name { color: #111 !important; }
+    .resume-tagline { color: #555 !important; }
+    .resume-contact-link { color: #333 !important; }
+    .resume-section-title { color: #666 !important; border-color: #ddd !important; }
+    .resume-section { border-color: #ddd !important; page-break-inside: avoid; }
+    .resume-org { color: #111 !important; }
+    .resume-role { color: #111 !important; }
+    .resume-date { color: #555 !important; }
+    .resume-desc, .resume-bullets li { color: #333 !important; }
+    .resume-tech { color: #666 !important; }
+    .resume-row-head { border: none !important; }
+    .resume-row { border-color: #eee !important; }
+    .badge { display: none !important; }
+    .btn { display: none !important; }
+    a { color: inherit !important; text-decoration: none !important; }
   }
 
   /* ── Command Palette ──────────────────────────────────────── */
@@ -1748,6 +1766,94 @@
   }
 
   .exp-section:last-of-type { border-bottom: none; }
+
+  /* ── headline-metric-pill (homepage metrics) ─────────────── */
+  .headline-metric-pill { display: inline-block; white-space: normal; word-break: break-word; }
+
+  /* ── Responsive: Tablet ≤900px ───────────────────────────── */
+  @media (max-width: 900px) {
+    .work-detail { padding: var(--s8) var(--s8); }
+  }
+
+  /* ── Responsive: Mobile ≤700px ──────────────────────────── */
+  @media (max-width: 700px) {
+    /* Nav drawer tap targets */
+    .nav-drawer .nav-link {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 0;
+    }
+    .nav-drawer .nav-resume {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+    }
+    /* Buttons: 44px min tap target */
+    .btn { min-height: 44px; }
+    .filter-btn { min-height: 40px; display: inline-flex; align-items: center; }
+    /* Command palette: full-width with padding on mobile */
+    .cmd-overlay { padding: var(--s5) var(--s4) 0; align-items: flex-start; padding-top: 10vh; }
+    .cmd-box { max-width: 100%; }
+  }
+
+  /* ── Responsive: Mobile ≤600px ──────────────────────────── */
+  @media (max-width: 600px) {
+    .page { padding: var(--s8) var(--content-px) var(--s16); }
+    /* Identity section */
+    .identity { padding: var(--s8) 0 var(--s6); }
+    .identity-role { font-size: 0.76rem; line-height: 1.55; }
+    .identity-proof p { font-size: 0.88rem; }
+    /* Scan grid: full-width chips on small screens */
+    .scan-grid { gap: var(--s2); }
+    .scan-grid span { width: 100%; }
+    /* System records */
+    .system-stack { margin-left: 0; display: block; margin-top: var(--s2); width: 100%; }
+    .system-meta { gap: var(--s2); }
+    .system-desc { font-size: 0.86rem; }
+    /* Resume page */
+    .resume-page { padding: var(--s5) var(--s4); margin-top: var(--s4); }
+    .resume-header { flex-direction: column; gap: var(--s4); align-items: flex-start; }
+    .resume-actions { align-self: stretch; }
+    .resume-actions .btn { width: 100%; justify-content: center; }
+    /* Notes filter: horizontal scroll on mobile */
+    .notes-filter { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: var(--s2); }
+    .notes-filter::-webkit-scrollbar { display: none; }
+    /* Profile strip: tighten spacing */
+    .profile-strip { gap: var(--s2) var(--s4); }
+    /* Project sections */
+    .proj-panel-title { font-size: 1.25rem; }
+    .project-brief { gap: var(--s2); }
+    /* Btn group: wrap naturally */
+    .btn-group { gap: var(--s2); }
+  }
+
+  /* ── Responsive: Mobile ≤480px ──────────────────────────── */
+  @media (max-width: 480px) {
+    .identity-name { font-size: clamp(1.6rem, 8vw, 2.4rem); }
+    .headline-metrics { flex-direction: column; }
+    .headline-metric-pill { font-size: 0.7rem !important; padding: 0.25rem 0.6rem !important; }
+    /* Resume: full-width contact links */
+    .resume-contact { gap: var(--s2); }
+    .resume-contact-link { font-size: 0.67rem; }
+    /* Exp entry: already stacks at 600px, just tighten */
+    .exp-role { font-size: 0.84rem; }
+    .exp-desc, .exp-bullets li { font-size: 0.82rem; }
+  }
+
+  /* ── Reduced Motion ──────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .identity-meta::before { animation: none !important; }
+    #scroll-progress { animation: none !important; }
+    .route-preview { transition: none !important; }
+  }
 
 }
 

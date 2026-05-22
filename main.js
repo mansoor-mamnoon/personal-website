@@ -102,7 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     projNavItems.forEach(btn => {
-      btn.addEventListener('click', () => selectProject(btn.dataset.project));
+      btn.addEventListener('click', () => {
+        selectProject(btn.dataset.project);
+        if (window.innerWidth <= 700) {
+          const detail = document.querySelector('.work-detail');
+          if (detail) detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
 
     // Activate first by default
