@@ -1,16 +1,14 @@
-# mansoor-mamnoon.github.io/personal-website
+# mansoor-mamnoon.github.io
 
 Personal portfolio for **Mansoor Mamnoon** — UC Berkeley EECS Honors, Class of 2027.
 
-Incoming SWE Intern at **Databricks Traffic Platform** (Go, Rust). Previously **Amazon SDE Intern** (TypeScript, AWS). Targeting 2027 new grad roles in distributed systems, infrastructure, low-latency systems, and secure AI tooling.
-
-**[Live site](https://mansoor-mamnoon.github.io/personal-website/) · [Resume](https://mansoor-mamnoon.github.io/personal-website/assets/Mansoor_Mamnoon_Resume.pdf) · [LinkedIn](https://linkedin.com/in/mansoormamnoon)**
+**[Live site](https://mansoor-mamnoon.github.io/) · [Resume](https://mansoor-mamnoon.github.io/resume.html) · [LinkedIn](https://linkedin.com/in/mansoormamnoon)**
 
 ---
 
-## Who this is for
+## Stack
 
-If you are a recruiter or hiring manager at a company building serious infrastructure: this site exists to answer one question quickly: *can this person ship?*
+No framework. No build step. No npm. Six HTML files, one CSS file (`style.css`, ~1900 lines), one JS file (`main.js`, ~260 lines), and static assets. The entire site deploys by pushing files to GitHub Pages.
 
 ---
 
@@ -18,87 +16,67 @@ If you are a recruiter or hiring manager at a company building serious infrastru
 
 | Page | Purpose |
 |---|---|
-| `/` | Identity, credential scan, headline metrics, highlights table, featured systems |
-| `/projects.html` | Deep-dive on LLMFirewall, C++20 Matching Engine, and Edge Deployer |
-| `/experience.html` | Full work history: Databricks, Amazon, CS 61C teaching |
-| `/notes.html` | Engineering notebook — distributed systems, databases, compilers, networking |
-| `/about.html` | Bio and target roles |
-| `/resume.html` | Inline HTML resume + PDF download |
+| `index.html` | Identity, credential scan, headline metrics, highlights table, featured projects |
+| `projects.html` | Deep-dives on LLMFirewall, C++20 Matching Engine, Edge Deployer, Offline RL Agent |
+| `experience.html` | Full work history: Databricks, BAIR, Amazon, BLCK UNICRN, CS 61C teaching |
+| `resume.html` | Inline HTML resume with print-optimized layout + PDF download |
+| `about.html` | Engineering background and profile |
+| `notes.html` | Engineering notebook — distributed systems, databases, compilers, networking |
 
 ---
 
-## Site features
+## What makes it different
 
-### Command palette (`⌘K`)
-A keyboard-driven navigation overlay. Typing filters commands in real time; arrow keys and Enter select; Escape closes. Built as a self-contained state machine: a filtered array of command objects, a selected-index cursor, and a render function that regenerates the list on every state change. No library — roughly 80 lines of vanilla JS.
+Most portfolio sites are a Next.js app with Tailwind, a shadcn card grid, and Vercel deployment. This site uses none of that. The interesting part is what the constraints forced.
 
-### Scroll-driven progress bar
-A thin progress bar at the top of every page that fills as you scroll. Implemented entirely in CSS using `animation-timeline: scroll()` — zero JavaScript. This is a relatively recent browser API that maps scroll position directly to an animation's progress timeline without a scroll event listener or `requestAnimationFrame` loop.
+### CSS Cascade Layers — no specificity wars, no `!important`
 
-### Scroll reveal (Intersection Observer)
-Sections below the fold fade and translate into view as they enter the viewport. Uses `IntersectionObserver` with a threshold of `0.08` and a `-32px` root margin so elements animate just before they fully enter view. Once revealed, the observer disconnects from that element — no wasted observations.
+The stylesheet is organized into six named `@layer` declarations: `reset → tokens → base → layout → components → utilities`. Layers have lower specificity than unlayered rules and a defined cascade order, so a utility class always beats a component class by position in the layer list — not by selector weight. This eliminates the entire class of "my styles aren't applying" bugs that make large CSS codebases unmaintainable. The same pattern underlies Tailwind's internals, but here it's explicit and transparent.
 
-### Animated counters
-Numbers like `20M+ msgs/sec` count up from zero when they scroll into view, driven by a second `IntersectionObserver`. The animation uses a cubic ease-out easing function (`1 - (1-t)³`) computed frame by frame via `requestAnimationFrame` rather than a CSS transition, so the counter works on any numeric value regardless of unit.
+### Registered custom properties — animated gradients without JavaScript
 
-### View Transitions API
-Internal page navigation (`.html` links) uses `document.startViewTransition()` where supported. The browser captures the current state, navigates, then cross-fades between old and new screenshots at the compositor level — smooth page transitions without a single-page app framework or client-side router.
+CSS can't interpolate an arbitrary custom property by default because it doesn't know the value type. `@property` registers `--gradient-angle` with `syntax: '<angle>'`, which tells the browser to treat it as an angle and interpolate it smoothly. This enables animating the conic gradient on hover at the compositor level — no `requestAnimationFrame`, no inline style updates, no JavaScript at all.
 
-### Dark / light theme
-Theme is set from `localStorage` in a blocking inline script before the first paint, so there is never a flash of the wrong theme on page load. Switching is instant — a single `data-theme` attribute on `<html>` toggles between two sets of CSS custom property values. The choice persists across sessions.
+### Two-theme token system using `color-mix`
 
-### Projects deep-link routing
-`/projects.html#orderbook` and `/projects.html#llmfirewall` deep-link directly into the correct project panel. On load, `window.location.hash` is read and the matching panel is activated. The same logic handles URL hash changes without a router.
+Every color in the site is a CSS custom property. Switching from dark to light mode is a single `data-theme` attribute toggle on `<html>` — the `[data-theme="light"]` block overrides only the color tokens, and every component that references them updates instantly. The semi-transparent tints (hover states, surface overlays, glow effects) are computed with `color-mix(in srgb, var(--accent) 12%, transparent)` — derived from their parent token at authoring time, so adding a new accent color never requires hunting down hardcoded rgba values.
 
-### Hover-preview panel
-The Highlights table on the homepage shows a detail panel when you hover a row. The panel content is stored as `data-preview-*` attributes on each row — no separate API call, no hidden DOM clones. The preview div uses `aria-live="polite"` so screen readers announce the update.
+### Scroll-driven progress bar — zero JavaScript
 
-### Notes filter
-The Engineering Notes page has a category filter (distributed systems, databases, compilers, networking) that shows/hides notes by `data-category` attribute. No external state management — just a `forEach` over `noteItems` comparing the active filter string.
+The reading progress bar at the top of each page is implemented entirely in CSS using `animation-timeline: scroll()`. This API maps scroll position directly to an animation's progress timeline without any scroll event listener or `requestAnimationFrame` loop. The browser handles it on a separate thread; main thread JS cannot interfere with it.
 
-### Full mobile navigation
-Hamburger menu opens a slide-in drawer. A document-level click listener closes it when clicking outside. `aria-expanded` is kept in sync with the open state.
+### View Transitions API — cross-page animation without a router
 
----
+Internal navigation uses `document.startViewTransition()`. The browser captures the current state, navigates, then cross-fades between the two page screenshots at the compositor level — smooth page transitions without a single-page app, client-side router, or JavaScript navigation interception. Falls back silently to a hard navigation on browsers that don't support it.
 
-## Engineering concepts behind the implementation
+### Command palette in ~80 lines of vanilla JS
 
-### CSS Cascade Layers (`@layer`)
-The stylesheet is organized into six named layers: `reset`, `tokens`, `base`, `layout`, `components`, `utilities`. Layers have lower specificity than unlayered rules and a defined cascade order, so a utility class always wins over a component class without needing `!important` or deeply nested selectors. This is the same pattern used in modern CSS frameworks like Open Props and Tailwind's internals.
+`⌘K` opens a keyboard-driven navigation overlay. The implementation is a self-contained state machine: a `COMMANDS` array of `{ icon, label, action }` objects, a `filtered` array derived by substring match, a `selIdx` cursor, and a `render()` function that regenerates the `<ul>` on every state change. Arrow keys move the cursor; Enter fires the action; Escape closes. No library, no virtual DOM, no debounce.
 
-### Design tokens via CSS custom properties
-All colors, spacing values, typography, and transition durations are declared as custom properties in `:root`. A second `[data-theme="light"]` block overrides only the color tokens — the layout and typography layers see no change. This is a single-source-of-truth token system: change `--accent-warm` once and every button, badge, and border that uses it updates everywhere.
+### Flash-free theme persistence
 
-### `@property` for animatable custom properties
-The conic gradient used in certain hover states requires an animatable `--gradient-angle`. CSS can't transition an arbitrary custom property by default because it doesn't know the type. `@property` declares the property's syntax (`<angle>`), inheritance, and initial value, which tells the browser it's safe to interpolate — enabling smooth gradient rotation with no JavaScript.
+The theme is read from `localStorage` and applied in a blocking inline script that runs before the first paint — before `<link rel="stylesheet">` even parses. This means there is never a flash of the wrong theme on page load, even on repeat visits. It's the same pattern Next.js uses internally; here it's four lines of code.
 
-### `clamp()` for fluid scaling
-Font sizes and layout widths use `clamp(min, preferred, max)` instead of breakpoint-driven overrides. The identity name scales between `2rem` and `3rem` proportionally to viewport width. Container padding scales between `1rem` and `2.5rem`. Fewer media queries, smoother scaling across arbitrary viewport sizes.
+### Deep-link routing via URL hash
 
-### Semantic HTML and ARIA
-The Highlights table uses `role="table"`, `role="row"`, `role="columnheader"`, and `role="cell"` to expose a meaningful table structure to assistive technology despite being built from `<div>` and `<a>` elements. The command palette has `role="dialog"`, `aria-modal`, `aria-owns`, `aria-expanded`, and `aria-selected` on individual options. Every interactive element has a visible or screen-reader-only label. The `sr-only` utility hides H1 headings visually while keeping them in the accessibility tree and in search engine indexes.
+`/projects.html#orderbook` and `/projects.html#llmfirewall` navigate directly into the correct project panel. `window.location.hash` is read on `DOMContentLoaded` and the matching panel is activated. No router, no URL parsing library.
+
+### SVG favicon + full icon set from design tokens
+
+The favicon is a serif "M" in signal orange (`#ff8a4c`) on charcoal plum (`#15111c`) — the exact accent and background tokens from the CSS. The full set includes a crisp `favicon.svg` (scales perfectly at any DPI), a multi-size `favicon.ico` (16, 32, 48, 64px for browser tab and taskbar), and a 180px `apple-touch-icon.png` for iOS home screen pinning. Generated programmatically from the token values so any future brand color change propagates to the favicon with one script run.
 
 ### Schema.org JSON-LD structured data
-The homepage embeds a `Person` schema with `@id`, `alumniOf`, `worksFor`, `sameAs`, and a `knowsAbout` array covering 14 domains. The projects page embeds two `SoftwareSourceCode` schemas for LLMFirewall and the matching engine, with `codeRepository` and `keywords`. This gives search engines a machine-readable entity graph to associate the name with companies, skills, and specific projects — not just keyword soup in body text.
 
-### Performance-conscious asset loading
-The headshot uses `loading="eager"` (it's above the fold and should not be lazy-loaded). All three project logo images use `loading="lazy"`. The theme script runs synchronously before the stylesheet to prevent a flash of unstyled content. Google Fonts is loaded with `display=swap` so text renders in a fallback font immediately rather than waiting for the network.
+The homepage embeds a `Person` schema with `alumniOf`, `worksFor`, `sameAs`, and a `knowsAbout` array. The projects page embeds `SoftwareSourceCode` schemas for LLMFirewall and the matching engine with `codeRepository` and `keywords`. This gives search engines a machine-readable entity graph associating the name with companies, skills, and specific projects — not just keyword frequency in body text.
 
-### Zero framework
-No React, no Vue, no build step, no bundler, no npm. The entire site is six HTML files, one CSS file, one JS file, and static assets. This was a deliberate choice: understanding what a browser actually does — how the cascade resolves, how the event loop schedules `requestAnimationFrame`, when `IntersectionObserver` fires relative to paint — is more useful than knowing a framework's API surface. The constraint also means the site loads instantly and has no dependency update surface.
+### Print CSS for resume
+
+`resume.html` has a dedicated `@media print` block with `@page { margin: 1.5cm; size: A4 portrait; }`. Navigation, footer, toast, and command palette are hidden. All colors are forced to black on white. The layout reflows to a single column with no box shadows or borders. Printing or saving to PDF from the browser produces a clean single-page resume without any layout artifacts.
+
+### Responsive without a framework
+
+The responsive system uses `clamp()` for fluid scaling between breakpoints (font sizes, padding, container widths scale proportionally to viewport width with no step-jumps), explicit `grid-template-columns` and `grid-row` placement at `≤700px` to solve layout conflicts in the route table, and horizontal-scroll tab navigation for the project sidebar on mobile. `overflow-x: clip` on `<html>` prevents horizontal scrollbar bleed from absolutely-positioned elements without breaking `position: sticky`. `@media (prefers-reduced-motion: reduce)` disables all transitions and animations for users who opt out.
 
 ---
-
-## Target roles
-
-Open to 2027 new grad roles in:
-
-- Distributed systems and infrastructure engineering
-- Backend and platform engineering
-- Networking and storage systems
-- Low-latency and HFT-adjacent systems
-- Database and query engine internals
-- Compiler and runtime engineering
-- Secure AI tooling and LLM agent security
 
 **Contact:** mansoormmamnoon@berkeley.edu
