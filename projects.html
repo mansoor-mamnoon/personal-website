@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects — Mansoor Mamnoon | C++ Matching Engine · LLMFirewall · Systems</title>
-  <meta name="description" content="Systems projects by Mansoor Mamnoon (Berkeley EECS): C++20 matching engine at 20.7M msgs/sec and p50 0.04µs; LLMFirewall MCP security proxy reducing attack success rate from 100% to 16% on 4,200+ evals; multi-cloud serverless Edge Deployer.">
+  <meta name="description" content="Systems projects by Mansoor Mamnoon (Berkeley EECS): C++20 matching engine at 20.7M msgs/sec and p50 0.04µs; LLMFirewall MCP security proxy (839 tests, 0% ASR gate ablation, 0.16ms latency); Edge Deployer (6 providers, 85 tests); Offline RL Agent (6 algorithms, safety constraints, OPE).">
   <meta name="robots" content="index, follow">
   <meta property="og:title"       content="Projects — Mansoor Mamnoon | C++ Matching Engine · LLMFirewall">
-  <meta property="og:description" content="C++20 matching engine at 20.7M msgs/sec · LLMFirewall MCP security proxy · Edge Deployer — systems projects by Mansoor Mamnoon (Berkeley EECS, Databricks, Amazon).">
+  <meta property="og:description" content="C++20 matching engine at 20.7M msgs/sec · LLMFirewall MCP proxy (0% ASR gate, 839 tests) · Edge Deployer (6 providers) · Offline RL Agent — by Mansoor Mamnoon.">
   <meta property="og:image"       content="https://mansoor-mamnoon.github.io/preview.webp">
   <meta property="og:url"         content="https://mansoor-mamnoon.github.io/projects.html">
   <meta property="og:type"        content="website">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="Projects — Mansoor Mamnoon | C++ Matching Engine · LLMFirewall">
-  <meta name="twitter:description" content="C++20 matching engine at 20.7M msgs/sec, p50 0.04µs. LLMFirewall: 100%→16% ASR on 4,200+ evals. Multi-cloud Edge Deployer.">
+  <meta name="twitter:description" content="C++20 matching engine 20.7M msgs/sec · LLMFirewall 0% ASR gate ablation, 839 tests · Edge Deployer 6 providers · Offline RL Agent.">
   <meta name="twitter:image"       content="https://mansoor-mamnoon.github.io/preview.webp">
   <link rel="canonical" href="https://mansoor-mamnoon.github.io/projects.html">
 
@@ -23,7 +23,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareSourceCode",
     "name": "LLMFirewall",
-    "description": "MCP security proxy for tool-using LLM agents. Reduces prompt-injection attack success rate from 100% to 16% on a 4,200+ case eval suite using a four-layer signal pipeline.",
+    "description": "MCP security proxy for tool-using LLM agents. Seven-layer enforcement pipeline; 48% ASR vs 100% no-defense; 0% ASR on tool-side-effect attacks with gate ablation. 839 tests, 0.16ms avg latency. pip install llmfirewall.",
     "codeRepository": "https://github.com/mansoor-mamnoon/prompt-injection-lab",
     "programmingLanguage": ["Python"],
     "author": {
@@ -125,7 +125,7 @@
         <button class="proj-nav-item" data-project="llmfirewall" aria-controls="llmfirewall">
           <span class="proj-nav-name">LLMFirewall</span>
           <span class="proj-nav-type">security · ML systems</span>
-          <span class="proj-nav-metric">100%→16% ASR · 783 tests</span>
+          <span class="proj-nav-metric">0% ASR (gate) · 839 tests</span>
         </button>
         <button class="proj-nav-item" data-project="orderbook" aria-controls="orderbook">
           <span class="proj-nav-name">Limit Order Book</span>
@@ -135,7 +135,12 @@
         <button class="proj-nav-item" data-project="edgedeployer" aria-controls="edgedeployer">
           <span class="proj-nav-name">Edge Deployer</span>
           <span class="proj-nav-type">infra tools · multi-cloud</span>
-          <span class="proj-nav-metric">Cloudflare · Lambda@Edge · Vercel</span>
+          <span class="proj-nav-metric">6 providers · 85 tests · plugin system</span>
+        </button>
+        <button class="proj-nav-item" data-project="offlinerl" aria-controls="offlinerl">
+          <span class="proj-nav-name">Offline RL Agent</span>
+          <span class="proj-nav-type">ML systems · safety</span>
+          <span class="proj-nav-metric">6 algorithms · safety constraints · OPE</span>
         </button>
       </nav>
     </aside>
@@ -146,33 +151,43 @@
       <!-- LLMFirewall -->
       <div class="proj-panel" id="llmfirewall" role="region" aria-label="LLMFirewall project detail">
         <h2 class="proj-panel-title">LLMFirewall</h2>
-        <p class="proj-panel-summary">MCP security proxy enforcing taint-aware least privilege for tool-using LLM agents.</p>
+        <p class="proj-panel-summary">Real async stdio MCP security proxy enforcing taint-aware least privilege for tool-using LLM agents — installable via <code>pip install llmfirewall</code>.</p>
+
+        <div class="proj-demo">
+          <img src="assets/llmfirewall_demo.gif" alt="LLMFirewall demo: prompt injection blocked in real time" loading="lazy" style="width:100%;border-radius:4px;border:1px solid var(--border);">
+        </div>
 
         <div class="project-brief">
           <div>
             <span class="brief-label">Problem</span>
-            <p>Tool-using LLM agents are vulnerable to prompt injection through malicious tool outputs and retrieved documents. Regex denylists are enumerable — an attacker can iterate every known rule.</p>
+            <p>Tool-using LLM agents are vulnerable to prompt injection through malicious tool outputs and retrieved documents. Regex denylists are enumerable. Detection alone fails on RAG attacks where plausible-sounding documents instruct the agent to call a write tool — the agent complies because no suspicious keywords are present.</p>
           </div>
           <div>
             <span class="brief-label">System</span>
-            <p>Four-layer signal pipeline: heuristic denylist → lightweight hashed feature vectors for semantic drift (no external model) → capability gating (taint-aware tool allowlisting) → instruction density scoring. Self-play red-team generates 500+ adaptive attacks.</p>
+            <p>Seven-layer enforcement pipeline in a real async stdio MCP proxy: allowlist → lookalike detection → arg injection scan → arg sanitization → secret-flow guard → taint-aware write gating → output injection scan. Cross-turn taint propagation via n-gram fingerprinting blocks relay attacks. Tested end-to-end against real MCP servers (filesystem, git, SQLite).</p>
           </div>
           <div>
             <span class="brief-label">Proof</span>
-            <p>100% → 16% ASR on local eval suite of 4,200+ cases — baseline is an unfiltered passthrough, not a production system. 783 tests. FPR held at 8.3% via FPR-constrained threshold sweep.</p>
+            <p>48% ASR vs 100% no-defense baseline. 0% ASR on tool-side-effect attacks with gate ablation — detection alone achieves 73% on those cases. 0.6% FPR. 0.16ms average latency with no external model call. 839 tests across unit + integration suites.</p>
           </div>
         </div>
 
         <div class="proj-section">
           <h4>What I Built</h4>
-          <p>A four-layer signal pipeline fused into a single calibrated policy score:</p>
+          <p>A real async stdio MCP proxy with seven independent enforcement layers:</p>
           <ul>
-            <li>Heuristic denylist (fast path — regex + keyword)</li>
-            <li>Semantic drift detector using lightweight hashed feature vectors — catches paraphrased attacks the regex layer cannot see (no external model required, sub-ms)</li>
-            <li>Capability gating — taint-aware tool allowlisting based on document trust level</li>
-            <li>Document instruction density scoring — flags embedded adversarial instructions</li>
+            <li><strong>Allowlist</strong> — any unauthorized tool blocked before upstream is called</li>
+            <li><strong>Lookalike detection</strong> — typosquatted tool names (<code>p0st_slack</code>, <code>post_s1ack</code>)</li>
+            <li><strong>Arg injection scan</strong> — injection payloads embedded in tool arguments</li>
+            <li><strong>Arg sanitization</strong> — external exfiltration URLs, oversized payloads, control chars</li>
+            <li><strong>Secret-flow guard</strong> — API keys and tokens in outgoing arguments</li>
+            <li><strong>Taint-aware write gating</strong> — RAG/tool-output content cannot authorize write-side-effect tools regardless of detection score</li>
+            <li><strong>Output injection scan</strong> — injected instructions in tool responses and resource reads</li>
           </ul>
-          <p style="margin-top:var(--s3)">Self-play red-team pipeline generates 500+ adaptive attacks across 7 classes via a 3-round mutation loop. Threshold calibration via FPR-constrained sweep holds false positives to 8.3%. Tested against real MCP servers: filesystem, git, and sqlite.</p>
+          <p style="margin-top:var(--s3)"><strong>Cross-turn taint propagation:</strong> fingerprints every tool response via word 3-grams. Relay attacks — where a document retrieved on turn 1 is exfiltrated via a write tool on turn 3 — are blocked even when arguments contain zero injection keywords.</p>
+          <p style="margin-top:var(--s3)"><strong>Secret scanner:</strong> named-regex patterns (OpenAI/Anthropic keys, GitHub tokens, AWS keys, JWTs, PEM certs, Stripe/npm/PyPI tokens, .env-style assignments) plus Shannon entropy as a backstop. Secrets redacted from tool outputs before the LLM context sees them.</p>
+          <p style="margin-top:var(--s3)"><strong>Policy language:</strong> YAML DSL with five built-in profiles (permissive/developer/enterprise/strict/research_sandbox). Each tool declares its effect class, which taint sources may authorize it, and which inputs are forbidden. <code>llmfirewall policy check</code> validates; <code>llmfirewall policy explain</code> prints a human-readable breakdown.</p>
+          <p style="margin-top:var(--s3)"><strong>Integration tests:</strong> 26 scenarios running the proxy in front of real MCP server subprocesses (filesystem, git, SQLite) — full round-trip from client to proxy to server and back.</p>
         </div>
 
         <div class="proj-section">
@@ -180,20 +195,24 @@
           <div class="proj-metrics">
             <span class="proj-metric">
               4,200+ evaluation cases
-              <span class="metric-note">local eval suite</span>
+              <span class="metric-note">5 attack families</span>
             </span>
             <span class="proj-metric">
-              100% → 16% ASR
-              <span class="metric-note">vs. no-filter baseline</span>
+              48% ASR
+              <span class="metric-note">vs. 100% no-defense</span>
             </span>
             <span class="proj-metric">
-              p95 latency &lt; 1 ms
-              <span class="metric-note">policy check</span>
+              0% ASR
+              <span class="metric-note">gate ablation (tool-side-effects)</span>
             </span>
-            <span class="proj-metric">783 tests</span>
-            <span class="proj-metric">FPR held at 8.3%</span>
+            <span class="proj-metric">
+              0.16 ms avg latency
+              <span class="metric-note">no external model</span>
+            </span>
+            <span class="proj-metric">0.6% FPR</span>
+            <span class="proj-metric">839 tests</span>
           </div>
-          <p style="margin-top:var(--s4)">Ablation: removing the semantic layer has the same effect as removing regex (+4pp ASR each). The two layers catch completely different attack classes — neither is redundant.</p>
+          <p style="margin-top:var(--s4)">Key insight from the gate ablation: detection alone (regex + semantic) achieves 73% ASR on tool-side-effect attacks. Adding capability gating drops ASR to 0% on those cases — because user intent "summarize" never authorizes <code>post_slack</code>, regardless of what the retrieved document says.</p>
         </div>
 
         <div class="proj-section">
@@ -201,10 +220,11 @@
           <div class="proj-stack-chips">
             <span class="proj-stack-chip">Python</span>
             <span class="proj-stack-chip">FastAPI</span>
-            <span class="proj-stack-chip">MCP Protocol</span>
+            <span class="proj-stack-chip">MCP Protocol (stdio)</span>
             <span class="proj-stack-chip">hashed feature vectors</span>
             <span class="proj-stack-chip">NumPy</span>
-            <span class="proj-stack-chip">pytest (783 tests)</span>
+            <span class="proj-stack-chip">YAML policy DSL</span>
+            <span class="proj-stack-chip">pytest (839 tests)</span>
           </div>
         </div>
 
@@ -290,53 +310,161 @@
       <!-- Edge Deployer -->
       <div class="proj-panel" id="edgedeployer" role="region" aria-label="Edge Deployer project detail">
         <h2 class="proj-panel-title">Edge Deployer — Serverless IDE</h2>
-        <p class="proj-panel-summary">Zero-config desktop IDE for deploying serverless APIs to Cloudflare Workers, AWS Lambda@Edge, and Vercel.</p>
+        <p class="proj-panel-summary">Native desktop IDE for writing, previewing, deploying, and observing serverless functions across 6 cloud providers from a single window.</p>
+
+        <div class="proj-demo">
+          <img src="assets/edge_deployer_demo.gif" alt="Edge Deployer demo: write, preview, deploy to Cloudflare" loading="lazy" style="width:100%;border-radius:4px;border:1px solid var(--border);">
+        </div>
 
         <div class="project-brief">
           <div>
             <span class="brief-label">Problem</span>
-            <p>Deploying serverless functions across providers requires context-switching between dashboards, CLIs, and config formats. There's no single interface with live feedback, history, and IaC.</p>
+            <p>Serverless edge development is fragmented: deploy from the terminal, watch logs in a browser dashboard, test in Postman, manage secrets in a separate CLI, generate infra in Terraform. Every context switch breaks flow.</p>
           </div>
           <div>
             <span class="brief-label">System</span>
-            <p>Electron desktop app: Monaco editor, multi-cloud deploy logic, Pulumi IaC per provider, real-time log streaming, deployment history, and per-provider ENV variable injection.</p>
+            <p>Electron app with Monaco editor, live edge runtime simulator (no cloud account needed to preview), 6-provider deploy engine behind a shared <code>IDeployer</code> interface, AI assistant (Claude API), P50/P95/P99 load tester, observability panel, AES-256-GCM secrets vault, IaC export (Pulumi/Terraform/Wrangler/Docker+K8s), and a sandboxed plugin system.</p>
           </div>
           <div>
             <span class="brief-label">Proof</span>
-            <p>Cloudflare Workers, AWS Lambda@Edge, and Vercel deployed from one interface. Pulumi applies infra dynamically. Code bundling + ZIP export pipeline for Lambda packaging.</p>
+            <p>All 3 phases complete (Core → Ecosystem → Trust). 6 providers deployed from one window. 85 tests across 6 suites. Pre-built binaries for macOS, Windows, and Linux on every tagged release.</p>
           </div>
         </div>
 
         <div class="proj-section">
           <h4>What I Built</h4>
           <ul>
-            <li>Monaco-based code editor with language server integration for TypeScript/JavaScript</li>
-            <li>Multi-cloud deploy logic: Cloudflare Workers API, AWS CLI scaffolding, Vercel REST API</li>
-            <li>Pulumi IaC: generates and applies infra config per provider dynamically</li>
-            <li>Real-time deploy logs streamed back to the IDE terminal</li>
-            <li>Deployment history: local cache of last 5 deploys with timestamp, provider, and status</li>
-            <li>Environment configuration panel: per-provider ENV vars, dynamic injection at build time</li>
-            <li>Code bundling + ZIP export pipeline for Lambda packaging</li>
+            <li><strong>Multi-cloud deploy engine:</strong> Cloudflare Workers, AWS Lambda, Vercel, Netlify, Fly.io, and Railway each implement a shared 7-method <code>IDeployer</code> interface — deploy, rollback, import, drift-detect, log-tail. Adding a new provider is under 300 lines.</li>
+            <li><strong>Live edge runtime simulator:</strong> preview iframe runs a full Cloudflare Workers simulation — <code>fetch</code> events, in-memory KV, console capture, hot-reload (400ms debounce), 5s timeout guard.</li>
+            <li><strong>AI assistant:</strong> Claude API with editor code injected as context — explain, debug, add CORS/auth, optimize cold starts, generate rate limiters. Key stored in the encrypted vault, never sent except on explicit Send.</li>
+            <li><strong>Observability:</strong> structured log stream per deploy/rollback/test event, stat cards, P50/P95/P99 percentiles, SVG sparkline.</li>
+            <li><strong>Load tester:</strong> configurable RPS (10/50/100+ or custom), live progress, final P50/P95/P99 report, cold-start outlier detection.</li>
+            <li><strong>Security scanner:</strong> 10 rules (4 critical) running on every keystroke — zero latency pure-regex. Critical issues block deployment.</li>
+            <li><strong>Encrypted secrets vault:</strong> AES-256-GCM with PBKDF2 (100,000 iterations), machine-keyed. Credentials excluded at the TypeScript type level — impossible to accidentally commit.</li>
+            <li><strong>IaC export:</strong> Pulumi, Terraform, Wrangler, Docker+K8s — all configs include IAM roles, resource bindings, health probes.</li>
+            <li><strong>Plugin system:</strong> <code>vm.Context</code> sandbox with explicit permission manifests. Hooks: <code>onBeforeDeploy</code>, <code>onAfterDeploy</code>, <code>onCodeTransform</code>. 5s execution timeout.</li>
+            <li><strong>Cloud import + drift detection:</strong> pulls deployed code back into the editor; shows color-coded unified diff vs. local.</li>
+            <li><strong>13 worker templates, 7 marketplace plugins, WebSocket tester, telemetry opt-in (3 levels).</strong></li>
           </ul>
+        </div>
+
+        <div class="proj-section">
+          <h4>Results</h4>
+          <div class="proj-metrics">
+            <span class="proj-metric">
+              6 deploy providers
+              <span class="metric-note">Cloudflare · AWS · Vercel · Netlify · Fly.io · Railway</span>
+            </span>
+            <span class="proj-metric">
+              85 tests, 6 suites
+              <span class="metric-note">securityScanner · loadTestStats · cloudDeployers · pluginSandbox · secretsVault · workspace</span>
+            </span>
+            <span class="proj-metric">
+              4 IaC formats
+              <span class="metric-note">Pulumi · Terraform · Wrangler · Docker+K8s</span>
+            </span>
+            <span class="proj-metric">10 security rules</span>
+            <span class="proj-metric">13 templates · 7 plugins</span>
+          </div>
         </div>
 
         <div class="proj-section">
           <h4>Stack</h4>
           <div class="proj-stack-chips">
             <span class="proj-stack-chip">Electron</span>
-            <span class="proj-stack-chip">React</span>
-            <span class="proj-stack-chip">TypeScript</span>
+            <span class="proj-stack-chip">React 19</span>
+            <span class="proj-stack-chip">TypeScript 5.8</span>
             <span class="proj-stack-chip">Monaco Editor</span>
             <span class="proj-stack-chip">Pulumi</span>
             <span class="proj-stack-chip">Cloudflare API</span>
-            <span class="proj-stack-chip">AWS CLI</span>
+            <span class="proj-stack-chip">AWS SDK</span>
             <span class="proj-stack-chip">Vercel REST API</span>
+            <span class="proj-stack-chip">Claude API</span>
+            <span class="proj-stack-chip">GitHub Actions</span>
           </div>
         </div>
 
         <div class="proj-links">
           <a href="https://github.com/mansoor-mamnoon/edge-deployer" class="btn btn-primary" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://github.com/mansoor-mamnoon/edge-deployer#readme" class="btn" target="_blank" rel="noopener">Design Notes ↗</a>
+        </div>
+      </div>
+
+      <!-- Offline RL Agent -->
+      <div class="proj-panel" id="offlinerl" role="region" aria-label="Offline RL Agent project detail">
+        <h2 class="proj-panel-title">Offline RL Agent</h2>
+        <p class="proj-panel-summary">Framework for training, evaluating, and stress-testing offline RL policies from static logs under safety constraints — with tools to answer whether a policy is actually safe to deploy.</p>
+
+        <div class="proj-demo" style="display:flex;gap:var(--s3);flex-wrap:wrap;">
+          <img src="assets/offline_rl_traffic.gif" alt="Traffic routing policy: safe vs. random baseline" loading="lazy" style="flex:1;min-width:240px;border-radius:4px;border:1px solid var(--border);">
+          <img src="assets/offline_rl_diagnostics.gif" alt="Dataset diagnostics: coverage, OOD risk, entropy" loading="lazy" style="flex:1;min-width:240px;border-radius:4px;border:1px solid var(--border);">
+        </div>
+
+        <div class="project-brief">
+          <div>
+            <span class="brief-label">Problem</span>
+            <p>Standard offline RL papers optimize for expected return on benchmark datasets and ignore deployment safety. They don't answer: Is this policy safe? Where will it fail? What does the training data actually cover? Datasets collected from suboptimal operators contain the coverage gaps that cause offline RL policies to fail in production.</p>
+          </div>
+          <div>
+            <span class="brief-label">System</span>
+            <p>6-algorithm framework (BC, CQL, IQL, TD3+BC, Decision Transformer, AWAC) with a 32-dimensional traffic routing simulator (SLO constraints, incidents, diurnal patterns), hospital treatment simulator, dataset diagnostics module, three OPE estimators (FQE/WIS/DR) with bootstrap CIs, policy shield, constraint critic, and causal failure explorer.</p>
+          </div>
+          <div>
+            <span class="brief-label">Proof</span>
+            <p>CQL achieves ~72 return vs. ~51 behavioral baseline with 3% SLO violations (vs. 8% behavioral). Bootstrap CI narrows FQE estimate to [65.1, 74.5]. Reproduce: <code>make reproduce-small</code>.</p>
+          </div>
+        </div>
+
+        <div class="proj-section">
+          <h4>What I Built</h4>
+          <ul>
+            <li><strong>6 algorithms:</strong> Behavior Cloning, CQL, IQL, TD3+BC, Decision Transformer, AWAC — all with consistent interfaces, safety constraints, and OPE support.</li>
+            <li><strong>Traffic routing simulator:</strong> 32-dim state space with SLO constraints, backend failures, incidents, and diurnal patterns. Mirrors real infrastructure management where offline exploration is dangerous.</li>
+            <li><strong>Hospital treatment simulator:</strong> safety-constrained environment with forbidden actions and patient state dynamics.</li>
+            <li><strong>Dataset diagnostics:</strong> coverage score, behavior entropy, OOD risk estimation, outlier detection, reward skew — outputs actionable warnings before training.</li>
+            <li><strong>Offline policy evaluation:</strong> FQE, Weighted Importance Sampling, Doubly Robust estimators with bootstrap CIs — estimate true return without online interaction.</li>
+            <li><strong>Safety layer:</strong> CVaR-5%, SLO violation rate, OOD action rate, catastrophic failure rate. Policy shield with three intervention strategies. Constraint critic (multi-constraint Q-function) for safety-aware action filtering.</li>
+            <li><strong>Failure explorer:</strong> causal analysis of policy failures with counterfactual explanations and dashboard integration.</li>
+            <li><strong>Streamlit dashboard + HTML reports:</strong> interactive dataset diagnostics, training run comparison, policy comparison. Self-contained single-file HTML reports with embedded plots.</li>
+            <li><strong>CLI:</strong> <code>orl train</code>, <code>orl diagnose</code>, <code>orl evaluate</code>, <code>orl report</code>, <code>orl dashboard</code>.</li>
+          </ul>
+        </div>
+
+        <div class="proj-section">
+          <h4>Results</h4>
+          <div class="proj-metrics">
+            <span class="proj-metric">
+              CQL: ~72 return
+              <span class="metric-note">vs. ~51 behavioral baseline</span>
+            </span>
+            <span class="proj-metric">
+              3% SLO violations
+              <span class="metric-note">CQL vs. 8% behavioral</span>
+            </span>
+            <span class="proj-metric">
+              FQE [65.1, 74.5]
+              <span class="metric-note">bootstrap 95% CI</span>
+            </span>
+            <span class="proj-metric">6 algorithms benchmarked</span>
+            <span class="proj-metric">3 seeds · 50 epochs</span>
+          </div>
+        </div>
+
+        <div class="proj-section">
+          <h4>Stack</h4>
+          <div class="proj-stack-chips">
+            <span class="proj-stack-chip">Python</span>
+            <span class="proj-stack-chip">PyTorch</span>
+            <span class="proj-stack-chip">NumPy</span>
+            <span class="proj-stack-chip">Streamlit</span>
+            <span class="proj-stack-chip">Matplotlib</span>
+            <span class="proj-stack-chip">pytest</span>
+          </div>
+        </div>
+
+        <div class="proj-links">
+          <a href="https://github.com/mansoor-mamnoon/offline-rl-agent" class="btn btn-primary" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://github.com/mansoor-mamnoon/offline-rl-agent#readme" class="btn" target="_blank" rel="noopener">Design Notes ↗</a>
         </div>
       </div>
 
