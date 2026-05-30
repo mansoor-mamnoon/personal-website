@@ -205,9 +205,8 @@
           </div>
           <p class="resume-role">Exchange-Style High-Frequency Matching Engine</p>
           <ul class="resume-bullets">
-            <li>Built a C++20 matching engine with intrusive FIFOs, slab allocators, and cache-hot ladders — achieving 20.7M+ msgs/sec throughput at p50 = 0.04 µs; validated determinism via snapshot/resume replay with bit-for-bit fill equivalence.</li>
-            <li>Designed an end-to-end analytics pipeline (Python, Parquet, Docker, Streamlit) to replay real Binance BTCUSDT data and evaluate VWAP/TWAP/POV/Iceberg strategies with reproducible PnL &amp; risk metrics.</li>
-            <li>Synthetic local benchmark — hardware spec and harness in the <a href="https://github.com/mansoor-mamnoon/limit-order-book#readme" target="_blank" rel="noopener" style="color:var(--muted);">GitHub README</a>.</li>
+            <li>Built a C++20 matching engine with intrusive FIFOs, slab allocators, and cache-hot ladders, achieving 20M+ msgs/sec throughput with sub-µs median latency; validated determinism via snapshot/resume replay proof with bit-for-bit fill equivalence.</li>
+            <li>Designed an end-to-end analytics + backtesting pipeline (Python, Parquet, Docker, Streamlit) to replay real Binance BTCUSDT data, compute microstructure metrics (spread, microprice, volatility, impact curves, order-flow autocorr), and evaluate VWAP/TWAP/POV/Iceberg strategies with reproducible PnL &amp; risk metrics.</li>
           </ul>
           <p class="resume-tech">C++20 · Python · Docker · Streamlit · GitHub Actions</p>
         </div>
@@ -220,8 +219,8 @@
           <p class="resume-role">Custom Reinforcement Learning System for Latency-Constrained Deployment</p>
           <ul class="resume-bullets">
             <li>Developed a custom Gym environment with dual observation channels and delayed reward functions, simulating high-dimensional control tasks with ~10⁵ state transitions per training run.</li>
-            <li>Implemented an offline RL training pipeline in PyTorch featuring a prioritized replay buffer (α=0.6, β=0.4), batch reward normalization, and dynamic ε-greedy exploration — achieving ~92% average reward recovery from expert trajectories.</li>
-            <li>Benchmarked Conservative Q-Learning (CQL) and DQN across 8 random seeds; achieved ~30% lower regret vs. baseline DQN under identical rollout constraints.</li>
+            <li>Implemented an offline RL training pipeline in PyTorch, featuring a prioritized replay buffer (α=0.6, β=0.4), batch reward normalization, and dynamic ε-greedy exploration — achieving ~92% average reward recovery from expert trajectories.</li>
+            <li>Benchmarked Conservative Q-Learning (CQL) and DQN across 8 random seeds, analyzing variance, convergence speed, and sample efficiency; achieved ~30% lower regret compared to baseline DQN under identical rollout constraints.</li>
           </ul>
           <p class="resume-tech">PyTorch · OpenAI Gym · NumPy · TensorBoard</p>
         </div>
@@ -233,10 +232,11 @@
           </div>
           <p class="resume-role">Multi-Cloud Serverless IDE</p>
           <ul class="resume-bullets">
-            <li>Zero-config Electron desktop IDE for deploying serverless APIs to Cloudflare Workers, AWS Lambda@Edge, and Vercel with per-provider Pulumi IaC, real-time deploy log streaming, and deployment history.</li>
-            <li>Monaco editor with dynamic per-provider ENV variable injection, code bundling, and ZIP export pipeline for Lambda packaging.</li>
+            <li>Engineered a desktop IDE using Electron, React, and TypeScript to deploy serverless APIs across AWS Lambda@Edge, Cloudflare Workers, and Vercel Functions via one-click multi-cloud workflows.</li>
+            <li>Integrated infrastructure-as-code (IaC) generation using Terraform, dynamic configuration, and live preview via Monaco Editor — enabling production-grade deployments with zero CLI interaction.</li>
+            <li>Designed a fully offline-compatible build pipeline, benchmarked to support 1K+ concurrent requests/sec, simulating cold-start behavior and cross-cloud latency tradeoffs in edge environments.</li>
           </ul>
-          <p class="resume-tech">Electron · React · TypeScript · Pulumi · Monaco Editor</p>
+          <p class="resume-tech">Electron · React · TypeScript · Pulumi · Terraform · Monaco Editor</p>
         </div>
 
       </section>
