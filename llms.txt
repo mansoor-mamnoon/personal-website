@@ -1,0 +1,134 @@
+# Mansoor Mamnoon
+
+> UC Berkeley EECS Honors, Class of 2027 (GPA 3.973). Systems and infrastructure engineer. Incoming Databricks SWE Intern on the Traffic Platform team (Go, Rust). Former Amazon SDE Intern. Builds LLM security systems, low-latency C++ trading infrastructure, multi-cloud developer tooling, and offline reinforcement learning frameworks. Open to 2027 new-grad roles in distributed systems, infrastructure, low-latency, and compilers.
+
+## Quick facts
+
+- **Email**: mansoormmamnoon@berkeley.edu
+- **GitHub**: https://github.com/mansoor-mamnoon
+- **LinkedIn**: https://linkedin.com/in/mansoormamnoon
+- **Website**: https://mansoor-mamnoon.github.io/
+- **GPA**: 3.973 — UC Berkeley EECS Honors Program, Class of 2027
+- **Languages**: C++20, Go, Rust, Python, TypeScript, Java, C
+- **Domains**: Distributed Systems · Networking · Low-Latency Infrastructure · LLM Agent Security · HFT Systems · Database Internals · Compilers
+
+---
+
+## Experience
+
+### Databricks — Software Engineering Intern, Traffic Platform (Summer 2026, incoming)
+Networking, security, and performance engineering for large-scale distributed infrastructure. Stack: Go, Rust.
+
+### Amazon — Software Development Engineer Intern (May–Aug 2025, Seattle WA)
+Built real-time IoT occupancy monitoring platform from scratch: ingested live data from 100+ sensors, processed 10K+ events/min, achieved <500ms dashboard latency. Stack: TypeScript, AWS Lambda, ECS Fargate, DynamoDB, SQS, Timestream, CDK, React, CloudWatch.
+
+### UC Berkeley BAIR AUTOLab — Undergraduate Researcher (Sep–Dec 2025)
+Extensions to Robo-DM, a data management toolkit for large-scale robot learning datasets affiliated with UC Berkeley AUTOLab / BAIR. Focus on efficient dataset compression, retrieval, and ML training pipeline integration.
+
+### UC Berkeley CS 61C — Senior Mentor & Content Lead, CS Mentors (2025–2026)
+Authored weekly worksheets on RISC-V assembly, C, memory hierarchy, caching, pipelining, and parallelism for 300+ students. Promoted to Content Lead Dec 2025.
+
+### BLCK UNICRN — Software Engineering Intern (Sep–Dec 2024, Berkeley CA)
+Python scraping/ranking system with trie-based prefix matching, vectorized scoring, and weighted lead ranking. 5× runtime improvement, 200+ client profiles. Stack: Python, Beautiful Soup, pandas.
+
+---
+
+## Projects
+
+### LLMFirewall (Dec 2025–May 2026)
+Real async stdio MCP security proxy for tool-using LLM agents. Installable: `pip install llmfirewall`.
+
+**What it does**: Sits between the LLM client and its MCP tool servers, enforcing seven independent enforcement layers at sub-millisecond latency with no external model call:
+1. Allowlist — any unauthorized tool blocked before upstream is called
+2. Lookalike detection — typosquatted tool names (p0st_slack, post_s1ack)
+3. Arg injection scan — injection payloads in tool arguments
+4. Arg sanitization — exfiltration URLs, oversized payloads, control chars
+5. Secret-flow guard — API keys/tokens in outgoing arguments
+6. Taint-aware write gating — RAG/tool-output content cannot authorize write-side-effect tools
+7. Output injection scan — injected instructions in tool responses / resource reads
+
+Also includes: cross-turn taint propagation (n-gram fingerprinting blocks relay attacks), comprehensive secret scanner (named regex + Shannon entropy), YAML policy DSL with 5 built-in profiles (permissive/developer/enterprise/strict/research_sandbox), integration tests against real MCP servers (filesystem, git, SQLite — 26 scenarios), structured audit log CLI, trace explain CLI.
+
+**Results**: 48% ASR vs 100% no-defense baseline (direct + indirect attacks, n=750). 0% ASR on tool-side-effect attacks with gate+detection ablation. 0.6% FPR. 0.16ms average latency. 839 tests (unit + integration).
+
+**Stack**: Python, FastAPI, MCP Protocol (async stdio), hashed feature vectors, NumPy, YAML DSL, pytest
+
+**GitHub**: https://github.com/mansoor-mamnoon/prompt-injection-lab
+
+---
+
+### C++20 Limit Order Book (Jul–Aug 2025)
+Exchange-style matching engine for high-frequency trading (HFT) and quantitative systems.
+
+**What it does**: Price-time priority FIFO matching engine with slab allocators, branch elimination, cache-hot pointer layouts, and CPU pinning. Full order types: Limit, Market, IOC, FOK, POST_ONLY, STP. Crash recovery via snapshot/resume — mid-file restart produces identical fills. WebSocket + REST connector for Binance US feeds, TAQ replay at 1×–100× speed. Analytics: spread, imbalance, depth, volatility, impact curves, VWAP, TWAP, POV, Iceberg. Streamlit dashboard. Docker + GitHub Actions CI.
+
+**Results**: 20.7M msgs/sec at p50 = 0.04µs (synthetic local benchmark, single-threaded, compiler-optimized). p99 ≈ 1µs. Deterministic replay verified.
+
+**Stack**: C++20, Python, Parquet, Docker, Streamlit, GitHub Actions
+
+**GitHub**: https://github.com/mansoor-mamnoon/limit-order-book
+
+---
+
+### Edge Deployer (Mar–May 2025)
+Native Electron desktop IDE for writing, previewing, deploying, and observing serverless functions across 6 cloud providers from a single window.
+
+**What it does**: Monaco editor with live Cloudflare Workers runtime simulator (no cloud account needed to preview). 6-provider deploy engine (Cloudflare Workers, AWS Lambda, Vercel, Netlify, Fly.io, Railway) behind a shared IDeployer interface. AI assistant (Claude API, key in encrypted vault). Load tester (P50/P95/P99). Observability panel with structured logs and latency sparkline. AES-256-GCM secrets vault (PBKDF2, machine-keyed). IaC export: Pulumi, Terraform, Wrangler, Docker+K8s. Plugin system (vm.Context sandbox, permission manifests). Drift detection, cloud import, WebSocket tester.
+
+**Results**: 6 providers. 85 tests across 6 suites. 4 IaC export formats. 10 security scanner rules. 13 worker templates. 7 marketplace plugins.
+
+**Stack**: Electron, React 19, TypeScript 5.8, Monaco Editor, Pulumi, Terraform, Claude API, GitHub Actions
+
+**GitHub**: https://github.com/mansoor-mamnoon/edge-deployer
+
+---
+
+### Offline RL Agent (May–Jun 2025)
+Framework for training, evaluating, and stress-testing offline RL policies under safety constraints. Answers whether a policy is safe to deploy, not just whether it achieves reward.
+
+**What it does**: 6 algorithms (BC, CQL, IQL, TD3+BC, Decision Transformer, AWAC) with consistent interfaces, safety constraints, and OPE support. Traffic routing simulator (32-dim state, SLO constraints, incidents, diurnal patterns) + hospital treatment simulator + GridWorld. Dataset diagnostics: coverage score, behavior entropy, OOD risk, outlier detection. OPE: FQE, Weighted IS, Doubly Robust with bootstrap CIs. Safety: CVaR-5%, SLO violation rate, OOD action rate, catastrophic failure rate, policy shield (3 intervention strategies), constraint critic. Failure explorer with causal analysis and counterfactual explanations. Streamlit dashboard + self-contained HTML reports. CLI: orl train, orl diagnose, orl evaluate, orl report, orl dashboard.
+
+**Results**: CQL ~72 return vs ~51 behavioral baseline. 3% SLO violations (vs 8% behavioral). FQE bootstrap CI [65.1, 74.5].
+
+**Stack**: Python, PyTorch, NumPy, Streamlit, Matplotlib, pytest
+
+**GitHub**: https://github.com/mansoor-mamnoon/offline-rl-agent
+
+---
+
+## Education
+
+**University of California, Berkeley** (Aug 2023–May 2027)
+B.A. Computer Science — EECS Honors Program, GPA 3.973
+Selected coursework: OS (162), Compilers (164), Database Systems (186), Algorithms (170), Machine Learning (189), Optimization (EECS 127), Computer Vision (180), Probability (Data 140), Abstract Linear Algebra (Math H110)
+
+---
+
+## Honors & Awards
+
+- **EECS Honors Program**, UC Berkeley (2025) — selective academic track for top-performing CS students
+- **1st Place — Intuit × Berkeley Haas Case Competition** (May 2025) — judged by Intuit product marketing leadership
+- **British Mathematical Olympiad Qualifier**, UKMT (2022) — qualified from 74,000+ Senior Math Challenge participants; A* in Further Mathematics A-Level
+
+---
+
+## Skills
+
+| Area | Technologies |
+|------|-------------|
+| Systems | C++20, Go, Rust, C |
+| Backend | Python, TypeScript, Java |
+| Infrastructure | AWS (Lambda, ECS, DynamoDB, SQS, Timestream, CDK), Pulumi, Docker, GitHub Actions |
+| ML / Data | PyTorch, OpenAI Gym, pandas, NumPy, TensorBoard |
+| Domains | Distributed Systems, Networking, Compilers, Database Internals, LLM Agent Security, Low-Latency Infrastructure, HFT Systems |
+
+---
+
+## Pages
+
+- [Home](https://mansoor-mamnoon.github.io/): Full profile, quick stats, project metric pills
+- [Projects](https://mansoor-mamnoon.github.io/projects.html): Detailed technical write-ups for all four projects
+- [Experience](https://mansoor-mamnoon.github.io/experience.html): Full work history, teaching, and education timeline
+- [Resume](https://mansoor-mamnoon.github.io/resume.html): One-page resume (HTML + PDF)
+- [Profile](https://mansoor-mamnoon.github.io/about.html): Personal background, quick facts, contact
+- [PDF Resume](https://mansoor-mamnoon.github.io/assets/Mansoor_Mamnoon_Resume.pdf): Direct download

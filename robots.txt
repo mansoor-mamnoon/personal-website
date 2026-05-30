@@ -1,4 +1,41 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mansoor-mamnoon.github.io/personal-website/sitemap.xml
+# AI and LLM crawlers — explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# LLM-readable summary
+# https://mansoor-mamnoon.github.io/llms.txt
+
+Sitemap: https://mansoor-mamnoon.github.io/sitemap.xml
