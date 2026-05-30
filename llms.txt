@@ -1,6 +1,6 @@
 # Mansoor Mamnoon
 
-> UC Berkeley EECS Honors, Class of 2027 (GPA 3.973). Systems and infrastructure engineer. Incoming Databricks SWE Intern on the Traffic Platform team (Go, Rust). Former Amazon SDE Intern. Builds LLM security systems, low-latency C++ trading infrastructure, multi-cloud developer tooling, and offline reinforcement learning frameworks. Open to 2027 new-grad roles in distributed systems, infrastructure, low-latency, and compilers.
+> UC Berkeley EECS Honors, Class of 2027 (GPA 3.973). Systems and infrastructure engineer. Databricks SWE Intern on the Traffic Platform team (Go, Rust, GCP network control plane). Former Amazon SDE Intern. Builds LLM security systems, low-latency C++ trading infrastructure, multi-cloud developer tooling, and offline reinforcement learning frameworks. Open to 2027 new-grad roles in distributed systems, infrastructure, low-latency, and compilers.
 
 ## Quick facts
 
@@ -16,8 +16,8 @@
 
 ## Experience
 
-### Databricks — Software Engineering Intern, Traffic Platform (Summer 2026, incoming)
-Networking, security, and performance engineering for large-scale distributed infrastructure. Stack: Go, Rust.
+### Databricks — Software Engineering Intern, Traffic Platform (May 2026 – Present)
+Developing dynamic network interface attachment for GCP-provisioned VMs, enabling transparent enforcement of customer network isolation guarantees across multi-tenant cloud infrastructure. Implementing cloud provider integrations within an internal network control plane, interfacing with service network layers to maintain workload boundary semantics at scale. Designed and validated a proof-of-concept by manually provisioning and configuring VMs end-to-end, confirming architectural feasibility before full implementation. Stack: Go, Rust, GCP.
 
 ### Amazon — Software Development Engineer Intern (May–Aug 2025, Seattle WA)
 Built real-time IoT occupancy monitoring platform from scratch: ingested live data from 100+ sensors, processed 10K+ events/min, achieved <500ms dashboard latency. Stack: TypeScript, AWS Lambda, ECS Fargate, DynamoDB, SQS, Timestream, CDK, React, CloudWatch.
