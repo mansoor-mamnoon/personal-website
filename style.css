@@ -1026,8 +1026,20 @@
   .proj-panel-title {
     font-size: 1.55rem;
     font-weight: 400;
-    margin-bottom: var(--s2);
+    margin-bottom: var(--s3);
     font-optical-sizing: auto;
+  }
+
+  /* Demo GIF container */
+  .proj-demo {
+    margin: var(--s5) 0 var(--s6);
+    line-height: 0;
+  }
+
+  .proj-demo img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .proj-panel-summary {
@@ -1163,12 +1175,23 @@
 
   @media (max-width: 700px) {
     .work-layout { grid-template-columns: 1fr; }
+
+    /* Sticky tab bar — stays in view while scrolling through a project */
     .work-sidebar {
-      position: relative; height: auto;
-      border-right: none; border-bottom: 1px solid var(--border-dim);
-      padding: var(--s4) var(--content-px) var(--s3);
+      position: sticky;
+      top: var(--nav-h);
+      z-index: 100;
+      height: auto;
+      background: var(--bg);
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: var(--s2) var(--content-px);
+      box-shadow: 0 2px 8px color-mix(in srgb, var(--bg) 50%, transparent);
     }
-    .work-sidebar .section-label { margin-bottom: var(--s3); }
+
+    /* Hide the "Project Index" label — saves vertical space on the tab bar */
+    .work-sidebar .section-label { display: none; }
+
     .work-sidebar nav {
       display: flex;
       flex-direction: row;
@@ -1176,17 +1199,25 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding-bottom: var(--s1);
+      padding-bottom: 2px;
     }
     .work-sidebar nav::-webkit-scrollbar { display: none; }
+
     .proj-nav-item {
       flex-shrink: 0;
       padding: var(--s2) var(--s3);
       margin-bottom: 0;
+      white-space: nowrap;
     }
+
     .proj-nav-type, .proj-nav-metric { display: none; }
     .proj-nav-name { margin-bottom: 0; font-size: 0.8rem; }
-    .work-detail { padding: var(--s6) var(--content-px); }
+
+    /* scroll-margin-top offsets the sticky nav (56px) + sticky tab bar (~48px) */
+    .work-detail {
+      padding: var(--s6) var(--content-px);
+      scroll-margin-top: calc(var(--nav-h) + 52px);
+    }
   }
 
   /* ── Notes Page ─────────────────────────────────────────── */
@@ -1772,7 +1803,7 @@
 
   /* ── Responsive: Tablet ≤900px ───────────────────────────── */
   @media (max-width: 900px) {
-    .work-detail { padding: var(--s8) var(--s8); }
+    .work-detail { padding: var(--s8) var(--s6); }
   }
 
   /* ── Responsive: Mobile ≤700px ──────────────────────────── */
@@ -1822,7 +1853,12 @@
     /* Profile strip: tighten spacing */
     .profile-strip { gap: var(--s2) var(--s4); }
     /* Project sections */
-    .proj-panel-title { font-size: 1.25rem; }
+    .proj-panel-title {
+      font-size: 1.2rem;
+      line-height: 1.25;
+      padding-top: var(--s2);
+      margin-bottom: var(--s3);
+    }
     .project-brief { gap: var(--s2); }
     /* Btn group: wrap naturally */
     .btn-group { gap: var(--s2); }
